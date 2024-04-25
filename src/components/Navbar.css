@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffe479;
+    padding: 1vw; 
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 1.5vw; 
+    color: #2c2c2c;
+}
+
+.links {
+    display: flex;
+}
+
+.nav-link {
+    margin-right: 2vw; 
+    text-decoration: none;
+    color: #f67f17;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: rgb(215, 56, 12);
+}
+
+.login-btn {
+    padding: 0.6vw 1vw; 
+    background-color: #fd431e;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+}
+.login {
+    margin-right: 0.5vw; 
+    padding: 0 0 0.2vw 0px;
+    
+}
+
+.login-btn:hover {
+    border: 0.14vw solid #fd431e; 
+    color: #f67f17;
+    background: transparent;
+    transition: 0.1s;
+}
+
+.cart-btn {
+    padding:0vw 1vw 0 0;
+    margin-left: 2vw; /* Add margin to create a gap between login and cart */
+}
+
+.fa-cart-shopping {
+    font-size: 1.6vw; /* Increase font size for the cart icon */
+    color: #ff5b14; /* Set color for the cart icon */
+}

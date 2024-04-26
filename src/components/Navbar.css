@@ -7,11 +7,22 @@
 }
 
 .navbar {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #ffe479;
-    padding: 1vw; 
+    padding: 1vw;  */
+
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffe479;
+        padding: 1vw;
+        position: sticky;
+        top: 0;
+        width: 100%;
+
 }
 
 .logo a {

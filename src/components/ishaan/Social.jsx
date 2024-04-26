@@ -1,10 +1,12 @@
 import React from 'react';
 import './Social.css';
+//importing css module
+import s from './Social.module.css';
 
 function Social() {
   return (
-    <div className='home-container'>
-      <h1>Social</h1>
+    <div className={s.main}>
+      <h1>Testing</h1>
     </div>
   )
 }

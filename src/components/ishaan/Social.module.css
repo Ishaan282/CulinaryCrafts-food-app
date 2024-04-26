@@ -1,6 +1,9 @@
-.h1{
+#main{
     color: red;
     font-size: 20px;
     border: 10px solid black;
-    height: 600px;
+    width: 100vw;
+    background-color: #36322f;
+    height: 90vh;
+    margin-top: 9vh; /* Add this line */
 }

@@ -12,9 +12,12 @@
     align-items: center;
     background-color: #ffe479;
     padding: 1vw;
-    position: sticky;
+    position: fixed;
     top: 0;
-    width: 100%;
+    width: 98vw;
+    height: 7vh;
+    z-index: 1px;
+    border: 3px solid #f67f17;
 }
 
 .logo a {

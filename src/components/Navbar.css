@@ -15,9 +15,8 @@
     position: fixed;
     top: 0;
     width: 98vw;
-    height: 7vh;
-    z-index: 1px;
-    border: 3px solid #f67f17;
+    height: 5vh;
+    border: 3px solid #f67f1700;
 }
 
 .logo a {

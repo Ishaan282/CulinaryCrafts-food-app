@@ -1,9 +1,44 @@
 #main{
-    color: red;
-    font-size: 20px;
-    border: 10px solid black;
-    width: 100vw;
-    background-color: #36322f;
+    border: 1vh solid black;
+    width: 99vw;
+    background-color: rgb(238, 238, 238);
     height: 90vh;
-    margin-top: 9vh; /* Add this line */
+    top: 9vh;
+    z-index: -1;
+    position: fixed
+}
+
+#bottom{
+    margin-left: 1vw;
+    border: 1px solid green;
+    border-radius: 5px;
+    width: 97%; height: 6vh;
+    background-color: rgb(224, 223, 217);
+    bottom: 1vh;
+    position: fixed;
+    display: flex;
+    align-items: center;
+}
+
+.bottom_icon{
+    height: 5vh; /* Adjust this value as needed */
+    object-fit: cover;
+}
+@keyframes gentleShake {
+    0% { transform: translate(0.5px, 0.5px) rotate(0deg); }
+    10% { transform: translate(-0.5px, -1px) rotate(-0.5deg); }
+    20% { transform: translate(-1.5px, 0px) rotate(0.5deg); }
+    30% { transform: translate(1.5px, 1px) rotate(0deg); }
+    40% { transform: translate(0.5px, -0.5px) rotate(0.5deg); }
+    50% { transform: translate(-0.5px, 1px) rotate(-0.5deg); }
+    60% { transform: translate(-1.5px, 0.5px) rotate(0deg); }
+    70% { transform: translate(1.5px, 0.5px) rotate(-0.5deg); }
+    80% { transform: translate(-0.5px, -0.5px) rotate(0.5deg); }
+    90% { transform: translate(0.5px, 1px) rotate(0deg); }
+    100% { transform: translate(0.5px, -1px) rotate(-0.5deg); }
+}
+
+.bottom_icon:hover {
+    animation: gentleShake 2s; 
+    animation-iteration-count: infinite; 
 }

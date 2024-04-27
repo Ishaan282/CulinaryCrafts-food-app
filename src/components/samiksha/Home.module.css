@@ -1,0 +1,155 @@
+/* Home.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+.homeContainer {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: #ffe479;
+}
+
+.leftSection {
+    flex: 1;
+    padding: 6vw 0vw 6vw 6vw;
+}
+
+.rightSection {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.curvedText{
+    font-weight: 600;
+    font-family: 'Poppins';
+    text-align: center;
+}
+
+.mainText {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+.mainText h1 {
+    font-size: 4.4vw;
+    margin-bottom: 1.5vw;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+.subText {
+    font-size: 1.2vw;
+}
+
+.buttons {
+    display: flex;
+  
+    margin-top: 2vw;
+}
+
+.recipeBtn,
+.cartBtn {
+    padding: 0.5vw 4vw;
+    margin:0 0 0 8vw;
+    border-radius:100px; 
+}
+
+.recipeBtn {
+    background-color: #fd431e;
+    color: white;
+    text-decoration: none;
+    border: 0.13vw solid #fd431e; 
+}
+
+.recipeBtn:hover{
+    border: 0.13vw solid #fd431e; 
+    color: #f67f17;
+    text-decoration: none;
+    background-color:transparent;
+}
+
+.cartBtn {
+    border: 0.14vw solid #fd431e; 
+    color: #f67f17;
+    text-decoration: none;
+}
+
+.cartBtn:hover{
+    background-color: #fd431e;
+    color: white;
+    text-decoration: none;
+}
+
+.chefImage {
+    max-width: 96%;
+    height: auto;
+    padding: 0vw 4vw 0vw 0vw;
+}
+
+
+/* ButtonSection */
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffe479;
+    padding: 2vw 4vw;
+  }
+  
+  .customButton {
+    width: 25vw;
+    height: 7vw;
+    border: none;
+    border-radius: 5vw;
+    background-color: #fa9034;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vw;
+    position: relative; 
+    overflow: hidden; 
+    transition: background-color 0.3s ease;
+    z-index: 0;
+  }
+  
+  .customButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #ff3f18; 
+    transition: left 0.3s ease; 
+    z-index: -1;
+  }
+  
+  .customButton:hover::before {
+    left: 0; 
+  }
+  
+  .leftContent {
+    margin-right: 2vw;
+  }
+  
+  .circleImage {
+    width: 5.5vw;
+    height: 5.5vw;
+    border-radius: 50%;
+    margin: 0.4vw 0vw 0vw -1vw;
+  }
+  
+  .rightContent h2 {
+    font-size: 1.5vw;
+    margin-bottom: 0vw;
+  }
+  
+  .rightContent p {
+    font-size: 0.8vw;
+  }
+  

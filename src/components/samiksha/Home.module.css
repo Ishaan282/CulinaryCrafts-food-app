@@ -153,3 +153,44 @@
     font-size: 0.8vw;
   }
   
+
+  /*  categories */
+
+.categoriesSection {
+  text-align: center;
+  padding-top: 4vw;
+  background-color: #ffe479;
+}
+
+.categoryTitle {
+  font-size: 2.5vw;
+  margin-bottom: 2vw;
+  font-family: 'Poppins';
+  font-weight:300;
+}
+
+.circleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0vw 2vw 2vw 2vw;
+}
+
+.circle img {
+  width: 8vw;
+  height: 8vw;
+  border-radius: 50%;
+  margin-bottom: 1vw;
+  border:0.2vw solid rgb(235, 188, 2);
+}
+
+.caption {
+  font-size: 1.2vw;
+}

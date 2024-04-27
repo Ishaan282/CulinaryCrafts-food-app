@@ -7,7 +7,12 @@ import ingredient from './ingredients.jpg';
 import picture from './picpicpic.jpg';
 import reci from './recipes-book.jpg';
 import ReactCurvedText from 'react-curved-text';
-
+import pasta from './pastas.jpg';
+import quick from './quick and easy.jpg';
+import salad from'./salads.jpg';
+import soup from './soups.jpg';
+import sweet from './desserts.jpg';
+import vege from './vegetarian.jpg';
 
 const Home = () => {
   return (
@@ -78,6 +83,37 @@ const Home = () => {
         </div>
       </button>
     </div>
+    <div className={a.categoriesSection}>
+      <h2 className={a.categoryTitle}>BROWSE BY CATEGORY</h2>
+      <div className={a.circleContainer}>
+        <div className={a.circle}>
+          <img src={quick} alt="quick and easy" />
+          <p className={a.caption}>Quick and Easy</p>
+        </div>
+        <div className={a.circle}>
+          <img src={vege} alt="vegetarian" />
+          <p className={a.caption}>Vegetarian</p>
+        </div>
+        <div className={a.circle}>
+          <img src={sweet} alt="desserts" />
+          <p className={a.caption}>Desserts</p>
+        </div>
+        <div className={a.circle}>
+          <img src={soup} alt="soups" />
+          <p className={a.caption}>Soups</p>
+        </div>
+        <div className={a.circle}>
+          <img src={salad} alt="salads" />
+          <p className={a.caption}>Salads</p>
+        </div>
+        <div className={a.circle}>
+          <img src={pasta} alt="pastas" />
+          <p className={a.caption}>Pastas</p>
+        </div>
+      </div>
+    </div>
+
+    
     </>
   );
 };

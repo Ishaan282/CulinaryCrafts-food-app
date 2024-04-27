@@ -167,6 +167,7 @@
   margin-bottom: 2vw;
   font-family: 'Poppins';
   font-weight:300;
+  text-decoration: none;
 }
 
 .circleContainer {
@@ -193,4 +194,102 @@
 
 .caption {
   font-size: 1.2vw;
+}
+
+/* latest recipes */
+
+
+.latestRecipesSection {
+  text-align: center;
+  padding-top: 4vw;
+  background-color: #ffe479;
+}
+
+.heading {
+  font-size: 2.5vw;
+  margin-bottom: 2vw;
+  font-family: 'Poppins';
+  font-weight:300;
+}
+
+.recipeContainer {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.recipeBox {
+  background-color: #fa9034;
+  padding: 2vw;
+  margin: 1vw 1vw 2vw 4vw;
+  width: 15vw;
+  height:20vw;
+  border:1px solid #fd7600;
+}
+
+.recipeImage {
+  width: 15vw;
+  height:11vw;
+  /* border-radius: 10px; */
+  border:1px solid #ff7700;
+  margin-bottom: 1vw;
+}
+
+.dessert {
+  font-size: 1vw;
+  margin: 0vw 12vw 0vw 0vw;
+}
+
+.name {
+  font-size: 1.5vw;
+  font-weight: bold;
+  margin: 0vw 0vw 1vw -1vw;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  width: 1.2vw;
+  height: 1.2vw;
+  background-color: #ffd700;
+  border-radius: 50%;
+  margin-right: 0.2vw;
+}
+
+.starEmpty {
+  width: 1vw;
+  height: 1vw;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid #ffd700;
+  margin-right: 0.2vw;
+}
+
+.ratingNumber {
+  font-size: 1vw;
+  margin-left: 0.5vw;
+}
+
+.loadMoreBtn {
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  padding: 1vw 2vw;
+  border: none;
+  border-radius: 3vw;
+  background-color: #fa9034;
+  color: white;
+  font-size: 1.5vw;
+  cursor: pointer;
+}
+
+.loadMoreBtn:hover {
+  background-color: #fd431e;
+}
+
+.link {
+  text-decoration: none;
+  color:#000000;
 }

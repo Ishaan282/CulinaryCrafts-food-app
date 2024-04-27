@@ -13,6 +13,8 @@ import salad from'./salads.jpg';
 import soup from './soups.jpg';
 import sweet from './desserts.jpg';
 import vege from './vegetarian.jpg';
+import pancake from './pancakes11.jpg'
+import salads from './salads.jpg'
 
 const Home = () => {
   return (
@@ -86,33 +88,109 @@ const Home = () => {
     <div className={a.categoriesSection}>
       <h2 className={a.categoryTitle}>BROWSE BY CATEGORY</h2>
       <div className={a.circleContainer}>
+      <Link to="/recipes" className={a.link}>
         <div className={a.circle}>
           <img src={quick} alt="quick and easy" />
           <p className={a.caption}>Quick and Easy</p>
         </div>
+      </Link>
+
+      <Link to="/recipes" className={a.link}>
         <div className={a.circle}>
           <img src={vege} alt="vegetarian" />
           <p className={a.caption}>Vegetarian</p>
         </div>
+        </Link>
+        <Link to="/recipes" className={a.link}>
         <div className={a.circle}>
           <img src={sweet} alt="desserts" />
           <p className={a.caption}>Desserts</p>
         </div>
+        </Link>
+        <Link to="/recipes" className={a.link}>
         <div className={a.circle}>
           <img src={soup} alt="soups" />
           <p className={a.caption}>Soups</p>
         </div>
+        </Link>
+
+        <Link to="/recipes" className={a.link}>
         <div className={a.circle}>
           <img src={salad} alt="salads" />
           <p className={a.caption}>Salads</p>
         </div>
+        </Link>
+        <Link to="/recipes" className={a.link}>
         <div className={a.circle}>
           <img src={pasta} alt="pastas" />
           <p className={a.caption}>Pastas</p>
         </div>
+        </Link>
       </div>
     </div>
+    <div className={a.latestRecipesSection}>
+      <h2 className={a.heading}>Latest Recipes</h2>
+      <div className={a.recipeContainer}>
+        <div className={a.recipeBox}>
+          <img src={pasta} alt="Recipe 1" className={a.recipeImage} />
+          <p className={a.dessert}>Pastas</p>
+          <p className={a.name}>Lemon Pasta</p>
+          <div className={a.rating}>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.starEmpty}></span>
+            <span className={a.ratingNumber}>54</span>
+          </div>
+        </div>
+        <div className={a.recipeBox}>
+          <img src={pancake} alt="Recipe 2" className={a.recipeImage} />
+          <p className={a.dessert}>Dessert</p>
+          <p className={a.name}>Blueberry Pancakes</p>
+          <div className={a.rating}>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.ratingNumber}>32</span>
+          </div>
+        </div>
 
+        <div className={a.recipeBox}>
+          <img src={salads} alt="Recipe 2" className={a.recipeImage} />
+          <p className={a.dessert}>Salads</p>
+          <p className={a.name}>Mixed Pasta</p>
+          <div className={a.rating}>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.starEmpty}></span>
+            <span className={a.starEmpty}></span>
+            <span className={a.ratingNumber}>21</span>
+          </div>
+        </div>
+
+
+        <div className={a.recipeBox}>
+          <img src={sweet} alt="Recipe 3" className={a.recipeImage} />
+          <p className={a.dessert}>Dessert</p>
+          <p className={a.name}>Cosmic Brownies</p>
+          <div className={a.rating}>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.star}></span>
+            <span className={a.starEmpty}></span>
+            <span className={a.ratingNumber}>51</span>
+          </div>
+        </div>
+      </div>
+      <Link to="/recipes" className={a.link}>
+      <button className={a.loadMoreBtn}>View More</button>
+      </Link>
+    </div>
     
     </>
   );

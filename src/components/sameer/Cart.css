@@ -1,12 +1,13 @@
-.home-container {
+.hom-container {
     
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: yellow;
   }
   
-  .home-container h1 {
+  .hom-container h1 {
     color: orange;
   }
   

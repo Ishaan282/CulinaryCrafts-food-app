@@ -1,12 +1,85 @@
+// Home.js
 import React from 'react';
-import './Home.css';
+import { Link } from 'react-router-dom';
+import a from './Home.module.css'; 
+import chef from './chef1.png';
+import ingredient from './ingredients.jpg';
+import picture from './picpicpic.jpg';
+import reci from './recipes-book.jpg';
+import ReactCurvedText from 'react-curved-text';
 
-function Home() {
+
+const Home = () => {
   return (
-    <div className='home-container'>
-      <h1>Home</h1>
+    <>
+    <div className={a.homeContainer}>
+      <div className={a.leftSection}>
+        <div className={a.curvedText}>
+      <ReactCurvedText
+            width={300}
+            height={120}
+            cx={150}
+            cy={150}
+            rx={120}
+            ry={60}
+            startOffset={50}
+            reversed={true}
+            text="YOUR VERY OWN"
+            textProps={{ style: { fontSize: 24 } }}
+            textPathProps={null}
+            tspanProps={null}
+            ellipseProps={null}
+            svgProps={null}
+        />
+      </div>
+        <div className={a.mainText}>
+          <h1>Recipe</h1>
+          
+          <h1>Destination</h1>
+          <p className={a.subText}>Be Your Own Masterchef</p>
+          <div className={a.buttons}>
+            <Link to="/recipes" className={a.recipeBtn}>Recipe</Link>
+            <Link to="/cart" className={a.cartBtn}>Cart</Link>
+          </div>
+        </div>
+      </div>
+      <div className={a.rightSection}>
+        <img src={chef} alt="Chef" className={a.chefImage} />
+      </div>
     </div>
-  )
-}
+
+
+    <div className={a.buttonContainer}>
+      <button className={a.customButton}>
+        <div className={a.leftContent}>
+          <img src={reci} alt="Circle" className={a.circleImage} />
+        </div>
+        <div className={a.rightContent}>
+          <h2>Browse Recipes</h2>
+          <p>rwewsy ytwtsg sygag sgfd ffvs gwrfsb agsdab.</p>
+        </div>
+      </button>
+      <button className={a.customButton}>
+      <div className={a.leftContent}>
+          <img src={ingredient} alt="Circle" className={a.circleImage} />
+        </div>
+        <div className={a.rightContent}>
+          <h2>Buy Ingredients</h2>
+          <p>rwewsy ytwtsg sygag sgfd ffvs gwrfsb agsdab.</p>
+        </div>
+      </button>
+      <button className={a.customButton}>
+      <div className={a.leftContent}>
+          <img src={picture} alt="Circle" className={a.circleImage} />
+        </div>
+        <div className={a.rightContent}>
+          <h2>Post Your Work</h2>
+          <p>rwewsy ytwtsg sygag sgfd ffvs gwrfsb agsdab.</p>
+        </div>
+      </button>
+    </div>
+    </>
+  );
+};
 
 export default Home;

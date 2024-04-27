@@ -17,7 +17,7 @@
     width: 98vw;
     height: 5vh;
     border: 3px solid #f67f1700;
-    transition: background-color 0.3s ease; /* Add transition for smooth color change */
+    transition: background-color 0.3s ease; 
 }
 
 .scrolled {

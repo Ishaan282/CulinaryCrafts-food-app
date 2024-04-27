@@ -32,7 +32,7 @@ useEffect(() => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="logo">
-        <Link to="/" className="logo-name">CulinaryCrafts<i className="fa-solid fa-carrot" style={{ color: '#ff5b14' }} ></i></Link>
+        <Link to="/Home" className="logo-name">CulinaryCrafts<i className="fa-solid fa-carrot" style={{ color: '#ff5b14' }} ></i></Link>
       </div>
       <div className="links">
         <Link to="/Home" className="nav-link">Home</Link>

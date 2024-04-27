@@ -34,14 +34,22 @@
     margin-top: 1vh;
 }
 
+#profiles{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/*# profiles  */
 .profile{
     display: flex;
     gap: 4%;
     align-items: center;
     /* border: 3px solid #f67f17; */
     border-radius: 50px;
-    background-color: rgb(211, 211, 255);
+    
 }
+
 
 .profile_picture{
     border-radius: 50%;
@@ -50,6 +58,9 @@
     height: 6vh;
 }
 
+.profile_name{
+    font-weight: 600;
+}
 
 /*! chat area */
 .main2{
@@ -66,9 +77,20 @@
     /* border: 10px solid blue; */
     flex-grow: 1;
     width: var(--chat_area);
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
 }
 
-/* text bar */
+#message1{
+    display: flex;
+    gap: 10px;
+}
+.texts{
+    margin-bottom: 10px;
+}
+
+/* send da message */
 #bottom{
     border-radius: 5px;
     width: var(--chat_area); height: 6.5vh;

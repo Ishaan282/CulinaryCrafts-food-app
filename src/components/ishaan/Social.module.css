@@ -1,7 +1,7 @@
 
 #main{
     width: 100vw;
-    background-color: #ffffff;
+    background-color: #f07d7d;
     height: 90vh;
     top: 10vh;
     position: fixed;
@@ -11,7 +11,7 @@
 
 :root {
     --chat_area: 96%;
-    --main_height: 88vh
+    --main_height: 89vh
 }
 
 /*! side bar */
@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     padding: 0.5vh 15px;
-    background-color: #f8f8e6;
+    background-color: #ffffff;
     gap: 2%;
 }
 
@@ -46,8 +46,14 @@
     gap: 4%;
     align-items: center;
     /* border: 3px solid #f67f17; */
-    border-radius: 50px;
-    
+    border-radius: 50px;  
+    transition: ease-in-out 0.5s; 
+}
+.profile:hover{
+    background-color: #f67f17;
+    cursor: pointer;
+    scale: 1.1;
+    transition: ease-in-out 0.5s;
 }
 
 
@@ -62,6 +68,10 @@
     font-weight: 600;
 }
 
+#pr1{
+    background-color: #00b3ff6c;
+}
+
 /*! chat area */
 .main2{
     /* border: 2px solid red; */
@@ -71,6 +81,10 @@
     align-items: center;
     flex-direction: column;
     padding: 0.5vh 0;
+    background-image: linear-gradient(rgba(243, 245, 220, 0.874), rgba(245, 245, 220, 0.934)), url('./images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative; 
 }
 
 .main2 .chat{
@@ -86,9 +100,10 @@
     display: flex;
     gap: 10px;
 }
-.texts{
-    margin-bottom: 10px;
-}
+/* Add this CSS to your existing stylesheet */
+
+
+
 
 /* send da message */
 #bottom{
@@ -98,6 +113,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .bottom_icon{
@@ -140,3 +156,4 @@
 .emoji {
     font-size: 3.2vh;
 }
+

@@ -14,6 +14,7 @@ function App() {
     <BrowserRouter>
     <Navbar />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Social" element={<Social />} />

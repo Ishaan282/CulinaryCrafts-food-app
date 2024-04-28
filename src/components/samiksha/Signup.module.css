@@ -1,53 +1,71 @@
-/* AuthPage.module.css */
+/* Signup.module.css */
+
 .authContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f9f9f9;
-  }
-  
-  .authForm {
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .authForm h2 {
-    margin-bottom: 20px;
-  }
-  
-  .authForm form {
+    overflow-y: hidden;
+    background-color: #ffe479;
+}
+
+.authImage {
+    flex: 1;
+   
+}
+
+.authForm {
+    flex: 1;
     display: flex;
     flex-direction: column;
-  }
-  
-  .authForm input {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .authForm button {
-    padding: 10px;
+    align-items: center;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    max-width: 100%; 
+    margin: 0vw 0vw 0vw 0vw; 
+    overflow-x: hidden;
+}
+
+.authTitle {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 3vw;
+}
+
+.inputField {
+    width: 40vw;
+    margin: 1vw 0vw 1vw 6vw;
+    padding: 0.5vw;
+}
+
+.submitButton {
+    width: 20vw;
+    padding: 1vw;
+    background-color: #fd431e;
+    color: white;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
-    color: white;
     cursor: pointer;
-  }
-  
-  .authForm button:hover {
-    background-color: #0056b3;
-  }
-  
-  .authForm p {
-    margin-top: 20px;
-  }
-  
-  .authForm p a {
-    color: #007bff;
-  }
-  
+    margin: 1vw 0vw 0vw 16vw;
+
+}
+.submitButton:hover{
+    background-color: #e62600;
+}
+
+.switchAuth {
+    margin-top: 2vw; 
+    text-align: center;
+}
+
+.switchLink {
+    color: #fd431e;
+    text-decoration: none;
+}
+
+.switchLink:hover {
+    text-decoration: underline;
+}

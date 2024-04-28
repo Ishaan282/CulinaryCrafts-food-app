@@ -75,7 +75,7 @@ const Home = () => {
         </div>
         <div className={a.rightContent}>
           <h2>Browse Recipes</h2>
-          <p>rwewsy ytwtsg sygag sgfd ffvs gwrfsb agsdab.</p>
+          <p>Dive into a world of culinary inspiration.</p>
         </div>
       </button>
       <button className={a.customButton}>
@@ -84,7 +84,7 @@ const Home = () => {
         </div>
         <div className={a.rightContent}>
           <h2>Buy Ingredients</h2>
-          <p>rwewsy ytwtsg sygag sgfd ffvs gwrfsb agsdab.</p>
+          <p>Shop everything you need for your next masterpiece.</p>
         </div>
       </button>
       <button className={a.customButton}>
@@ -93,7 +93,7 @@ const Home = () => {
         </div>
         <div className={a.rightContent}>
           <h2>Post Your Work</h2>
-          <p>rwewsy ytwtsg sygag sgfd ffvs gwrfsb agsdab.</p>
+          <p>Share your kitchen triumphs with the world.</p>
         </div>
       </button>
     </div>

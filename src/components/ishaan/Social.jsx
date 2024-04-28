@@ -10,10 +10,19 @@ import upload_icon from './icons/upload.png';
 //importing profile pictures
 import pfp1 from './pfp/pfp1.jpg';
 import pfp2 from './pfp/pfp2.jpg';
+import pfp3 from './pfp/pfp3.png';
+import pfp4 from './pfp/pfp4.png';
+import pfp5 from './pfp/pfp5.jpg';
+import pfp6 from './pfp/pfp6.jpg';
 
-import test from './images/test.jpg';
+
+//images in chat
+import food1 from './images/food1.jpg';
+import food2 from './images/food2.jpg';
 
 function Social() {
+
+//!emojis
     const emojis = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕', '🤑', '🤠', '😈', '👿', '👹', '👺', '🤡', '👻', '💀', '☠️'];
 
     const getRandomEmoji = () => {
@@ -34,6 +43,7 @@ function Social() {
         event.target.style.height = (event.target.scrollHeight) + 'px';
     };
 
+//!sending messages
 const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
         event.preventDefault(); // Prevent form submission
@@ -49,6 +59,15 @@ const handleKeyPress = (event) => {
     }
 };
 
+const users = [
+    { imgSrc: pfp1, name: "Lucifer hamster" },
+    { imgSrc: pfp2, name: "Bread" },
+    { imgSrc: pfp3, name: "Foxy" },
+    { imgSrc: pfp4, name: "Gumball" },
+    { imgSrc: pfp5, name: "Jester" },
+    { imgSrc: pfp6, name: "Peco" },
+];
+
 return (
     <div id={s.main}>
         {/* sidebar */}
@@ -59,16 +78,22 @@ return (
             <hr style={{border: 'none', borderTop: '2px solid black', width: '103%',margin: `0 -3%`}} />
 
             <div id={s.profiles}>
-                <Profile id={s.pr1} imgSrc={pfp1} name="Shunsuke" />
-                <Profile id={s.pr2} imgSrc={pfp2} name="Bread" />
-                <Profile id={s.pr3} imgSrc={pfp1} name="Shunsuke" />
+                    <Profile id={s.pr1} {...users[0]} />
+                    <Profile id={s.pr2} {...users[1]} />
+                    <Profile id={s.pr3} {...users[2]} />
+                    <Profile id={s.pr4} {...users[3]} />
+                    <Profile id={s.pr5} {...users[4]} />
+                    <Profile id={s.pr6} {...users[5]} />
             </div>
         </div>
 
         {/* chatting area  */}
         <div className={`${s.main2}`}>
             <div className={`${s.chat}`}>
-                <Message id={s.message1} imgSrc={pfp1} name="Shunsuke" message="Hey, how are you?" containerClass={s.texts} messageClass={s.msg1} photo={test}/>
+                <Message {...users[0]} message="Guys! I made mochi today" photo={food1} containerClass={s.texts} messageClass={s.msg1} />
+                <Message {...users[3]} message="yum, I am coming to steal some" containerClass={s.texts} messageClass={s.msg2} />
+                <Message {...users[5]} message="Nope it's mine" containerClass={s.texts} messageClass={s.msg1} />
+                <Message {...users[2]} message="I got better one" photo={food2} containerClass={s.texts} messageClass={s.msg2} />
                 
                 {messages.map((message, index) => (
                     <Message key={index} {...message} />

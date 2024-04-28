@@ -10,12 +10,12 @@ function Message({ id, imgSrc, name, message, messageClass, photo }) {
     ));
 
     return (
-        <div id={id} className={s.profile2}>
+        <div className={s.profile2}>
             <img src={imgSrc} alt="profile" className={s.profile_picture}/>
             <div id={s.text}>
                 <p className={s.profile_name}>{name}</p>
                 <p className={messageClass} style={{marginBottom:`-10px`}}>{formattedMessage}</p>
-                {photo && <img src={photo} alt="photo" className={s.photo} />}
+                {photo && <img src={photo} alt="send" className={s.photo} />}
             </div>
         </div>
     );

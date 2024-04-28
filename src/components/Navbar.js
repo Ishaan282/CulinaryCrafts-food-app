@@ -5,13 +5,43 @@ import Home from './samiksha/Home';
 import Cart from './sameer/Cart';
 import Recipes from './sanjal/Recipes';
 import Social from './ishaan/Social';
+import Login from './samiksha/Login'
 import { useState } from 'react';
 import { useEffect } from 'react';
-
+// import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  // const [scrolled, setScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("loggedin");
+    setIsLoggedIn(loggedIn === "true");
+  }, []);
+
+  // Add useEffect to update isLoggedIn state when localStorage changes
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("loggedin");
+    setIsLoggedIn(loggedIn === "true");
+  }, [localStorage.getItem("loggedin")]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedin");
+    setIsLoggedIn(false);
+    // Reset user name to default value
+    // localStorage.removeItem("user");
+    navigate("/login");
+  };
+
+
+
+
+
+
+const [scrolled, setScrolled] = useState(false);
 
 // eslint-disable-next-line
 useEffect(() => {
@@ -40,9 +70,16 @@ useEffect(() => {
         <Link to="/Social" className="nav-link">Socials</Link>
         <Link to="/Cart" className="nav-link">Cart</Link>
       </div>
-      <div className="login">
-        <Link to="/login" className="login-btn">Login / Sign up</Link>
-        <Link to="/cart" className="cart-btn"><i class="fa-solid fa-cart-shopping" style={{ color: '#ff5b14' }}></i></Link>
+      <div className="login"> 
+      {isLoggedIn ? (
+          <button onClick={handleLogout} className="logout-btn">Logout</button>
+        ) : (
+          <Link to="/Login" className="login-btn">Login / Sign up</Link>
+        )}
+        {/* <Link to="/Login" className="login-btn">Login / Sign up</Link> */}
+        
+        <Link to="/Cart" className="cart-btn"><i className="fa-solid fa-cart-shopping" style={{ color: '#ff5b14' }}></i></Link>
+        
       </div>
       
       

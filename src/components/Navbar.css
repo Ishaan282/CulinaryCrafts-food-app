@@ -76,3 +76,18 @@
     font-size: 1.6vw; /* Increase font size for the cart icon */
     color: #ff5b14; /* Set color for the cart icon */
 }
+.logout-btn {
+    padding: 0.6vw 1vw; 
+    background-color: #fd431e;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .logout-btn:hover {
+    border: 0.14vw solid #fd431e; 
+    color: #f67f17;
+    background: transparent;
+    transition: 0.1s;
+  }

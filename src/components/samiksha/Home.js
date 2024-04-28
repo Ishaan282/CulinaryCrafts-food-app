@@ -1,5 +1,5 @@
 // Home.js
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import a from './Home.module.css'; 
 import chef from './chef1.png';
@@ -23,14 +23,17 @@ import snack5 from './snack5.jpg';
 import dish1 from './dish1.jpg';
 import dish2 from './dish2.jpg';
 import main from './mainmain.jpg';
-
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+ 
+
   return (
     <>
     <div className={a.homeContainer}>
       <div className={a.leftSection}>
         <div className={a.curvedText}>
+          {/* "npm install react-curved-text"  for this to work*/}
       <ReactCurvedText
             width={300}
             height={120}

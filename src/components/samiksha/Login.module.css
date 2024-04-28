@@ -1,0 +1,53 @@
+/* AuthPage.module.css */
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+  }
+  
+  .authForm {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .authForm h2 {
+    margin-bottom: 20px;
+  }
+  
+  .authForm form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .authForm input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .authForm button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .authForm button:hover {
+    background-color: #0056b3;
+  }
+  
+  .authForm p {
+    margin-top: 20px;
+  }
+  
+  .authForm p a {
+    color: #007bff;
+  }
+  

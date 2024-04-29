@@ -43,6 +43,15 @@ function Social() {
         event.target.style.height = (event.target.scrollHeight) + 'px';
     };
 
+    const users = [
+        { imgSrc: pfp1, name: "Lucifer hamster" },
+        { imgSrc: pfp2, name: "Bread" },
+        { imgSrc: pfp3, name: "Foxy" },
+        { imgSrc: pfp4, name: "Gumball" },
+        { imgSrc: pfp5, name: "Jester" },
+        { imgSrc: pfp6, name: "Peco" },
+    ];
+
 //!sending messages
 const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
@@ -53,20 +62,13 @@ const handleKeyPress = (event) => {
             event.target.value += '\n';
         } else if (textInput !== '') {
             // If the Shift key is not being held down, send the message
-            setMessages(prevMessages => [...prevMessages, { id: s.message1, imgSrc: pfp2, name: "Bread", message: textInput, containerClass: s.texts, messageClass: s.msg1 }]);
+            setMessages(prevMessages => [...prevMessages, { id: s.message1, imgSrc: pfp5, name: "Jester", message: textInput, containerClass: s.texts, messageClass: s.msg1 }]);
             event.target.value = '';
         }
     }
 };
 
-const users = [
-    { imgSrc: pfp1, name: "Lucifer hamster" },
-    { imgSrc: pfp2, name: "Bread" },
-    { imgSrc: pfp3, name: "Foxy" },
-    { imgSrc: pfp4, name: "Gumball" },
-    { imgSrc: pfp5, name: "Jester" },
-    { imgSrc: pfp6, name: "Peco" },
-];
+
 
 return (
     <div id={s.main}>

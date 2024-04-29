@@ -24,17 +24,7 @@ const Login = () => {
           alert("Wrong Email or Password");
         }
       };
-    // const handleLogin = (e) => {
-    //     e.preventDefault();
-    //     const loggeduser = JSON.parse(localStorage.getItem("user"));  //local storage ke string ko will convert into object
-    //     if(input.email === loggeduser.email && input.password===loggeduser.password){
-    //         localStorage.setItem("loggedin",true);
-    //         navigate("/home");
-    //     }
-    //     else{
-    //         alert("Wrong Email or Password");
-    //     }
-    // };
+
   return (
     <div className={a.authContainer}>
       <div className={a.authImage}>

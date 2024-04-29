@@ -8,12 +8,14 @@ import Social from './components/ishaan/Social';
 import Login from './components/samiksha/Login';
 import Signup from './components/samiksha/Signup';
 import Incrediants from './components/sameer/Incrediants'
+import { ShopContextProvider } from "./components/sameer/context/shop-context";
 
 function App() {
   return (
-    
+    <ShopContextProvider>
     <BrowserRouter>
     <Navbar />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
@@ -27,6 +29,7 @@ function App() {
         </Routes>
       
     </BrowserRouter>
+    </ShopContextProvider>
     
   );
 }

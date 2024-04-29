@@ -1,12 +1,69 @@
-.home-container {
-    
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
+.bg-image-container {
+  background-image: url('./fruitcakepic.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 90vh;
+  overflow-y: hidden;
+  padding-top: 10vh; 
+}
+
+.fruitcake{
+  text-align: center;
+  color: white;
+  font-family:Arial, Helvetica, sans-serif;
+  margin-top: 2vh;
+}
+.recipie-cake-ing{
+  background-color: #ffc18b !important;
+  width: 83vh;
+  padding: 2vh;
+  margin-top: 5vh;
+  margin-left: 15vh;
   
-  .home-container h1 {
-    color: orange;
-  }
+  color:rgb(26, 22, 22)
+}
+
+.todo-ing{
+  background-color: #ffc18b !important;
+  width: 38vh;
+  padding: 2vh;
+  margin-top: -66vh;
+  margin-left: 120vh;
+  height: 47vh;
+}
+
+.button-shopping{
+  background-color: #f95738 !important;
+  padding: 2vh;
+  border: none;
+  border-radius: 16vh;
+  font-weight: bold;
+  cursor: pointer;
+}
+.button-shopping:hover{
   
+  transition: 5ms ease-in-out;
+  box-shadow: 1px 1px 10px 0px #f95738;
+}
+
+.add-icon-todo{
+  background-color: transparent;
+  color: #f95738;
+  font-weight: bolder;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  font-size: x-large;
+  margin-top: -9px;
+  margin-left: 2px;
+}
+
+.enter-todo-ing{
+  padding: 2px;
+  background-color: #f958385b;
+  border: none;
+  border-bottom: rgb(79, 20, 20) solid 0.21vh !important;
+}
+

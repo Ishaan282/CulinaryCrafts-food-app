@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Recipes.css'
 import fruitcakepic from './fruitcakepic.jpg';
+import { Link } from 'react-router-dom';
 
 function Fruitcake() {
     const [todos, setTodos] = useState([]);
@@ -75,7 +76,7 @@ function Fruitcake() {
                             <li>Baking powder</li>
                         </ul>
                     </div>
-                    <button className='button-shopping'>Shop items</button>
+                    <button className='button-shopping'> <Link to="/Cart">Shop items</Link></button>
                 </div>
             </div>
         </div>

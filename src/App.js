@@ -7,6 +7,7 @@ import Recipes from './components/sanjal/Recipes';
 import Social from './components/ishaan/Social';
 import Login from './components/samiksha/Login';
 import Signup from './components/samiksha/Signup';
+import Incrediants from './components/sameer/Incrediants'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Cart" element={<Cart />} />
+          <Route path="/Incrediants" element={<Incrediants />} />
           <Route path="/Social" element={<Social />} />
           <Route path="/Recipes" element={<Recipes />} />
           <Route path="/Login" element={<Login />} />

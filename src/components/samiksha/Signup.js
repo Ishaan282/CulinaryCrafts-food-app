@@ -21,7 +21,12 @@ const Signup= () => {
         localStorage.setItem("accounts", JSON.stringify(updatedAccounts));
         navigate("/login");
       };
-    
+    //to store value in local storage
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();  //stops from default submissions
+    //     localStorage.setItem("user", JSON.stringify(input));
+    //     navigate("/login");
+    // };
   return (
     <div className={a.authContainer}>
       <div className={a.authForm}>
@@ -42,3 +47,6 @@ const Signup= () => {
 };
 
 export default Signup;
+
+
+

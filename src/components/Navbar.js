@@ -62,7 +62,7 @@ useEffect(() => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="logo">
-        <Link to="/Home " className="logo-name">CulinaryCrafts<i className="fa-solid fa-carrot" style={{ color: '#ff5b14' }} ></i></Link>
+        <Link to="/Home " className="logo-name">CulinaryCrafts<i className="fa-solid fa-carrot" style={{ color: '#115d02' }} ></i></Link>
       </div>
       <div className="links">
         <Link to="/Home" className="nav-link">Home</Link>
@@ -78,7 +78,7 @@ useEffect(() => {
         )}
         {/* <Link to="/Login" className="login-btn">Login / Sign up</Link> */}
         
-        <Link to="/Cart" className="cart-btn"><i className="fa-solid fa-cart-shopping" style={{ color: '#ff5b14' }}></i></Link>
+        <Link to="/Cart" className="cart-btn"><i className="fa-solid fa-cart-shopping" style={{ color: '#3d3d3d' }}></i></Link>
         
       </div>
       

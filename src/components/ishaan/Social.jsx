@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import s from './Social.module.css';
 import Message from './componenets/Message.jsx';
 import Profile from './componenets/Profile.jsx';
@@ -21,7 +21,6 @@ import food1 from './images/food1.jpg';
 import food2 from './images/food2.jpg';
 
 function Social() {
-
 //!emojis
     const emojis = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕', '🤑', '🤠', '😈', '👿', '👹', '👺', '🤡', '👻', '💀', '☠️'];
 
@@ -43,6 +42,7 @@ function Social() {
         event.target.style.height = (event.target.scrollHeight) + 'px';
     };
 
+//!storing users  
     const users = [
         { imgSrc: pfp1, name: "Lucifer hamster" },
         { imgSrc: pfp2, name: "Bread" },
@@ -68,11 +68,21 @@ const handleKeyPress = (event) => {
     }
 };
 
+//!scrolling from botom to top 
+// Create a reference to the chat container
+const chatRef = useRef(null);
+
+// Scroll to the bottom of the chat container whenever messages change
+useEffect(() => {
+    if (chatRef.current) {
+        chatRef.current.scrollTop = chatRef.current.scrollHeight;
+    }
+}, [messages]);
 
 
 return (
     <div id={s.main}>
-        {/* sidebar */}
+{/* sidebar */}
         <div className={`${s.main1}`}>
             <header id={`${s.head}`}>
                 People
@@ -89,9 +99,9 @@ return (
             </div>
         </div>
 
-        {/* chatting area  */}
+{/* chatting area  */}
         <div className={`${s.main2}`}>
-            <div className={`${s.chat}`}>
+            <div className={`${s.chat}`} ref={chatRef}>
                 <Message {...users[0]} message="Guys! I made mochi today" photo={food1} containerClass={s.texts} messageClass={s.msg1} />
                 <Message {...users[3]} message="yum, I am coming to steal some" containerClass={s.texts} messageClass={s.msg2} />
                 <Message {...users[5]} message="Nope it's mine" containerClass={s.texts} messageClass={s.msg1} />

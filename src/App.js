@@ -8,6 +8,7 @@ import Login from './components/samiksha/Login';
 import Signup from './components/samiksha/Signup';
 import Recipes from './components/sanjal/Recipes';
 import Incrediants from './components/sameer/Incrediants'
+import CheeseCake from './components/sanjal/CheeseCake';
 import { ShopContextProvider } from "./components/sameer/context/shop-context";
 
 

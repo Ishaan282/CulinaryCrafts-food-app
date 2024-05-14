@@ -6,7 +6,7 @@
     align-items: center;
     height: 100vh;
     overflow-y: hidden;
-    background-color: #ffe479;
+    background-color: #9cdf50;
 }
   
 .authImage {
@@ -41,7 +41,7 @@
 .submitButton {
     width: 20vw;
     padding: 1vw;
-    background-color: #fd431e;
+    background-color: #3d3d3d;
     color: white;
     border: none;
     border-radius: 5px;
@@ -51,7 +51,7 @@
 }
 
 .submitButton:hover{
-    background-color: #e62600;
+    background-color: #000000;
 }
 .switchAuth {
     margin-top: 2vw; 
@@ -59,7 +59,7 @@
 }
 
 .switchLink {
-    color: #fd431e;
+    color: #3d3d3d;
     text-decoration: none;
 }
 

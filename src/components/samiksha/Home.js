@@ -44,7 +44,15 @@ const Home = () => {
     event.preventDefault(); // Prevent default form submission behavior
     alert('Thank you for subscribing to Culinary Crafts');
   };
+  const navigate = useNavigate();
+  const [userName, setUserName] = useState('');
 
+  useEffect(() => {
+    const name = localStorage.getItem("name");
+    if (name) {
+      setUserName(name);
+    }
+  }, []);
   return (
     <>
     <div className={a.homeContainer}>
@@ -67,12 +75,13 @@ const Home = () => {
             ellipseProps={null}
             svgProps={null}
         />
+        {/* {userName && <p className={a.userName}>{userName}</p>} */}
       </div>
         <div className={a.mainText}>
           <h1>Recipe</h1>
           
           <h1>Destination</h1>
-          <p className={a.subText}>Be Your Own Masterchef</p>
+          <p className={a.subText}>Be Your Own Masterchef {userName && userName}</p>
           <div className={a.buttons}>
             <Link to="/recipes" className={a.recipeBtn}>Recipe</Link>
             <Link to="/cart" className={a.cartBtn}>Cart</Link>

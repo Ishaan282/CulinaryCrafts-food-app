@@ -90,6 +90,7 @@ const Home = () => {
 
   return (
     <>
+    <div className={a.mainContainer}>
     <div className={a.homeContainer}>
       <div className={a.leftSection}>
         <div className={a.curvedText}>
@@ -400,7 +401,7 @@ const Home = () => {
    
 
 
-
+</div>
     
     </>
   );

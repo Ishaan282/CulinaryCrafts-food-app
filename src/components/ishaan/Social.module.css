@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     padding: 0.5vh 15px;
-    background-color: #cd5d0841;
+    background-color: #63A683;
     gap: 2%;
 }
 
@@ -71,22 +71,22 @@
 }
 
 #pr1{
-    background-color: #38484f6c;
+    background-color: #EEDA8B;
 }
 #pr2{
-    background-color: #ff00ff6c;
+    background-color: #E67C3B;
 }
 #pr3{
-    background-color: #ff00006c;
+    background-color: #9D2C21;
 }
 #pr4{
-    background-color: #00ff006c;
+    background-color: #D96A1A;
 }
 #pr5{
-    background-color: #f5aeae9d;
+    background-color: #F4D678;
 }
 #pr6{
-    background-color: #7d8afc80;
+    background-color: #C82B11;
 }
 
 /*! chat area */
@@ -98,7 +98,7 @@
     align-items: center;
     flex-direction: column;
     padding: 0.5vh 0;
-    background-image: linear-gradient(rgba(134, 171, 156, 0.941), rgba(120, 163, 126, 0.934)), url('./images/background.jpg');
+    background-image: linear-gradient(rgba(99, 166, 136, 0.941), rgba(67, 131, 135, 0.934)), url('./images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     position: relative; 
@@ -154,7 +154,7 @@
     width: var(--chat_area);
     min-height: 6.5vh; /* Change height to min-height */
     max-height: 50vh; /* Set a maximum height */
-    background-color: #ffe479;
+    background-color: #A6D59E;
     display: flex;
     align-items: center;
     justify-content: space-between;

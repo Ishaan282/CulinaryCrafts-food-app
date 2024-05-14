@@ -24,9 +24,26 @@ import dish1 from './dish1.jpg';
 import dish2 from './dish2.jpg';
 import main from './mainmain.jpg';
 import { useNavigate } from 'react-router-dom';
+// import React from 'react';
+// import './GoToTopButton.css'; // Add CSS for styling if needed
+
+
 
 const Home = () => {
- 
+  const handleClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Smooth scrolling animation
+    });
+  };
+
+  const [email, setEmail] = useState(''); // State to store email input value
+
+  // Function to handle form submission
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+    alert('Thank you for subscribing to Culinary Crafts');
+  };
 
   return (
     <>
@@ -281,15 +298,25 @@ const Home = () => {
           <p>+123 456 7890</p>
         </div>
         <div className={a.footerSection}>
-          <h3>Subscribe</h3>
-          <input type="email" placeholder="Your Email" />
-          <button type="submit">Subscribe</button>
+        <form onSubmit={handleSubmit}>
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                value={email} // Bind input value to state
+                onChange={(e) => setEmail(e.target.value)} // Update state when input changes
+              />
+              <button type="submit">Subscribe</button>
+            </form>
         </div>
       </div>
       <div className={a.copyRight}>
         © 2024 Team-4 G22. All rights reserved.
       </div>
-      
+      <button className={a.buttontogo} onClick={handleClick}>
+      <i className="fas fa-arrow-up"></i> {/* Font Awesome icon for arrow */}
+    </button>
     </div>
    
 
@@ -301,3 +328,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

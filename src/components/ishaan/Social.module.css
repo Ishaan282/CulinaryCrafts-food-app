@@ -98,7 +98,7 @@
     align-items: center;
     flex-direction: column;
     padding: 0.5vh 0;
-    background-image: linear-gradient(rgba(134, 171, 156, 0.941), rgba(120, 163, 126, 0.934)), url('./images/background.jpg');
+    background-image: linear-gradient(rgba(255, 219, 92, 0.941), rgba(120, 163, 126, 0.934)), url('./images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     position: relative; 
@@ -154,7 +154,7 @@
     width: var(--chat_area);
     min-height: 6.5vh; /* Change height to min-height */
     max-height: 50vh; /* Set a maximum height */
-    background-color: #ffe479;
+    background-color: #C3FF93;
     display: flex;
     align-items: center;
     justify-content: space-between;

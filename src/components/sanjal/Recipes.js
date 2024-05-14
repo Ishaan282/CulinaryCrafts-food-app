@@ -1,87 +1,217 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import r from './style.module.css'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons'; 
+import { Link } from 'react-router-dom';
+// import CheeseCake from './CheeseCake';
 
-// Import images for the recipes
-import fruitcakeImage from './fruitcakepic.jpg';
-import pastaImage from './pasta.jpg';
-import saladImage from './salad.jpg';
-import burgerImage from './burger.jpg'
-import Fruitcake from './Fruitcake';function RecipeBox({ category, name, rating, image, link }) {
+
+function App() {
   return (
-    <div className={r
-  .recipeBox}>
-      <Link to={link} className={r
-      .link}>
-        <img src={image} alt={name} className={r
-        .recipeImage} />
-        <p className={r
-        .dessert}>{category}</p>
-        <p className={r
-        .name}>{name}</p>
-        <div className={r
-        .rating}>
-          {[...Array(rating).keys()].map((index) => (
-            <span key={index} className={r
-            .star}></span>
-          ))}
-          {[...Array(5 - rating).keys()].map((index) => (
-            <span key={index} className={r
-            .starEmpty}></span>
-          ))}
-          <span className={r
-          .ratingNumber}>{rating}</span>
-        </div>
-      </Link>
-    </div>
-  );
-}
+    <div className={r.mainMenu}>
 
-function Recipes() {
-  const recipes = [
-    { category: "Dessert", name: "Fruit Cake", rating: 4, image: fruitcakeImage, link: "/Fruitcake" },
-    { category: "Pasta", name: "Mixed Salad", rating: 3, image: pastaImage, link: "/Fruitcake" },
-    { category: "Salads", name: "Pasta", rating: 5, image: saladImage, link: "/Fruitcake" },
-    { category: "Main Dish", name: "Burger", rating: 5, image: burgerImage, link: "/Fruitcake" },
+
+    {/* Sweets */}
+    <h1>Deserts</h1>
+    <div className={r.sweetFood}>
     
-  ];
+      {/* <div className={`${r.cheeseCake} ${r.sweet}`}  link={CheeseCake}> */}
+      <Link to="/CheeseCake">
+        <div>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Baked CheeseCake</div>
+        <div className={r.stars}></div>
+      </div> 
+      </Link>
 
-  return (
-    <div className={r
-  .recipeContainer}>
-      {[...Array(4).keys()].map((line) => (
-        <div key={line} className={r
-      .line}>
-          {recipes.slice(line * 4, (line + 1) * 4).map((recipe, index) => (
-            <div key={index} className={r
-          .horizontalLine}>
-              <RecipeBox
-                category={recipe.category}
-                name={recipe.name}
-                rating={recipe.rating}
-                image={recipe.image}
-                link={recipe.link}
-              />
-              <RecipeBox
-                category={recipe.category}
-                name={recipe.name}
-                rating={recipe.rating}
-                image={recipe.image}
-                link={recipe.link}
-              />
-              <RecipeBox
-                category={recipe.category}
-                name={recipe.name}
-                rating={recipe.rating}
-                image={recipe.image}
-                link={recipe.link}
-              />
-            </div>
-          ))}
-        </div>
-      ))}
+      <div className={`${r.Chocolate} ${r.sweet}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Chocolate Cake</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Crembrule} ${r.sweet}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Crembrule</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Bannana} ${r.sweet}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Bannana Sunday</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Waffels} ${r.sweet}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Waffels</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Doughnuts} ${r.sweet}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Doughnuts</div>
+        <div className={r.stars}></div>
+      </div>
+    </div>
+
+
+    {/* Pastas */}
+    <h1>Pastas</h1>
+    <div className={r.pastas}>
+      <div className={`${r.Ravioli} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Spnich-Corn Ravioli</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Pesto} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Pesto ssssss</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Alfredo} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Alfredo Futticini</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Arbarita} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Arbarita</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Waffels} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Waffels</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Doughnuts} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Doughnuts</div>
+        <div className={r.stars}></div>
+      </div>
+    </div>
+
+    {/* soups */}
+    <h1>Pastas</h1>
+    <div className={r.pastas}>
+      <div className={`${r.Ravioli} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Spnich-Corn Ravioli</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Pesto} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Pesto ssssss</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Alfredo} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Alfredo Futticini</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Arbarita} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Arbarita</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Waffels} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Waffels</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Doughnuts} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Doughnuts</div>
+        <div className={r.stars}></div>
+      </div>
+    </div>
+
+
+    {/* vegetarian */}
+    <h1>Pastas</h1>
+    <div className={r.pastas}>
+      <div className={`${r.Ravioli} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Spnich-Corn Ravioli</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Pesto} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Pesto ssssss</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Alfredo} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Alfredo Futticini</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Arbarita} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Arbarita</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Waffels} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Waffels</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Doughnuts} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Doughnuts</div>
+        <div className={r.stars}></div>
+      </div>
+    </div>
+
+    {/* salads */}
+    <h1>Pastas</h1>
+    <div className={r.pastas}>
+      <div className={`${r.Ravioli} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Spnich-Corn Ravioli</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Pesto} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Pesto ssssss</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Alfredo} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Alfredo Futticini</div>
+        <div className={r.stars}></div>
+      </div>
+
+      <div className={`${r.Arbarita} ${r.pasta}`}>
+        <img src="" className={r.imgDish}></img>
+        <div className={r.nameDish}>Arbarita</div>
+        <div className={r.stars}></div>
+      </div>
+
+    </div>
+
+
+    
+
+
     </div>
   );
 }
 
-export default Recipes;
+export default App;

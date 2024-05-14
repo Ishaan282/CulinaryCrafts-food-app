@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-rou
 import Navbar from './components/Navbar';
 import Home from './components/samiksha/Home';
 import Cart from './components/sameer/Cart';
-import Fruitcake from './components/sanjal/Fruitcake';
 import Social from './components/ishaan/Social';
 import Login from './components/samiksha/Login';
 import Signup from './components/samiksha/Signup';
 import Recipes from './components/sanjal/Recipes';
 import Incrediants from './components/sameer/Incrediants'
+import CheeseCake from './components/sanjal/CheeseCake';
 import { ShopContextProvider } from "./components/sameer/context/shop-context";
+
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/Fruitcake" element={<Fruitcake />} />
+          <Route path="/CheeseCake" element={<CheeseCake />} />
         </Routes>
       
     </BrowserRouter>

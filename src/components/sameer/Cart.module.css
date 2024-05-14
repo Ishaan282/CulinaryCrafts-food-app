@@ -48,3 +48,15 @@
   font-weight: bolder;
 }
 
+.bttn{
+  font-size: 30px;
+  text-align: center;
+}
+
+.bttn button{
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  font-size: 15px;
+  text-decoration: none;
+}

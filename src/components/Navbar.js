@@ -64,7 +64,7 @@ useEffect(() => {
         <Link to="/Home" className="nav-link">Home</Link>
         <Link to="/Recipes" className="nav-link">Recipes</Link>
         <Link to="/Social" className="nav-link">Socials</Link>
-        <Link to="/Incrediants" className="nav-link">Cart</Link>
+        <Link to="/Incrediants" className="nav-link">Incrediants</Link>
       </div>
       <div className="login"> 
       {isLoggedIn ? (

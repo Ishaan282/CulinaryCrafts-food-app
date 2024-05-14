@@ -37,10 +37,6 @@ const Navbar = () => {
   };
 
 
-
-
-
-
 const [scrolled, setScrolled] = useState(false);
 
 // eslint-disable-next-line

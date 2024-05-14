@@ -40,6 +40,8 @@ const handleFileSelect = (event) => {
     }
 };
 
+
+
 // Add a new function to trigger file selection
 const triggerFileSelect = () => {
     fileInputRef.current.click();
@@ -47,9 +49,6 @@ const triggerFileSelect = () => {
 
 // Add a ref to the file input
 const fileInputRef = useRef();
-
-// Modify the render method
-
 
 //!emojis
     const emojis = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕', '🤑', '🤠', '😈', '👿', '👹', '👺', '🤡', '👻', '💀', '☠️'];
@@ -64,8 +63,6 @@ const fileInputRef = useRef();
     const changeEmoji = () => {
         setCurrentEmoji(getRandomEmoji());
     };
-
-    const [messages, setMessages] = useState([]);
 
     const handleInput = (event) => {
         event.target.style.height = 'auto';
@@ -82,6 +79,17 @@ const fileInputRef = useRef();
         { imgSrc: pfp6, name: "Peco" },
     ];
 
+    // Initialize the messages state with the messages stored in local storage
+    const [messages, setMessages] = useState(() => {
+        const storedMessages = localStorage.getItem('messages');
+        return storedMessages ? JSON.parse(storedMessages) : [];
+    });
+
+    // Storing messages in local storage whenever they change
+    useEffect(() => {
+        localStorage.setItem('messages', JSON.stringify(messages));
+    }, [messages]);
+
 //!sending messages
 const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
@@ -92,7 +100,11 @@ const handleKeyPress = (event) => {
             event.target.value += '\n';
         } else if (textInput !== '') {
             // If the Shift key is not being held down, send the message
-            setMessages(prevMessages => [...prevMessages, { id: s.message1, imgSrc: pfp5, name: "Jester", message: textInput, containerClass: s.texts, messageClass: s.msg1 }]);
+            setMessages(prevMessages => {
+                const newMessages = [...prevMessages, { id: s.message1, imgSrc: pfp2, name: "Bread", message: textInput, containerClass: s.texts, messageClass: s.msg1 }];
+                localStorage.setItem('messages', JSON.stringify(newMessages));
+                return newMessages;
+            });
             event.target.value = '';
         }
     }
@@ -109,11 +121,11 @@ useEffect(() => {
     }
 }, [messages]);
 
-// new code
+//! deleting message 
 const deleteMessage = (index) => {
-    setMessages(prevMessages => prevMessages.filter((message, i) => i !== index));
+    const newMessages = messages.filter((_, i) => i !== index);
+    setMessages(newMessages);
 };
-// new code
 
 return (
     <div id={s.main}>

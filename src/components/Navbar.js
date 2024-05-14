@@ -27,18 +27,16 @@ const Navbar = () => {
     const loggedIn = localStorage.getItem("loggedin");
     setIsLoggedIn(loggedIn === "true");
   }, [localStorage.getItem("loggedin")]);
-
+  
   const handleLogout = () => {
     localStorage.removeItem("loggedin");
+    localStorage.removeItem("name"); 
     setIsLoggedIn(false);
+   
     // Reset user name to default value
     // localStorage.removeItem("user");
     navigate("/login");
   };
-
-
-
-
 
 
 const [scrolled, setScrolled] = useState(false);
@@ -62,13 +60,13 @@ useEffect(() => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="logo">
-        <Link to="/Home " className="logo-name">CulinaryCrafts<i className="fa-solid fa-carrot" style={{ color: '#115d02' }} ></i></Link>
+        <Link to="/Home " className="logo-name">CulinaryCrafts<i className="fa-solid fa-carrot" style={{ color: '#eb750d' }} ></i></Link>
       </div>
       <div className="links">
         <Link to="/Home" className="nav-link">Home</Link>
         <Link to="/Recipes" className="nav-link">Recipes</Link>
         <Link to="/Social" className="nav-link">Socials</Link>
-        <Link to="/Incrediants" className="nav-link">Cart</Link>
+        <Link to="/Incrediants" className="nav-link">Incrediants</Link>
       </div>
       <div className="login"> 
       {isLoggedIn ? (

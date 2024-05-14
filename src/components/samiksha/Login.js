@@ -19,6 +19,9 @@ const Login = () => {
         const user = accounts.find((account) => account.email === input.email && account.password === input.password);
         if (user) {
           localStorage.setItem("loggedin", true);
+          // After successful signup or login
+localStorage.setItem("name", user.name);
+
           navigate("/home");
         } else {
           alert("Wrong Email or Password");

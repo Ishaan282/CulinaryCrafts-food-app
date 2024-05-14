@@ -18,6 +18,8 @@
 
 .rightSection {
     flex: 1;
+    
+    
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -435,4 +437,83 @@
   background-color: #02310b;
 }
 
+
+
+
+
+
+
+
+
+/* Home.css */
+
+/* YouTube Carousel Section */
+.youtubeCarouselSection {
+  text-align: center;
+  z-index:-1;
+  /* margin-bottom: 4vw; Adjust margin as needed */
+  background-color: #9cdf50;
+}
+.carouselTitle {
+  font-size: 2vw;
+  font-weight: 400;
+  margin-bottom: 1.6vw;
+  font-family: 'Poppins';
+  margin-top: 2.5vw;
+}
+
+/* Slide Content (YouTube Video) */
+.slick-slide iframe {
+  width: 80%; /* Adjust video width as needed */
+  margin: 0 auto; /* Center the video horizontally */
+}
+
+/* Slider Arrows */
+.slick-prev,
+.slick-next {
+  font-size: 2vw; /* Adjust arrow size as needed */
+  color: #000; /* Adjust arrow color as needed */
+  /* font-family: 'poppins'; */
+  z-index: 1; /* Ensure arrows appear above slides */
+}
+
+.slick-prev {
+  left: 2vw; /* Adjust left offset as needed */
+}
+
+.slick-next {
+  right: 2vw; /* Adjust right offset as needed */
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  color: #333; /* Adjust arrow color on hover as needed */
+}/* Home.css */
+
+/* Custom Arrows */
+.customArrows {
+  /* position: fixed; */
+  /* top: -50%; */
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  z-index: 1;
+  
+  overflow-x: hidden;
+  color: red;
+  justify-content: space-between;
+}
+
+.customArrows button {
+  /* background-color: transparent; */
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  
+  color: #fb1111;
+}
+
+.customArrows button:hover {
+  color: #730d0d; /* Adjust hover color as needed */
+}
 

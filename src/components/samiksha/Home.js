@@ -1,8 +1,9 @@
 // Home.js
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import a from './Home.module.css'; 
 import chef from './chef1.png';
+// import chef from './Screenshot (523).png';
 import ingredient from './ingredients.jpg';
 import picture from './picpicpic.jpg';
 import reci from './recipes-book.jpg';
@@ -25,7 +26,12 @@ import dish2 from './dish2.jpg';
 import main from './mainmain.jpg';
 import { useNavigate } from 'react-router-dom';
 // import React from 'react';
-// import './GoToTopButton.css'; // Add CSS for styling if needed
+// import './GoToTopButton.css'; 
+import Slider from 'react-slick';
+// import SliderArrow from 'react-slick-arrow';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 
 
@@ -53,6 +59,35 @@ const Home = () => {
       setUserName(name);
     }
   }, []);
+
+
+  const sliderRef = useRef(null);
+
+  // Function to navigate to the previous slide
+  const goToPrev = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickPrev();
+    }
+  };
+
+  // Function to navigate to the next slide
+  const goToNext = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickNext();
+    }
+  };
+
+  const videoSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: false,
+  };
+
+
+
   return (
     <>
     <div className={a.homeContainer}>
@@ -123,6 +158,11 @@ const Home = () => {
         </div>
       </button>
     </div>
+
+
+    
+
+
     <div className={a.categoriesSection}>
       <h2 className={a.categoryTitle}>BROWSE BY CATEGORY</h2>
       <div className={a.circleContainer}>
@@ -240,6 +280,36 @@ const Home = () => {
     </div>
 
 
+    <div className={a.youtubeCarouselSection}>
+        <h2 className={a.carouselTitle}>Featured YouTube Videos</h2>
+        <Slider {...videoSettings} ref={sliderRef}>
+
+          <div>
+            {/* Embed YouTube video 1 */}
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ov4u0ARMWKQ?si=GnebIrLfYoFQ1Yy1&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div>
+            {/* Embed YouTube video 1 */}
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/GdcCVZ_D7hQ?si=vD3KP7X7YF6wXIYG&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div>
+            {/* Embed YouTube video 1 */}
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/vxOzUCYJQ8M?si=_efDbfWzp9HkGFLt&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div>
+            {/* Embed YouTube video 1 */}
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ds-3VyRIyCU?si=4wsCZzCvcX8Y3nLA&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          
+        </Slider>
+        <div className={a.customArrows}>
+          <button onClick={goToPrev}>&#10094;</button>
+          <button onClick={goToNext}>&#10095;</button>
+        </div>
+      </div>
+
+
+
     <div className={a.todayCookSection}>
   <h2 className={a.sectionTitle}>So, what will you cook today?</h2>
 
@@ -337,5 +407,4 @@ const Home = () => {
 };
 
 export default Home;
-
 

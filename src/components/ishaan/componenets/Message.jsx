@@ -1,7 +1,8 @@
 import React from 'react';
 import s from '../Social.module.css';
+import delete_icon from '../icons/delete.png'
 
-function Message({ id, imgSrc, name, message, messageClass, photo }) {
+function Message({ id, imgSrc, name, message, messageClass, photo, onDelete }) {
     const formattedMessage = message.split('\n').map((line, index) => (
         <React.Fragment key={index}>
             {line}
@@ -17,6 +18,7 @@ function Message({ id, imgSrc, name, message, messageClass, photo }) {
                 <p className={messageClass} style={{marginBottom:`-10px`}}>{formattedMessage}</p>
                 {photo && <img src={photo} alt="send" className={s.photo} />}
             </div>
+            <img src={delete_icon} alt="delete" className={`${s.delete} ${s.deleteIcon}`} onClick={onDelete} />
         </div>
     );
 }

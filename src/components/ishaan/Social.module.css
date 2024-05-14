@@ -135,6 +135,19 @@
     border-radius: 10px;
 }
 
+.profile2 .deleteIcon {
+    height: 4.5vh;
+    object-fit: cover;
+    margin: 10px;
+    opacity: 0; /* Make the delete icon invisible normally */
+    transition: opacity 0.3s ease; /* Add a transition effect when changing the opacity */
+}
+
+.profile2:hover .deleteIcon {
+    cursor: pointer;
+    opacity: 1; /* Make the delete icon visible when .profile2 is hovered over */
+}
+
 /*! send da message */
 #bottom{
     border-radius: 5px;

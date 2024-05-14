@@ -6,6 +6,7 @@ import Profile from './componenets/Profile.jsx';
 //importing icons
 import gif_icon from './icons/gif.png';
 import upload_icon from './icons/upload.png';
+import delete_icon from './icons/delete.png'
 
 //importing profile pictures
 import pfp1 from './pfp/pfp1.jpg';
@@ -21,6 +22,35 @@ import food1 from './images/food1.jpg';
 import food2 from './images/food2.jpg';
 
 function Social() {
+//!sending images
+// Add a new state to hold the selected image
+const [selectedImage, setSelectedImage] = useState(null);
+
+// Add a new function to handle file selection
+const handleFileSelect = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setSelectedImage(reader.result);
+            // Send the image as a message
+            setMessages(prevMessages => [...prevMessages, { id: s.message1, imgSrc: pfp5, name: "Jester", message: '', photo: reader.result, containerClass: s.texts, messageClass: s.msg1 }]);
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+// Add a new function to trigger file selection
+const triggerFileSelect = () => {
+    fileInputRef.current.click();
+};
+
+// Add a ref to the file input
+const fileInputRef = useRef();
+
+// Modify the render method
+
+
 //!emojis
     const emojis = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕', '🤑', '🤠', '😈', '👿', '👹', '👺', '🤡', '👻', '💀', '☠️'];
 
@@ -79,6 +109,11 @@ useEffect(() => {
     }
 }, [messages]);
 
+// new code
+const deleteMessage = (index) => {
+    setMessages(prevMessages => prevMessages.filter((message, i) => i !== index));
+};
+// new code
 
 return (
     <div id={s.main}>
@@ -102,22 +137,23 @@ return (
 {/* chatting area  */}
         <div className={`${s.main2}`}>
             <div className={`${s.chat}`} ref={chatRef}>
-                <Message {...users[0]} message="Guys! I made mochi today" photo={food1} containerClass={s.texts} messageClass={s.msg1} />
+                {/* <Message {...users[0]} message="Guys! I made mochi today" photo={food1} containerClass={s.texts} messageClass={s.msg1} />
                 <Message {...users[3]} message="yum, I am coming to steal some" containerClass={s.texts} messageClass={s.msg2} />
                 <Message {...users[5]} message="Nope it's mine" containerClass={s.texts} messageClass={s.msg1} />
-                <Message {...users[2]} message="I got better one" photo={food2} containerClass={s.texts} messageClass={s.msg2} />
+                <Message {...users[2]} message="I got better one" photo={food2} containerClass={s.texts} messageClass={s.msg2} /> */}
                 
                 {messages.map((message, index) => (
-                    <Message key={index} {...message} />
+                    <Message key={index} {...message} onDelete={() => deleteMessage(index)} />
                 ))}
             </div>
 
         {/* textingbar */}
             <div id={s.bottom}>
-                <img src={upload_icon} alt="upload_icon" className={` ${s.bottom_icon}`}/>
+                <input type="file" style={{ display: 'none' }} onChange={handleFileSelect} ref={fileInputRef} />
+                <img src={upload_icon} alt="upload_icon" className={` ${s.bottom_icon}`} onClick={triggerFileSelect} />
                 <textarea id={s.enter_text} placeholder="text here" onKeyPress={handleKeyPress} onInput={handleInput} />
                 <div className={`${s.right}`}>
-                    <img src={gif_icon} alt="gif_icon" className={`${s.bottom_icon}`}/>
+                    <img src={gif_icon} alt="gif_icon" className={`${s.bottom_icon}`} />
                     <div className={`${s.bottom_icon} ${s.emoji}`} onMouseEnter={changeEmoji}>{currentEmoji}</div>
                 </div>
             </div>

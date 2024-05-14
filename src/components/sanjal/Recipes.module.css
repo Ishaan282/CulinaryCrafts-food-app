@@ -1,6 +1,6 @@
-
+/* 
 .bg-image-container {
-  background-image: url('./fruitcakepic.jpg');
+  background-image: url('./depictions/fruitcakepic.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
@@ -67,4 +67,13 @@
   border: none;
   border-bottom: rgb(79, 20, 20) solid 0.21vh !important;
 }
+ */
 
+
+.cheeseCake{
+  background-color: black;
+}
+
+.main-menu{
+  background-color: aquamarine;
+}

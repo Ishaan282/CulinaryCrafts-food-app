@@ -3,6 +3,7 @@ import r from './Recipes.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons'; 
 import { Link } from 'react-router-dom';
+import backgroundImg from  './purple.jpeg';
 
 import burger1 from './depictions-menu/burger1.jpg'
 import pasta from './depictions-menu/pasta.jpg'
@@ -24,10 +25,16 @@ import crep from './depictions-menu/crep.jpg'
 import sushi from './depictions-menu/sushi.jpeg'
 
 
+const backgroundStyle = {
+  backgroundImage: `url(${backgroundImg})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundAttachment: 'fixed',
+};
 
 function Recipes() {
   return (
-    <div className={r.mainMenu}>
+    <div className={r.mainMenu} style={backgroundStyle}>
 
 
     {/* Sweets ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}

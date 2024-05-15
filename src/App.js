@@ -10,6 +10,14 @@ import Recipes from './components/sanjal/Recipes';
 import Incrediants from './components/sameer/Incrediants'
 import CheeseCake from './components/sanjal/CheeseCake';
 import { ShopContextProvider } from "./components/sameer/context/shop-context";
+import ChocolateCake from './components/sanjal/ChocolateCake';
+import Soup from './components/sanjal/Soup'
+import Salads from './components/sanjal/Salads';
+import Pizza from './components/sanjal/Pizza';
+import Sushi from './components/sanjal/Sushi';
+import Pastasss from './components/sanjal/Pastasss';
+import Banana from './components/sanjal/Banana';
+import Waffels from './components/sanjal/Waffels';
 
 
 function App() {
@@ -29,6 +37,15 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/CheeseCake" element={<CheeseCake />} />
+          <Route path="/ChocolateCake" element={<ChocolateCake />} />
+          <Route path="/Soup" element={<Soup />} />
+          <Route path="/Salads" element={<Salads />} />
+          <Route path="/Pizza" element={<Pizza />} />
+          <Route path="/Sushi" element={<Sushi />} />
+          <Route path="/Pastasss" element={<Pastasss />} />
+          <Route path="/Banana" element={<Banana />} />
+          <Route path="/Waffels" element={<Waffels />} />
+          {/* <Route path="/Pastasss" element={<Pastasss />} /> */}
         </Routes>
       
     </BrowserRouter>

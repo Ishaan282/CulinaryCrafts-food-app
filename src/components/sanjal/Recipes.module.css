@@ -1,79 +1,42 @@
-/* 
-.bg-image-container {
-  background-image: url('./depictions/fruitcakepic.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: Arial, Helvetica, sans-serif;
-  min-height: 90vh;
-  overflow-y: hidden;
-  padding-top: 10vh; 
+.mainMenu{
+  margin-top: 4.55rem;
+  background: linear-gradient(to right,rgb(202, 198, 206), rgb(172, 148, 195));
 }
 
-.fruitcake{
+.sweetFood, 
+.pastas, 
+.soups,
+.vegetarians,
+.salads{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 3rem;
+  text-decoration: none !important;
+}
+.sweet,
+.pasta,
+.soup,
+.vegetarian,
+.salad{
+  background-color: rgb(218, 213, 223);
+  width: max-content;
+  padding: 2rem;
+  margin-left: 5rem;
   text-align: center;
-  color: white;
-  font-family:Arial, Helvetica, sans-serif;
-  margin-top: 2vh;
+  color: black;
+  text-decoration: none !important;
 }
-.recipie-cake-ing{
-  background-color: #ffc18b !important;
-  width: 83vh;
-  padding: 2vh;
-  margin-top: 5vh;
-  margin-left: 15vh;
-  
-  color:rgb(26, 22, 22)
+.imgDish{
+  width: 18rem;
+  height: 18rem;
 }
-
-.todo-ing{
-  background-color: #ffc18b !important;
-  width: 38vh;
-  padding: 2vh;
-  margin-top: -66vh;
-  margin-left: 120vh;
-  height: 47vh;
+.stars{
+  text-align: right !important;
+  color: yellowgreen !important;;
 }
-
-.button-shopping{
-  background-color: #f95738 !important;
-  padding: 2vh;
-  margin-top:2vh;
-  border: none;
-  border-radius: 16vh;
-  font-weight: bold;
-  cursor: pointer;
-}
-.button-shopping:hover{
-  
-  transition: 5ms ease-in-out;
-  box-shadow: 1px 1px 10px 0px #f95738;
-}
-
-.add-icon-todo{
-  background-color: transparent;
-  color: #f95738;
-  font-weight: bolder;
-  padding: 0px;
-  border: none;
-  cursor: pointer;
-  font-size: x-large;
-  margin-top: -9px;
-  margin-left: 2px;
-}
-
-.enter-todo-ing{
-  padding: 2px;
-  background-color: #f958385b;
-  border: none;
-  border-bottom: rgb(79, 20, 20) solid 0.21vh !important;
-}
- */
-
-
-.cheeseCake{
-  background-color: black;
-}
-
-.main-menu{
-  background-color: aquamarine;
+h1{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  font-weight: 400;
 }

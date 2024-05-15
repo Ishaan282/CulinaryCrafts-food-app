@@ -4,7 +4,7 @@ import './cheesecake.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons';
 
-const CheeseCake = () => {
+const Banana = () => {
   const [ingredientsChecked, setIngredientsChecked] = useState({
     "1 1/2 cups graham cracker, crushed": false,
     "6 tablespoons butter, melted": false,
@@ -50,9 +50,6 @@ const CheeseCake = () => {
     if (event.key === 'Enter') {
       handleAddIngredient();
     }
-    window.onload = () => {
-      window.scrollTo(0, 0);
-    };
   };
 
   const backgroundStyle = {
@@ -61,14 +58,17 @@ const CheeseCake = () => {
     backgroundPosition: 'center',
     backgroundAttachment: 'fixed',
   };
+  const color = {
+    color : 'white',
+  };
 
   return (
     <div style={backgroundStyle}>
-      <h1 className='recepie-name-sj'>CheeseCake</h1>
+      <h1 className='recepie-name-sj' style={color}>Pizza</h1>
 
       <div className='non-title'>
-        <div className='ingredriants-todo-list '>
-          <h2 className='title-ing-sj'>Ingredients</h2>
+        <div className='ingredriants-todo-list ' style={color}>
+          <h2 className='title-ing-sj' style={color}>Ingredients</h2>
           <ul>
             {/* Render checked ingredients */}
             {Object.entries(ingredientsChecked).map(([id, isChecked]) => (
@@ -155,4 +155,4 @@ const CheeseCake = () => {
   );
 }
 
-export default CheeseCake;
+export default Banana;

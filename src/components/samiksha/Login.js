@@ -16,7 +16,8 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-        const user = accounts.find((account) => account.email === input.email && account.password === input.password);
+        const user = accounts.find((account) => account.email === input.email 
+        && account.password === input.password);
         if (user) {
           localStorage.setItem("loggedin", true);
           // After successful signup or login

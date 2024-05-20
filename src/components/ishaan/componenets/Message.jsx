@@ -2,6 +2,7 @@ import React from 'react';
 import s from '../Social.module.css';
 import delete_icon from '../icons/delete.png'
 
+//Message component to display messages
 function Message({ id, imgSrc, name, message, messageClass, photo, onDelete }) {
     const formattedMessage = message.split('\n').map((line, index) => (
         <React.Fragment key={index}>

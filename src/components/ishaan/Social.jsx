@@ -16,11 +16,6 @@ import pfp4 from './pfp/pfp4.png';
 import pfp5 from './pfp/pfp5.jpg';
 import pfp6 from './pfp/pfp6.jpg';
 
-
-//images in chat
-import food1 from './images/food1.jpg';
-import food2 from './images/food2.jpg';
-
 function Social() {
 //!sending images
 // Add a new state to hold the selected image
@@ -39,8 +34,6 @@ const handleFileSelect = (event) => {
         reader.readAsDataURL(file);
     }
 };
-
-
 
 // Add a new function to trigger file selection
 const triggerFileSelect = () => {

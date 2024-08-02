@@ -1,0 +1,42 @@
+.mainMenu{
+  margin-top: 4.55rem;
+  background: linear-gradient(to right,rgb(202, 198, 206), rgb(172, 148, 195));
+}
+
+.sweetFood, 
+.pastas, 
+.soups,
+.vegetarians,
+.salads{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 3rem;
+  text-decoration: none !important;
+}
+.sweet,
+.pasta,
+.soup,
+.vegetarian,
+.salad{
+  background-color: rgb(218, 213, 223);
+  width: max-content;
+  padding: 2rem;
+  margin-left: 5rem;
+  text-align: center;
+  color: black;
+  text-decoration: none !important;
+}
+.imgDish{
+  width: 18rem;
+  height: 18rem;
+}
+.stars{
+  text-align: right !important;
+  color: yellowgreen !important;;
+}
+h1{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  font-weight: 400;
+}

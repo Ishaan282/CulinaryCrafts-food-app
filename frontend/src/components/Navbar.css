@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #9cdf5079;
+    /* background-color: #eb750d; */
+    padding: 1vw;
+    position: fixed;
+    top: 0;
+    width: 98vw;
+    height: 5vh;
+    border: 3px solid #f67f1700;
+    transition: background-color 0.3s ease; 
+    z-index:2;
+}
+
+.scrolled {
+    background-color: #49b533;
+    /* background-color: #115d02; */
+  
+}
+.logo a {
+    text-decoration: none;
+    font-size: 1.5vw; 
+    font-weight: bolder;
+    color: #2c2c2c;
+}
+
+.links {
+    display: flex;
+}
+
+.nav-link {
+    margin-right: 2vw; 
+    text-decoration: none;
+    /* color: #50727B; */
+    color: #3d3d3d;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color:#000000;
+}
+
+.login-btn {
+    padding: 0.6vw 1vw; 
+    background-color: #3d3d3d;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+}
+.login {
+    margin-right: 0.5vw; 
+    padding: 0 0 0.2vw 0px;
+    
+}
+
+.login-btn:hover {
+    border: 0.14vw solid #3d3d3d; 
+    color: #000000;
+    background: transparent;
+    transition: 0.1s;
+}
+
+.cart-btn {
+    padding:0vw 1vw 0 0;
+    margin-left: 2vw; /* Add margin to create a gap between login and cart */
+}
+
+.fa-cart-shopping {
+    font-size: 1.6vw; /* Increase font size for the cart icon */
+    color: #3d3d3d; /* Set color for the cart icon */
+}
+.logout-btn {
+    padding: 0.6vw 1vw; 
+    background-color: #3d3d3d;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .logout-btn:hover {
+    border: 0.14vw solid #3d3d3d; 
+    color: #000000;
+    background: transparent;
+    transition: 0.1s;
+  }

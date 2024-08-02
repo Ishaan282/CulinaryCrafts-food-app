@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: #9cdf50;
+}
+  
+.authImage {
+    flex: 1;
+}
+
+.authForm {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image {
+    width: 50vw;
+    height: 70vw;
+    object-fit: cover;
+}
+
+.authTitle {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 3vw;
+}
+
+.inputField {
+    width: 40vw;
+    margin: 1vw 0vw 1vw 6vw;
+    padding: 0.5vw;
+}
+
+.submitButton {
+    width: 20vw;
+    padding: 1vw;
+    background-color: #3d3d3d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1vw 0vw 0vw 16vw;
+
+}
+
+.submitButton:hover{
+    background-color: #000000;
+}
+.switchAuth {
+    margin-top: 2vw; 
+    text-align: center;
+}
+
+.switchLink {
+    color: #3d3d3d;
+    text-decoration: none;
+}
+
+.switchLink:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,62 @@
+.cart {
+  background-color: white;
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartItem {
+  background: #e0e0e0;
+  margin-top: 5vh;
+  width: 100vh;
+  height: 250px;
+  display: flex;
+
+  align-items: center;
+  box-shadow: 15px 15px 30px #bebebe,
+  -15px -15px 30px #ffffff;
+  border-radius: 25px;
+  margin: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cartItem img {
+  padding: 5vh;
+  width: 200px;
+}
+
+.cartItem .description {
+  text-align: center;
+  width: 100%;
+  font-size: 30px;
+}
+
+.cartItem button{
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.countHandler input {
+  height: 30px;
+  width: 40px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.bttn{
+  font-size: 30px;
+  text-align: center;
+}
+
+.bttn button{
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  font-size: 15px;
+  text-decoration: none;
+}

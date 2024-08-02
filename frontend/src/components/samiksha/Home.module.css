@@ -1,0 +1,521 @@
+/* Home.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.mainContainer{
+  overflow-x: hidden;
+}
+.homeContainer {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: #9cdf50;
+}
+
+.leftSection {
+    flex: 1;
+    padding: 6vw 0vw 6vw 6vw;
+}
+
+.rightSection {
+    flex: 1;
+    
+    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.curvedText{
+    font-weight: 600;
+    font-family: 'Poppins';
+    text-align: center;
+}
+
+.mainText {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+.mainText h1 {
+    font-size: 4.4vw;
+    margin-bottom: 1.5vw;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+.subText {
+    font-size: 1.2vw;
+    color:black;
+}
+
+.buttons {
+    display: flex;
+  
+    margin-top: 2vw;
+}
+
+.recipeBtn,
+.cartBtn {
+    padding: 0.5vw 4vw;
+    margin:0 0 0 8vw;
+    border-radius:100px; 
+}
+
+.recipeBtn {
+    background-color: #3d3d3d;
+    color: white;
+    text-decoration: none;
+    border: 0.13vw solid #3d3d3d; 
+}
+
+.recipeBtn:hover{
+    border: 0.13vw solid #3d3d3d; 
+    color: #000000;
+    text-decoration: none;
+    background-color:transparent;
+}
+
+.cartBtn {
+    border: 0.14vw solid #3d3d3d; 
+    color: #000000;
+    text-decoration: none;
+}
+
+.cartBtn:hover{
+    background-color: #3d3d3d;
+    color: white;
+    text-decoration: none;
+}
+
+.chefImage {
+    max-width: 96%;
+    height: auto;
+    padding: 0vw 4vw 0vw 0vw;
+}
+
+
+/* ButtonSection */
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #9cdf50;
+    padding: 2vw 4vw;
+  }
+  
+  .customButton {
+    width: 25vw;
+    height: 7vw;
+    border: none;
+    border-radius: 5vw;
+    background-color: #3ca441;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vw;
+    position: relative; 
+    overflow: hidden; 
+    transition: background-color 0.3s ease;
+    z-index: 0;
+  }
+  
+  .customButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #137b18; 
+    transition: left 0.3s ease; 
+    z-index: -1;
+  }
+  
+  .customButton:hover::before {
+    left: 0; 
+  }
+  
+  .leftContent {
+    margin-right: 2vw;
+  }
+  
+  .circleImage {
+    width: 5.5vw;
+    height: 5.5vw;
+    border-radius: 50%;
+    margin: 0.4vw 0vw 0vw -1vw;
+  }
+  
+  .rightContent h2 {
+    font-size: 1.5vw;
+    margin-bottom: 0vw;
+  }
+  
+  .rightContent p {
+    font-size: 0.8vw;
+  }
+  
+
+/*  categories */
+
+.categoriesSection {
+  text-align: center;
+  padding-top: 4vw;
+  background-color: #9cdf50;
+}
+
+.categoryTitle {
+  font-size: 2.5vw;
+  margin-bottom: 2vw;
+  font-family: 'Poppins';
+  font-weight:300;
+  text-decoration: none;
+}
+
+.circleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0vw 2vw 2vw 2vw;
+}
+
+.circle img {
+  width: 8vw;
+  height: 8vw;
+  border-radius: 50%;
+  margin-bottom: 1vw;
+  border:0.2vw solid rgb(45, 45, 45);
+}
+
+.caption {
+  font-size: 1.2vw;
+}
+
+/* latest recipes */
+
+
+.latestRecipesSection {
+  text-align: center;
+  padding-top: 4vw;
+  background-color: #9cdf50;
+}
+
+.heading {
+  font-size: 2.5vw;
+  margin-bottom: 2vw;
+  font-family: 'Poppins';
+  font-weight:300;
+}
+
+.recipeContainer {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.recipeBox {
+  background-color: #3ca441;
+  padding: 2vw;
+  margin: 1vw 1vw 2vw 4vw;
+  width: 15vw;
+  height:20vw;
+  border:1px solid #216324;
+}
+
+.recipeImage {
+  width: 15vw;
+  height:11vw;
+  /* border-radius: 10px; */
+  border:1px solid #2a6f2d;
+  margin-bottom: 1vw;
+}
+
+.dessert {
+  font-size: 1vw;
+  margin: 0vw 12vw 0vw 0vw;
+}
+
+.name {
+  font-size: 1.5vw;
+  font-weight: bold;
+  margin: 0vw 0vw 1vw -1vw;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  width: 1.2vw;
+  height: 1.2vw;
+  background-color: #ffe02e;
+  border-radius: 50%;
+  margin-right: 0.2vw;
+}
+
+.starEmpty {
+  width: 1vw;
+  height: 1vw;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid #ffe02e;
+  margin-right: 0.2vw;
+}
+
+.ratingNumber {
+  font-size: 1vw;
+  margin-left: 0.5vw;
+}
+
+.loadMoreBtn {
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  padding: 1vw 2vw;
+  border: none;
+  border-radius: 3vw;
+  background-color: #3d3d3d;
+  color: white;
+  font-size: 1.5vw;
+  cursor: pointer;
+}
+
+.loadMoreBtn:hover {
+  background-color: #141414;
+}
+
+.link {
+  text-decoration: none;
+  color:#000000;
+}
+
+
+/* Eating today */
+.todayCookSection {
+  text-align: center;
+  padding-top: 2vw;
+  background-color: #9cdf50;
+}
+
+.sectionTitle {
+  font-size: 2vw;
+  font-weight: 400;
+  margin-bottom: 1.6vw;
+  font-family: 'Poppins';
+
+}
+
+.cookContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.6vw;
+}
+
+.section {
+  flex: 1;
+  margin: 0 1vw;
+}
+
+.section img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1vw;
+  border:1px solid #000000;
+}
+
+.paraidk{
+  margin: -1vw 0vw 2vw 0vw;
+}
+
+.paracolored{
+  color:rgb(189, 44, 41);
+  font-weight: bold;
+  margin: 0vw 0vw 1vw 0vw;
+}
+
+.stars {
+  font-size: 1.6vw;
+}
+
+.smallDish {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vw;
+  padding:0.5vw;
+}
+
+.smallDish img {
+  width: 8vw;
+  height: auto;
+}
+.smallDish:hover{
+  background-color: #fbd951;
+  /* width:30vw; */
+  
+}
+
+.text {
+  flex: 1;
+  text-align: left;
+  margin-right: 1vw;
+}
+
+
+
+/* Footer */
+
+.footer {
+  background-color: #4b4b4b;
+  color: white;
+  padding: 2vw 4vw;
+  font-size: 0.9vw;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 2vw 0;
+}
+
+.footerSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerSection h3 {
+  margin-bottom: 1vw;
+}
+
+.footerSection a, .footerSection p {
+  margin-bottom: 0.5vw;
+  color:#94ff6d;
+}
+
+.socialIcon {
+  font-size: 1.5vw;
+  margin-right: 0.5vw;
+  color:#94ff6d;
+}
+
+.copyRight {
+  text-align: center;
+  margin-top: 1vw;
+  font-size: 0.8vw;
+}
+
+/* GoToTopButton.css */
+/* Home.module.css */
+
+.buttontogo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #036a17;
+  color: #fff;
+  border: none;
+  border-radius: 50%; /* Circular shape */
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for depth */
+}
+
+.buttontogo:hover {
+  background-color: #02310b;
+}
+
+
+
+
+
+
+
+
+
+/* Home.css */
+
+/* YouTube Carousel Section */
+.youtubeCarouselSection {
+  text-align: center;
+  z-index:-1;
+  /* margin-bottom: 4vw; Adjust margin as needed */
+  background-color: #9cdf50;
+}
+.carouselTitle {
+  font-size: 2vw;
+  font-weight: 400;
+  margin-bottom: 1.6vw;
+  font-family: 'Poppins';
+  padding-top: 2.5vw;
+}
+
+/* Slide Content (YouTube Video) */
+.slick-slide iframe {
+  width: 80%; /* Adjust video width as needed */
+  margin: 0 auto; /* Center the video horizontally */
+}
+
+/* Slider Arrows */
+.slick-prev,
+.slick-next {
+  font-size: 2vw; /* Adjust arrow size as needed */
+  color: #000; /* Adjust arrow color as needed */
+  /* font-family: 'poppins'; */
+  z-index: 1; /* Ensure arrows appear above slides */
+}
+
+.slick-prev {
+  left: 2vw; /* Adjust left offset as needed */
+}
+
+.slick-next {
+  right: 2vw; /* Adjust right offset as needed */
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  color: #333; /* Adjust arrow color on hover as needed */
+}/* Home.css */
+
+/* Custom Arrows */
+.customArrows {
+  /* position: fixed; */
+  /* top: -50%; */
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  z-index: 1;
+  
+  overflow-x: hidden;
+  color: red;
+  justify-content: space-between;
+}
+
+.customArrows button {
+  /* background-color: transparent; */
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  
+  color: #fb1111;
+}
+
+.customArrows button:hover {
+  color: #730d0d; /* Adjust hover color as needed */
+}
+

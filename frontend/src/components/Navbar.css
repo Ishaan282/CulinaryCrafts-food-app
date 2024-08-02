@@ -10,6 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* background-color: #9cdf5079; */
     background-color: #9cdf5079;
     /* background-color: #eb750d; */
     padding: 1vw;
@@ -24,7 +25,7 @@
 
 .scrolled {
     background-color: #49b533;
-    /* background-color: #115d02; */
+    /* background-color: #d3690c; */
   
 }
 .logo a {
@@ -73,12 +74,12 @@
 
 .cart-btn {
     padding:0vw 1vw 0 0;
-    margin-left: 2vw; /* Add margin to create a gap between login and cart */
+    margin-left: 2vw; 
 }
 
 .fa-cart-shopping {
-    font-size: 1.6vw; /* Increase font size for the cart icon */
-    color: #3d3d3d; /* Set color for the cart icon */
+    font-size: 1.6vw; 
+    color: #3d3d3d; 
 }
 .logout-btn {
     padding: 0.6vw 1vw; 

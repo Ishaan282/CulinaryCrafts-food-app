@@ -432,7 +432,7 @@
   justify-content: center;
   align-items: center;
   font-size: 24px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for depth */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
 .buttontogo:hover {
@@ -453,7 +453,6 @@
 .youtubeCarouselSection {
   text-align: center;
   z-index:-1;
-  /* margin-bottom: 4vw; Adjust margin as needed */
   background-color: #9cdf50;
 }
 .carouselTitle {
@@ -466,31 +465,31 @@
 
 /* Slide Content (YouTube Video) */
 .slick-slide iframe {
-  width: 80%; /* Adjust video width as needed */
-  margin: 0 auto; /* Center the video horizontally */
+  width: 80%; 
+  margin: 0 auto; 
 }
 
 /* Slider Arrows */
 .slick-prev,
 .slick-next {
-  font-size: 2vw; /* Adjust arrow size as needed */
-  color: #000; /* Adjust arrow color as needed */
+  font-size: 2vw; 
+  color: #000; 
   /* font-family: 'poppins'; */
-  z-index: 1; /* Ensure arrows appear above slides */
+  z-index: 1; 
 }
 
 .slick-prev {
-  left: 2vw; /* Adjust left offset as needed */
+  left: 2vw; 
 }
 
 .slick-next {
-  right: 2vw; /* Adjust right offset as needed */
+  right: 2vw; 
 }
 
 .slick-prev:hover,
 .slick-next:hover {
-  color: #333; /* Adjust arrow color on hover as needed */
-}/* Home.css */
+  color: #333; 
+}
 
 /* Custom Arrows */
 .customArrows {
@@ -516,6 +515,6 @@
 }
 
 .customArrows button:hover {
-  color: #730d0d; /* Adjust hover color as needed */
+  color: #730d0d; 
 }
 

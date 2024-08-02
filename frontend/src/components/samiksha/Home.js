@@ -39,15 +39,14 @@ const Home = () => {
   const handleClick = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // Smooth scrolling animation
+      behavior: 'smooth' 
     });
   };
 
-  const [email, setEmail] = useState(''); // State to store email input value
+  const [email, setEmail] = useState(''); 
 
-  // Function to handle form submission
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault(); 
     alert('Thank you for subscribing to Culinary Crafts');
   };
   const navigate = useNavigate();
@@ -63,14 +62,12 @@ const Home = () => {
 
   const sliderRef = useRef(null);
 
-  // Function to navigate to the previous slide
   const goToPrev = () => {
     if (sliderRef.current) {
       sliderRef.current.slickPrev();
     }
   };
 
-  // Function to navigate to the next slide
   const goToNext = () => {
     if (sliderRef.current) {
       sliderRef.current.slickNext();

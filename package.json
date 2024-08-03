@@ -1,11 +1,1 @@
-{
-"name": "project-root",
-"version": "1.0.0",
-"private": true,
-"scripts": {
-    "start": "concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\""
-},
-"devDependencies": {
-    "concurrently": "^6.0.0"
-}
-}
+{"name":"project-root","version":"1.0.0","private":true,"scripts":{"start":"concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\""},"devDependencies":{"concurrently":"^6.5.1"}}

@@ -28,7 +28,7 @@
     "web-vitals": "^4.2.2"
   },
   "scripts": {
-    "start": "react-scripts start && open http://localhost:3000/Home",
+    "start": "cross-env PORT=3001 react-scripts start && start http://localhost:3001/Home",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",
     "build": "react-scripts build",

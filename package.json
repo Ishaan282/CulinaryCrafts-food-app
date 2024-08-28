@@ -1,1 +1,14 @@
-{"name":"project-root","version":"1.0.0","private":true,"scripts":{"start":"concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\""},"devDependencies":{"concurrently":"^6.5.1"}}
+{
+    "name": "project-root",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "start": "concurrently \"npm start --prefix frontend\" \"cd backend && nodemon app.js\"",
+      "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install"
+    },
+    "devDependencies": {
+      "concurrently": "^6.5.1",
+      "cross-env": "^7.0.3",
+      "nodemon": "^2.0.15"
+    }
+  }

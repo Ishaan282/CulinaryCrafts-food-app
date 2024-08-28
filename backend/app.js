@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express(); //#express 
 const mongoose = require('mongoose'); //#mongoose
+require('dotenv').config(); // Load environment variables from .env file
 
 //connecting to server
-const dbURI = 'mongodb+srv://ishaan:water_bottle@cluster0.rdcay.mongodb.net/sandwitch?retryWrites=true&w=majority&appName=Cluster0';
+const dbURI = process.env.MONGODB_URI;
 mongoose.connect(dbURI)
     .then((result) => {
         app.listen(3000, () => {
@@ -14,9 +15,9 @@ mongoose.connect(dbURI)
         console.log("Unable to connect to the database", error);
     });
 
-app.get('/',(req,res) => {
+app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');
-})
-//DON'T YOU DARE EDIT THE ABOVE PORTION or else you will be cursed by Mango
+});
+//DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send 3 mouse at your location
 
-//!please start your code from here <3
+//!please start your code from here :D

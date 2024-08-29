@@ -18,6 +18,22 @@ mongoose.connect(dbURI)
 app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');
 });
-//DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send 3 mouse at your location
+
+app.set('view engine', 'ejs'); //setting view engine 
+//DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
 
 //!please start your code from here :D
+
+
+
+//!handling error page 
+// Handling 404 errors
+app.use((req, res, next) => {
+    res.status(404).send('Page not found');
+});
+
+// Error-handling middleware
+app.use((error, req, res, next) => {
+    console.error(error.stack);
+    res.status(500).send('Something broke!');
+});

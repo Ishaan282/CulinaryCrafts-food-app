@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.4",

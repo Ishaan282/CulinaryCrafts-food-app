@@ -5,9 +5,10 @@ require('dotenv').config(); // Load environment variables from .env file
 
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
+const PORT = 5000;
 mongoose.connect(dbURI)
     .then((result) => {
-        app.listen(3000, () => {
+        app.listen(PORT, () => {
             console.log('Server connected!');
         });
     })
@@ -24,6 +25,10 @@ app.set('view engine', 'ejs'); //setting view engine
 
 //!please start your code from here :D
 
+//test
+app.get('/test', (req, res) => {
+    res.send('This is a test route');
+});
 
 
 //!handling error page 

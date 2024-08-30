@@ -3,21 +3,16 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/samiksha/Home';
 import Cart from './components/sameer/Cart';
+import Recipes from './components/sanjal/Recipes';
 import Social from './components/ishaan/Social';
 import Login from './components/samiksha/Login';
 import Signup from './components/samiksha/Signup';
-import Recipes from './components/sanjal/Recipes';
 import Incrediants from './components/sameer/Incrediants';
-import CheeseCake from './components/sanjal/CheeseCake';
 import { ShopContextProvider } from "./components/sameer/context/shop-context";
-import ChocolateCake from './components/sanjal/ChocolateCake';
-import Soup from './components/sanjal/Soup';
-import Salads from './components/sanjal/Salads';
-import Pizza from './components/sanjal/Pizza';
-import Sushi from './components/sanjal/Sushi';
-import Pastasss from './components/sanjal/Pastasss';
-import Banana from './components/sanjal/Banana';
-import Waffels from './components/sanjal/Waffels';
+
+import recipeRoutes from './components/sanjal/recipeRoutes'; // Import the recipeRoutes array
+import RecipeLinks from './components/sanjal/RecipeLinks'; // Import the RecipeLinks component
+
 import Error404 from './404'; // Import the Error404 component
 
 function App() {
@@ -34,17 +29,9 @@ function App() {
           <Route path="/Recipes" element={<Recipes />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/CheeseCake" element={<CheeseCake />} />
-          <Route path="/ChocolateCake" element={<ChocolateCake />} />
-          <Route path="/Soup" element={<Soup />} />
-          <Route path="/Salads" element={<Salads />} />
-          <Route path="/Pizza" element={<Pizza />} />
-          <Route path="/Sushi" element={<Sushi />} />
-          <Route path="/Pastasss" element={<Pastasss />} />
-          <Route path="/Banana" element={<Banana />} />
-          <Route path="/Waffels" element={<Waffels />} />
+          <Route path="/recipie" element={<RecipeLinks />} /> {/* Add a route for the RecipeLinks component */}
+          {recipeRoutes} {/* Use the recipeRoutes array */}
           <Route path="*" element={<Error404 />} /> {/* Catch-all route for undefined paths */}
-          {/* <Route path="/Pastasss" element={<Pastasss />} /> */}
         </Routes>
       </Router>
     </ShopContextProvider>

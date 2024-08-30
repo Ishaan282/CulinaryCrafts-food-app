@@ -11,7 +11,6 @@ import Incrediants from './components/sameer/Incrediants';
 import { ShopContextProvider } from "./components/sameer/context/shop-context";
 
 import recipeRoutes from './components/sanjal/recipeRoutes'; // Import the recipeRoutes array
-import RecipeLinks from './components/sanjal/RecipeLinks'; // Import the RecipeLinks component
 
 import Error404 from './404'; // Import the Error404 component
 
@@ -29,7 +28,6 @@ function App() {
           <Route path="/Recipes" element={<Recipes />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/recipie" element={<RecipeLinks />} /> {/* Add a route for the RecipeLinks component */}
           {recipeRoutes} {/* Use the recipeRoutes array */}
           <Route path="*" element={<Error404 />} /> {/* Catch-all route for undefined paths */}
         </Routes>

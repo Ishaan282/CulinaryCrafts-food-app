@@ -2,6 +2,7 @@ const express = require('express');
 const app = express(); //#express 
 const mongoose = require('mongoose'); //#mongoose
 require('dotenv').config(); // Load environment variables from .env file
+const chat = require('./routes/ishaan_social'); // Import chat routes
 
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
@@ -10,6 +11,7 @@ mongoose.connect(dbURI)
     .then((result) => {
         app.listen(PORT, () => {
             console.log('Server connected!');
+            console.log(`Server running at http://localhost:${PORT}`);
         });
     })
     .catch((error) => {
@@ -23,12 +25,15 @@ app.get('/', (req, res) => {
 app.set('view engine', 'ejs'); //setting view engine 
 //DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
 
-//!please start your code from here :D
+//please start your code from here :D
 
-//test
-app.get('/test', (req, res) => {
-    res.send('This is a test route');
-});
+//$Ishaan part 
+app.use('/Social',chat);
+
+
+
+//$
+
 
 
 //!handling error page 

@@ -30,6 +30,7 @@ app.set('view engine', 'ejs'); //setting view engine
 //$Ishaan part 
 app.use('/Social', chat); // Ensure this line is correct
 
+
 //!handling error page 
 // Handling 404 errors
 app.use((req, res, next) => {

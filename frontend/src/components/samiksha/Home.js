@@ -6,7 +6,7 @@ import chef from './chef1.png';
 // import chef from './Screenshot (523).png';
 import ingredient from './ingredients.jpg';
 import picture from './picpicpic.jpg';
-import reci from './recipes-book.jpg';
+import reci from './recipes-book.jpg';7
 import ReactCurvedText from 'react-curved-text';
 import pasta from './pastas.jpg';
 import quick from './quick and easy.jpg';

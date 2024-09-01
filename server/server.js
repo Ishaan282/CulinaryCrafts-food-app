@@ -23,12 +23,14 @@ app.get('/', (req, res) => {
 });
 
 app.set('view engine', 'ejs'); //setting view engine 
+app.use(express.json()); //middleware to parse json data
 //DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
 
 //please start your code from here :D
 
 //$Ishaan part 
-app.use('/Social', chat); // Ensure this line is correct
+
+app.use('/Social', chat); 
 
 
 //!handling error page 

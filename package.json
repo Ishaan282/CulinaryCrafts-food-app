@@ -1,11 +1,11 @@
 {
-"name": "project-root",
-"version": "1.0.0",
-"private": true,
-"scripts": {
-    "start": "concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\""
-},
-"devDependencies": {
-    "concurrently": "^6.0.0"
-}
+  "name": "project-root",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm start ./client\" \"cd server && nodemon server.js\"",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  }
 }

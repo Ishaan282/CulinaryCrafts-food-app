@@ -17,19 +17,20 @@ router.get('/', async (req, res) => {
     }
 });
 
-//POST
-router.post('/', (req, res) => {
-    const chat = new Social({
-        message: req.body.message,
-        picture: req.body.picture
-    });
-    chat.save()
-        .then((result) => {
-            res.status(201).json(result);
-        })
-        .catch((error) => {
-            res.status(500).json({ error: error.message });
+// POST
+router.post('/', async (req, res) => {
+    try {
+        console.log('Received POST request:', req.body); // Log the request body
+        const chat = new Social({
+            message: req.body.message
         });
+
+        const result = await chat.save();
+        res.status(201).json(result);
+    } catch (error) {
+        console.error('Error saving chat:', error); // Log the error
+        res.status(500).json({ error: error.message });
+    }
 });
 
 

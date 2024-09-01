@@ -29,7 +29,6 @@ app.use(express.json()); //middleware to parse json data
 //please start your code from here :D
 
 //$Ishaan part 
-
 app.use('/Social', chat); 
 
 //!handling error page 

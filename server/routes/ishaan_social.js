@@ -19,18 +19,54 @@ router.get('/', async (req, res) => {
 
 //POST
 router.post('/', (req, res) => {
-    res.send('Chat posted!');
+    const chat = new Social({
+        message: req.body.message,
+        picture: req.body.picture
+    });
+    chat.save()
+        .then((result) => {
+            res.status(201).json(result);
+        })
+        .catch((error) => {
+            res.status(500).json({ error: error.message });
+        });
 });
 
 
 //DELETE
-router.delete('/:id', (req, res) => {
-    res.send('Chat deleted!');
+router.delete('/:id', async (req, res) => {
+    try {
+        const result = await Social.findByIdAndDelete(req.params.id);
+        if (result) {
+            res.status(200).send('Chat deleted!');
+        } else {
+            res.status(404).send('Chat not found!');
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 //PUT
-router.put('/:id', (req, res) => {
-    res.send('Chat updated!');
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedChat = await Social.findByIdAndUpdate(
+            req.params.id,
+            {
+                message: req.body.message,
+                picture: req.body.picture
+            },
+            { new: true, runValidators: true }
+        );
+
+        if (updatedChat) {
+            res.status(200).json(updatedChat);
+        } else {
+            res.status(404).send('Chat not found!');
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 module.exports = router; // Export the router object

@@ -2,7 +2,7 @@
   "name": "project-root",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"npm start ./client\" \"cd server && nodemon server.js\"",
+    "start": "concurrently \"cd client && npm start\" \"cd server && npm run dev\"",
     "install:all": "npm install && cd client && npm install && cd ../server && npm install"
   },
   "dependencies": {

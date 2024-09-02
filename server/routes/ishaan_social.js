@@ -22,7 +22,8 @@ router.post('/', async (req, res) => {
     try {
         console.log('Received POST request:', req.body); // Log the request body
         const chat = new Social({
-            message: req.body.message
+            message: req.body.message,
+            picture: req.body.picture
         });
 
         const result = await chat.save();
@@ -70,4 +71,4 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-module.exports = router; // Export the router object
+module.exports = router; // Export the var

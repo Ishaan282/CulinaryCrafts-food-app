@@ -4,6 +4,7 @@ const mongoose = require('mongoose'); //#mongoose
 require('dotenv').config(); // Load environment variables from .env file
 const chat = require('./routes/ishaan_social'); // Import chat routes
 const signup = require('./routes/Samiksha2_post');
+const todo = require('./routes/sanjal_todo'); // Import todo routes
 
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
@@ -31,7 +32,13 @@ app.use(express.json()); //middleware to parse json data
 
 //$Ishaan part 
 app.use('/Social', chat); 
+
+
+//$Samiksha part
 app.use('/api/Signup', signup ); 
+
+//$sanjal part 
+app.use('/Recipe/todo', todo);
 
 
 //!handling error page 

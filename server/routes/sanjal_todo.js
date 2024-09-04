@@ -1,27 +1,40 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const Todo = require('../models/sanjal_schema.js');
+const TodoModel = require('../models/sanjal_schema'); // Adjust the path as necessary
 
 // GET /get
 router.get("/get", (req, res) => {
-    Todo.find()
+    TodoModel.find()
         .then(result => res.json(result))
         .catch(err => res.json(err));
 });
 
 // PUT /update/:id
-router.put("/update/:id", (req, res) => {
-    const id = req.params.id;
-    Todo.findByIdAndUpdate(id, { done: true }, { new: true })
-        .then(result => res.json(result))
-        .catch(err => res.json(err));
+router.put('/update/:id', async (req, res) => {
+    try {
+        const updatedTodo = await TodoModel.findByIdAndUpdate(
+            req.params.id,
+            {
+                todo: req.body.todo,
+                completed: req.body.completed
+            },
+            { new: true, runValidators: true }
+        );
+
+        if (updatedTodo) {
+            res.status(200).json(updatedTodo);
+        } else {
+            res.status(404).send('Todo not found!');
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 // DELETE /delete/:id
 router.delete("/delete/:id", (req, res) => {
     const id = req.params.id;
-    Todo.findByIdAndDelete(id)
+    TodoModel.findByIdAndDelete(id)
         .then(result => res.json(result))
         .catch(err => res.json(err));
 });
@@ -29,7 +42,7 @@ router.delete("/delete/:id", (req, res) => {
 // POST /add
 router.post("/add", (req, res) => {
     const task = req.body.task;
-    Todo.create({ task })
+    TodoModel.create({ todo: task })
         .then(result => res.json(result))
         .catch(err => res.json(err));
 });

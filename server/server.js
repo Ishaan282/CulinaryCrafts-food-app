@@ -35,14 +35,11 @@ app.use(express.json());
 //$Ishaan part 
 app.use('/Social', chat); 
 
-
 //$Samiksha part
 app.use('/api/Signup', signup ); 
 
 //$sanjal part 
 app.use('/Recipe/todo', todo);
-
-
 
 //!handling error page 
 app.use((req, res, next) => {

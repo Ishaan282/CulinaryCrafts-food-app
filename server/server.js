@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');
 });
 
-app.set('view engine', 'ejs'); //setting view engine 
+
 app.use(express.json()); 
 //DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location - Ishaan
 //try me - Sameer

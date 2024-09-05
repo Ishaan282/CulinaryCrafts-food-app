@@ -1,47 +1,66 @@
 const express = require('express');
-const router = require.Router();
+const router = express.Router(); 
 const mongoose = require('mongoose');
-const Incrediants = require('../models/Sameer_schema');
+const Ingredients = require('../models/Sameer_schema'); 
 
-//Get
-
+// GET 
 router.get('/', async (req, res) => {
     try {
-        const incrediants = await Incrediants.find();
-        res.json(incrediants);
+        const ingredients = await Ingredients.find();
+        res.json(ingredients);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
 
-//Post
-
+// POST 
 router.post('/', async (req, res) => {
-    const incrediant = new Incrediants({
+    const ingredient = new Ingredients({
         name: req.body.name,
         price: req.body.price
     });
 
     try {
-        const newIncrediant = await incrediant.save();
-        res.status(201).json(newIncrediant);
+        const newIngredient = await ingredient.save();
+        res.status(201).json(newIngredient);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
 });
 
-//delete
-
+// DELETE 
 router.delete('/:id', async (req, res) => {
     try {
-        const incrediant = await Incrediants.findByIdAndDelete(req.params.id);
+        const ingredient = await Ingredients.findByIdAndDelete(req.params.id);
 
-        if (!incrediant) return res.status(404).json({ message: 'Incrediant not found' });
+        if (!ingredient) return res.status(404).json({ message: 'Ingredient not found' });
 
-        res.json(incrediant);
+        res.json(ingredient);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
 
-//Update
+// UPDATE 
+router.patch('/:id', async (req, res) => {
+    try {
+        const ingredient = await Ingredients.findById(req.params.id);
+
+        if (!ingredient) return res.status(404).json({ message: 'Ingredient not found' });
+
+        if (req.body.name != null) {
+            ingredient.name = req.body.name;
+        }
+
+        if (req.body.price != null) {
+            ingredient.price = req.body.price;
+        }
+
+        const updatedIngredient = await ingredient.save();
+        res.json(updatedIngredient);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+module.exports = router;

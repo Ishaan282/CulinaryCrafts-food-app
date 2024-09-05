@@ -29,7 +29,8 @@ app.get('/', (req, res) => {
 
 app.set('view engine', 'ejs'); //setting view engine 
 app.use(express.json()); 
-//DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
+//DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location - Ishaan
+//try me - Sameer
 
 //please start your code from here :D
 

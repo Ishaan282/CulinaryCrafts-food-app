@@ -7,6 +7,7 @@ require('dotenv').config(); // Load environment variables from .env file
 const chat = require('./routes/ishaan_social'); // Import chat routes
 const signup = require('./routes/Samiksha2_post');
 const todo = require('./routes/sanjal_todo'); // Import todo routes
+const shop = require('./routes/Sameer_incredients');
 
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
@@ -40,6 +41,9 @@ app.use('/api/Signup', signup );
 
 //$sanjal part 
 app.use('/Recipe/todo', todo);
+
+//$Sameer part
+app.use('/shop',shop);
 
 //!handling error page 
 app.use((req, res, next) => {

@@ -2,9 +2,12 @@ const express = require('express');
 const app = express(); //#express 
 const mongoose = require('mongoose'); //#mongoose
 require('dotenv').config(); // Load environment variables from .env file
+
+//routes 
 const chat = require('./routes/ishaan_social'); // Import chat routes
 const signup = require('./routes/Samiksha2_post'); 
 const todo = require('./routes/sanjal_todo'); // Import todo routes
+const shop = require('./routes/Sameer_incredients');
 
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
@@ -24,15 +27,15 @@ app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');
 });
 
-app.set('view engine', 'ejs'); //setting view engine 
-app.use(express.json()); //middleware to parse json data
-//DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
+
+app.use(express.json()); 
+//DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location - Ishaan
+//try me - Sameer
 
 //please start your code from here :D
 
 //$Ishaan part
 app.use('/Social', chat); 
-
 
 //$Samiksha part
 app.use('/api/Signup', signup ); 
@@ -40,16 +43,10 @@ app.use('/api/Signup', signup );
 //$sanjal part 
 app.use('/Recipe/todo', todo);
 
-
+//$Sameer part
+app.use('/shop',shop);
 
 //!handling error page 
-// Handling 404 errors
 app.use((req, res, next) => {
     res.status(404).send('Page not found');
-});
-
-// Error-handling middleware
-app.use((error, req, res, next) => {
-    console.error(error.stack);
-    res.status(500).send('Something broke!');
 });

@@ -20,15 +20,15 @@ router.get('/', async (req, res) => {
 // POST
 router.post('/', async (req, res) => {
     try {
-        console.log('Received POST request:', req.body); // Log the request body
+        console.log('Received POST request:', req.body); // Log the data sent to the server
         const chat = new Social({
-            message: req.body.message
-        });
+            message: req.body.message,
+            picture: req.body.picture});
 
-        const result = await chat.save();
+        const result = await chat.save(); //saves the chat
         res.status(201).json(result);
     } catch (error) {
-        console.error('Error saving chat:', error); // Log the error
+        console.error('Error saving chat:', error);
         res.status(500).json({ error: error.message });
     }
 });
@@ -70,4 +70,4 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-module.exports = router; // Export the router object
+module.exports = router; // Export the var

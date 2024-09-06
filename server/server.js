@@ -3,7 +3,7 @@ const app = express(); //#express
 const mongoose = require('mongoose'); //#mongoose
 require('dotenv').config(); // Load environment variables from .env file
 const chat = require('./routes/ishaan_social'); // Import chat routes
-const signup = require('./routes/Samiksha2_post');
+const signup = require('./routes/Samiksha2_post'); 
 const todo = require('./routes/sanjal_todo'); // Import todo routes
 
 //connecting to server
@@ -30,7 +30,7 @@ app.use(express.json()); //middleware to parse json data
 
 //please start your code from here :D
 
-//$Ishaan part 
+//$Ishaan part
 app.use('/Social', chat); 
 
 

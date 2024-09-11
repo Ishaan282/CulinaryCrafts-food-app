@@ -5,7 +5,7 @@ require('dotenv').config(); // Load environment variables from .env file
 
 //routes 
 const chat = require('./routes/ishaan_social'); // Import chat routes
-const signup = require('./routes/Samiksha2_post');
+const signup = require('./routes/Samiksha2_post'); 
 const todo = require('./routes/sanjal_todo'); // Import todo routes
 const shop = require('./routes/Sameer_incredients');
 
@@ -27,13 +27,18 @@ app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');
 });
 
-app.set('view engine', 'ejs'); //setting view engine 
+
 app.use(express.json()); 
+<<<<<<< HEAD
 //#DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
+=======
+//DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location - Ishaan
+//try me - Sameer
+>>>>>>> e516f293e1036f3cea0cd5c5fc82b43d2b7b1cac
 
 //please start your code from here :D
 
-//$Ishaan part 
+//$Ishaan part
 app.use('/Social', chat); 
 
 //$Samiksha part

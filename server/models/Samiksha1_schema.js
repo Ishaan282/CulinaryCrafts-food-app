@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
         unique: true,
         maxlength: 50,  
         trim: true,
-        lowercase: true // Ensures email is stored in lowercase
+        lowercase: true 
     },
     password: {
         type: String,
@@ -24,4 +24,4 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("User", userSchema);  // Changed model name to singular "User"
+module.exports = mongoose.model("User", userSchema);  //model name user

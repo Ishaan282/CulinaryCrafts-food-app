@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.set('view engine', 'ejs'); //setting view engine 
 app.use(express.json()); 
-//DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
+//#DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
 
 //please start your code from here :D
 
@@ -48,4 +48,15 @@ app.use('/shop',shop);
 //!handling error page 
 app.use((req, res, next) => {
     res.status(404).send('Page not found');
+});
+
+//!middleware for handling errors
+app.use((err, req, res, next) => {
+    console.error(err.stack); 
+
+    res.status(500).json({
+        error: {
+            message: 'Internal Server Error'
+        }
+    });
 });

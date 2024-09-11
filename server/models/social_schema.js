@@ -6,7 +6,7 @@ const socialSchema = new mongoose.Schema({
         required: true
     },
     picture: {
-        type: String, //Base 64 string of the image
+        type: String,
         required: false
     }
 }, {

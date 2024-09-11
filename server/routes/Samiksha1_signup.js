@@ -15,7 +15,7 @@ try {
         return res.json({ msg: "Email already used", status: false });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);  // Corrected typo
+    const hashedPassword = await bcrypt.hash(password, 10);  // 2^ 10 1024 Corrected typo
     const user = await User.create({
         email,
         username,

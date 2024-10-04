@@ -43,26 +43,7 @@ const triggerFileSelect = () => {
 // Add a ref to the file input
 const fileInputRef = useRef();
 
-//!emojis
-    const emojis = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕', '🤑', '🤠', '😈', '👿', '👹', '👺', '🤡', '👻', '💀', '☠️'];
-
-    const getRandomEmoji = () => {
-        const randomIndex = Math.floor(Math.random() * emojis.length);
-        return emojis[randomIndex];
-    };
-
-    const [currentEmoji, setCurrentEmoji] = useState(getRandomEmoji());
-
-    const changeEmoji = () => {
-        setCurrentEmoji(getRandomEmoji());
-    };
-
-    const handleInput = (event) => {
-        event.target.style.height = 'auto';
-        event.target.style.height = (event.target.scrollHeight) + 'px';
-    };
-
-//!storing users  
+//!storing users
     const users = [
         { imgSrc: pfp1, name: "Lucifer hamster" },
         { imgSrc: pfp2, name: "Bread" },
@@ -120,6 +101,11 @@ const deleteMessage = (index) => {
     setMessages(newMessages);
 };
 
+//! handle input
+const handleInput = (event) => {
+    // Handle input changes if necessary
+};
+
 return (
     <div id={s.main}>
 {/* sidebar */}
@@ -159,7 +145,6 @@ return (
                 <textarea id={s.enter_text} placeholder="text here" onKeyPress={handleKeyPress} onInput={handleInput} />
                 <div className={`${s.right}`}>
                     <img src={gif_icon} alt="gif_icon" className={`${s.bottom_icon}`} />
-                    <div className={`${s.bottom_icon} ${s.emoji}`} onMouseEnter={changeEmoji}>{currentEmoji}</div>
                 </div>
             </div>
         </div>

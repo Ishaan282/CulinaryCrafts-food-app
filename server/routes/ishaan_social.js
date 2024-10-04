@@ -48,7 +48,7 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-//PUT
+//update
 router.put('/:id', async (req, res) => {
     try {
         const updatedChat = await Social.findByIdAndUpdate(

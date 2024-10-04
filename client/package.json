@@ -29,10 +29,10 @@
     "web-vitals": "^4.2.2"
   },
   "scripts": {
-    "start": "cross-env PORT=3000 react-scripts start && start http://localhost:3000/Home",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider PORT=3000 react-scripts start && start http://localhost:3000/Home",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",
-    "build": "react-scripts build",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

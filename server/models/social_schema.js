@@ -3,11 +3,19 @@ const mongoose = require('mongoose');
 const socialSchema = new mongoose.Schema({
     message: {
         type: String,
-        required: true
+        required: false
     },
     picture: {
         type: String,
         required: false
+    },
+    profileName: {
+        type: String,
+        required: true
+    },
+    profilePicture: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express(); //#express 
 const mongoose = require('mongoose'); //#mongoose
 require('dotenv').config(); // Load environment variables from .env file
+const bodyParser = require('body-parser'); // Import body-parser
 
 //routes 
 const chat = require('./routes/ishaan_social'); // Import chat routes
@@ -27,8 +28,10 @@ app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');
 });
 
+// Increase the request body size limit
+app.use(express.json({ limit: '100mb' })); // Increase the limit to 10MB
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true })); // Increase the limit to 10MB
 
-app.use(express.json()); 
 //#DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
 
 //please start your code from here :D

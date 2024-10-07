@@ -1,4 +1,4 @@
-import react, { useContext } from 'react';
+import React, { useContext } from 'react';
 import { ShopContext } from "./context/shop-context";
 
 import IncrediantsCSS from './Incrediants.module.css';
@@ -8,11 +8,10 @@ import garlic from './assets/images/garlic.jpg'
 import ginger from './assets/images/ginger.jpg'
 import onion from './assets/images/onion.jpg'
 
-export const Incrediants = () =>{
+export const Incrediants = () => {
     const { addToCart, cartItems } = useContext(ShopContext);
 
     return (
-        
         <div className={IncrediantsCSS.container}>
             <div className={IncrediantsCSS.headercontent}>
                 <p>A recipe has no soul.</p>

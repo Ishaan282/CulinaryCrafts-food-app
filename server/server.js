@@ -28,8 +28,11 @@ app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');
 });
 
+// Middleware to parse JSON request bodies
+app.use(express.json()); // Add this line to parse JSON request bodies
+
 // Increase the request body size limit
-app.use(express.json({ limit: '100mb' })); // Increase the limit to 10MB
+app.use(express.urlencoded({ limit: '10mb', extended: true })); // Increase the limit to 10MB
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true })); // Increase the limit to 10MB
 
 //#DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location

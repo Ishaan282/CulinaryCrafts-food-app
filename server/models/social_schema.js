@@ -11,15 +11,14 @@ const socialSchema = new mongoose.Schema({
     },
     profileName: {
         type: String,
-        required: true
+        required: false // Temporarily set to false
     },
     profilePicture: {
         type: String,
-        required: true
+        required: false // Temporarily set to false
     }
 }, {
     timestamps: true
 });
 
 module.exports = mongoose.model('Social', socialSchema, 'social');
-                //('modelName', schema, 'collectionName')

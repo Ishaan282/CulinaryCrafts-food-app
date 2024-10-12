@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import axios from 'axios';
 import s from './Social.module.css';
 import Message from './componenets/Message.jsx';
 import Profile from './componenets/Profile.jsx';
 
-//importing icons
+// Importing icons
 import gif_icon from './icons/gif.png';
 import upload_icon from './icons/upload.png';
-import delete_icon from './icons/delete.png';
 
-//importing profile pictures
+// Importing profile pictures
 import pfp1 from './pfp/pfp1.jpg';
 import pfp2 from './pfp/pfp2.jpg';
 import pfp3 from './pfp/pfp3.png';
@@ -18,33 +17,40 @@ import pfp5 from './pfp/pfp5.jpg';
 import pfp6 from './pfp/pfp6.jpg';
 
 function Social() {
-    // Initialize the messages state
+    // States for messages, text input, image, loading, and error
     const [messages, setMessages] = useState([]);
     const [textMessage, setTextMessage] = useState('');
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
-    // Fetch messages from the backend
+    // Fetch messages from the backend on mount
     useEffect(() => {
+        setLoading(true);
         axios.get('/Social')
             .then(response => {
                 setMessages(response.data);
             })
             .catch(error => {
-                console.error('There was an error fetching the messages!', error);
+                console.error('Error fetching messages:', error);
+                setError('Failed to load messages.');
+            })
+            .finally(() => {
+                setLoading(false);
             });
     }, []);
 
-    //!scrolling from botom to top 
-    // Create a reference to the chat container
+    // Chat container ref to manage auto-scrolling
     const chatRef = useRef(null);
 
-    // Scroll to the bottom of the chat container whenever messages change
+    // Scroll to bottom when messages change
     useEffect(() => {
         if (chatRef.current) {
             chatRef.current.scrollTop = chatRef.current.scrollHeight;
         }
     }, [messages]);
 
-    //! deleting message 
+    // Deleting message
     const deleteMessage = (index) => {
         const messageToDelete = messages[index];
         axios.delete(`/Social/${messageToDelete._id}`)
@@ -53,22 +59,18 @@ function Social() {
                 setMessages(newMessages);
             })
             .catch(error => {
-                console.error('There was an error deleting the message!', error);
+                console.error('Error deleting message:', error);
+                setError('Failed to delete message.');
             });
     };
 
-    //!sending images
-    // Add a new state to hold the selected image
-    const [selectedImage, setSelectedImage] = useState(null);
-
-    // Add a new function to handle file selection
+    // Handling image upload
     const handleFileSelect = (event) => {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setSelectedImage(reader.result);
-                // Send the image as a message
                 const newMessage = {
                     message: '',
                     picture: reader.result,
@@ -77,53 +79,60 @@ function Social() {
                 };
                 axios.post('/Social', newMessage)
                     .then(response => {
-                        setMessages(prevMessages => [...prevMessages, response.data]);
+                        setMessages(prevMessages => Array.isArray(prevMessages) ? [...prevMessages, response.data] : [response.data]);
                     })
                     .catch(error => {
-                        console.error('There was an error sending the message!', error);
+                        console.error('Error sending message:', error);
+                        setError('Failed to send image.');
                     });
             };
             reader.readAsDataURL(file);
         }
     };
 
-    // Add a new function to trigger file selection
     const triggerFileSelect = () => {
         fileInputRef.current.click();
     };
 
-    // Add a ref to the file input
     const fileInputRef = useRef();
 
     // Handle text message submission
-    const handleTextMessageSubmit = (event) => {
-        if (event.key === 'Enter' && !event.shiftKey && textMessage.trim() !== '') {
-            event.preventDefault(); // Prevent the default behavior of the Enter key
-            const newMessage = {
-                message: textMessage,
-                picture: '',
-                profileName: "Jester",
-                profilePicture: pfp5
-            };
-            axios.post('/Social', newMessage)
-                .then(response => {
+    const handleTextMessageSubmit = async (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            if (textMessage.trim() !== '') {
+                const newMessage = {
+                    message: textMessage.trim(),
+                    picture: '',
+                    profileName: "Jester",
+                    profilePicture: pfp5
+                };
+    
+                try {
+                    const response = await axios.post('/Social', newMessage);
                     setMessages(prevMessages => [...prevMessages, response.data]);
-                    setTextMessage(''); // Clear the input field
-                })
-                .catch(error => {
-                    console.error('There was an error sending the message!', error);
-                });
+                    setTextMessage('');
+                } catch (error) {
+                    console.error('Failed to send message:', error.response ? error.response.data : error.message);
+                    alert(`Failed to send message: ${error.response ? error.response.data.error : error.message}`);
+                }
+            }
         }
     };
+    
+    
+
+    // Memoized messages list to avoid re-renders
+    const memoizedMessages = useMemo(() => messages, [messages]);
 
     return (
         <div id={s.main}>
-            {/* sidebar */}
+            {/* Sidebar */}
             <div className={`${s.main1}`}>
                 <header id={`${s.head}`}>
                     People
                 </header>
-                <hr style={{border: 'none', borderTop: '2px solid black', width: '103%',margin: `0 -3%`}} />
+                <hr style={{ border: 'none', borderTop: '2px solid black', width: '103%', margin: `0 -3%` }} />
 
                 <div id={s.profiles}>
                     <Profile id={s.pr1} imgSrc={pfp1} name="Lucifer hamster" />
@@ -135,11 +144,15 @@ function Social() {
                 </div>
             </div>
 
-            {/* chatting area  */}
+            {/* Chatting area */}
             <div className={`${s.main2}`}>
                 <div className={`${s.chat}`} ref={chatRef}>
-                    {messages.length > 0 ? (
-                        messages.map((message, index) => (
+                    {loading ? (
+                        <p>Loading messages...</p>
+                    ) : error ? (
+                        <p>{error}</p>
+                    ) : memoizedMessages.length > 0 ? (
+                        memoizedMessages.map((message, index) => (
                             <Message 
                                 key={index} 
                                 id={message._id}
@@ -155,19 +168,19 @@ function Social() {
                     )}
                 </div>
 
-                {/* textingbar */}
+                {/* Texting bar */}
                 <div id={s.bottom}>
                     <input type="file" style={{ display: 'none' }} onChange={handleFileSelect} ref={fileInputRef} />
-                    <img src={upload_icon} alt="upload_icon" className={` ${s.bottom_icon}`} onClick={triggerFileSelect} />
+                    <img src={upload_icon} alt="Upload file" className={s.bottom_icon} onClick={triggerFileSelect} />
                     <textarea 
                         id={s.enter_text} 
-                        placeholder="text here" 
+                        placeholder="Type a message..." 
                         value={textMessage} 
                         onChange={(e) => setTextMessage(e.target.value)} 
                         onKeyDown={handleTextMessageSubmit} 
                     />
-                    <div className={`${s.right}`}>
-                        <img src={gif_icon} alt="gif_icon" className={`${s.bottom_icon}`} />
+                    <div className={s.right}>
+                        <img src={gif_icon} alt="GIF icon" className={s.bottom_icon} />
                     </div>
                 </div>
             </div>

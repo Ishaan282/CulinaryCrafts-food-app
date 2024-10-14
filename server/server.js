@@ -10,6 +10,10 @@ const signup = require('./routes/Samiksha2_post');
 const todo = require('./routes/sanjal_todo'); // Import todo routes
 const shop = require('./routes/Sameer_incredients');
 
+// Middleware to parse JSON request bodies with a higher limit
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
 const PORT = 5000;
@@ -27,13 +31,6 @@ mongoose.connect(dbURI)
 app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');
 });
-
-// Middleware to parse JSON request bodies
-app.use(express.json()); // Add this line to parse JSON request bodies
-
-// Increase the request body size limit
-app.use(express.urlencoded({ limit: '10mb', extended: true })); // Increase the limit to 10MB
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true })); // Increase the limit to 10MB
 
 //#DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
 

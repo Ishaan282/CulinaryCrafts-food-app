@@ -15,7 +15,7 @@ export const sendMessage = async (message, picture = '') => {
     const newMessage = {
         message: message.trim(),
         picture,
-        profileName: "Jester",
+        profileName: "User",
     };
 
     try {

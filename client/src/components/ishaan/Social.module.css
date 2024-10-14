@@ -60,26 +60,6 @@
     color: white;
 }
 
-/* Different background colors for profiles */
-#pr1{
-    background-color: #EEDA8B;
-}
-#pr2{
-    background-color: #E67C3B;
-}
-#pr3{
-    background-color: #9D2C21;
-}
-#pr4{
-    background-color: #D96A1A;
-}
-#pr5{
-    background-color: #F4D678;
-}
-#pr6{
-    background-color: #C82B11;
-}
-
 /*! chat area */
 .main2{
     width: 78%;
@@ -99,7 +79,7 @@
     height: 80vh;
     flex-direction: column;
     margin-bottom: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: calc(var(--main_height) - 50px);
 }
 
@@ -137,6 +117,8 @@
     opacity: 1;
 }
 
+
+/*! bottom part  */
 #bottom {
     border-radius: 20px;
     width: var(--chat_area);

@@ -11,12 +11,9 @@ const socialSchema = new mongoose.Schema({
     },
     profileName: {
         type: String,
-        required: false // Temporarily set to false
+        required: true // Set to true if you always want a profile name
     },
-    profilePicture: {
-        type: String,
-        required: false // Temporarily set to false
-    }
+    // Removed profilePicture as it's no longer needed
 }, {
     timestamps: true
 });

@@ -1,4 +1,3 @@
-
 #main{
     width: 100vw;
     background-color: #ffffff;
@@ -16,7 +15,6 @@
 
 /*! side bar */
 .main1{
-    /* border: 2px solid green; */
     flex-grow: 1;
     order: 1;
     height: var(--main_height);
@@ -28,7 +26,6 @@
 }
 
 #head{
-    /* border: 2px solid blue; */
     width: 90%;
     text-align: center;
     margin-top: 1vh;
@@ -40,36 +37,30 @@
     gap: 10px;
 }
 
-/*# profiles  */
+/* Profile names in sidebar */
 .profile{
     display: flex;
-    gap: 4%;
+    justify-content: center; /* Center the names */
     align-items: center;
-    /* border: 3px solid #f67f17; */
-    border-radius: 50px;  
-    transition: ease-in-out 0.5s; 
+    padding: 10px;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.2); /* Optional: Light background for name */
+    transition: ease-in-out 0.5s;
 }
+
 .profile:hover{
     cursor: pointer;
     scale: 1.1;
     transition: ease-in-out 0.2s;
 }
 
-
-.profile_picture{
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(0, 0, 0, 0.507);
-    height: 6vh;
-}
-.profile_picture:hover{
-    cursor: pointer;
-}
-
 .profile_name{
     font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
 }
 
+/* Different background colors for profiles */
 #pr1{
     background-color: #EEDA8B;
 }
@@ -91,7 +82,6 @@
 
 /*! chat area */
 .main2{
-    /* border: 2px solid red; */
     width: 78%;
     height: var(--main_height);
     display: flex;
@@ -105,33 +95,32 @@
 }
 
 .main2 .chat{
-    /* border: 10px solid blue; */
     width: var(--chat_area);
     height: 80vh;
     flex-direction: column;
     margin-bottom: 10px;
-    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-y: scroll;
     max-height: calc(var(--main_height) - 50px);
 }
 
 .profile2{
     display: flex;
     gap: 10px;
-    margin-bottom: 5px;;
+    margin-bottom: 5px;
 }
 
 #text{
     display: flex;
     align-items: left;
     flex-direction: column;
-    height: auto; /* This will make the container grow with the content */
+    height: auto;
 }
-/* Social.module.css */
+
 .photo {
     margin-top: 10px;
-    max-width: 70vh; /* This will ensure the image doesn't exceed the width of its container */
+    max-width: 70vh;
     max-height: 30vh;
-    height: auto; /* This will maintain the aspect ratio of the image */
+    height: auto;
     border-radius: 10px;
 }
 
@@ -139,68 +128,54 @@
     height: 4.5vh;
     object-fit: cover;
     margin: 10px;
-    opacity: 0; /* Make the delete icon invisible normally */
-    transition: opacity 0.3s ease; /* Add a transition effect when changing the opacity */
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .profile2:hover .deleteIcon {
     cursor: pointer;
-    opacity: 1; /* Make the delete icon visible when .profile2 is hovered over */
+    opacity: 1;
 }
 
-/*! send da message */
-#bottom{
-    border-radius: 5px;
+#bottom {
+    border-radius: 20px;
     width: var(--chat_area);
-    min-height: 6.5vh; /* Change height to min-height */
-    max-height: 50vh; /* Set a maximum height */
+    min-height: 4.5vh;
+
     background-color: #A6D59E;
     display: flex;
-    align-items: center;
+    align-items: center; /* Centers items vertically */
     justify-content: space-between;
     margin-bottom: 10px;
-    overflow: auto; /* Add overflow auto to enable scrolling when max-height is reached */
+    overflow: hidden; /* Hide scroll bar */
+    width: 60vw;
 }
 
+
 .bottom_icon{
-    height: 4.5vh; /* Adjust this value as needed */
+    height: 4.5vh;
     object-fit: cover;
     margin: 10px;
 }
-@keyframes gentleShake {
-    0% { transform: translate(0.5px, 0.5px) rotate(0deg); }
-    10% { transform: translate(-0.5px, -1px) rotate(-0.5deg); }
-    20% { transform: translate(-1.5px, 0px) rotate(0.5deg); }
-    30% { transform: translate(1.5px, 1px) rotate(0deg); }
-    40% { transform: translate(0.5px, -0.5px) rotate(0.5deg); }
-    50% { transform: translate(-0.5px, 1px) rotate(-0.5deg); }
-    60% { transform: translate(-1.5px, 0.5px) rotate(0deg); }
-    70% { transform: translate(1.5px, 0.5px) rotate(-0.5deg); }
-    80% { transform: translate(-0.5px, -0.5px) rotate(0.5deg); }
-    90% { transform: translate(0.5px, 1px) rotate(0deg); }
-    100% { transform: translate(0.5px, -1px) rotate(-0.5deg); }
-}
 
 .bottom_icon:hover {
-    animation: gentleShake 3s; 
-    animation-iteration-count: infinite; 
     cursor: pointer;
 }
 
-#enter_text{
-    min-height: 80%; /* This will set a minimum height for the textarea */
+#enter_text {
     width: 99%;
     background-color: transparent;
     border: none;
     outline: none;
-    overflow-y: auto; /* This will allow vertical scrolling */
-    resize: none; /* This will prevent manual resizing */
-    max-height: 20vh; /* Adjust this value as needed */
+    resize: none;
+    overflow-y: hidden; /* Disable vertical scroll */
+    
+    /* Center text vertically */
+    line-height: 1.5; /* Make the text look vertically spaced */
+    font-size: 16px; /* Adjust font size if necessary */
 }
+
 
 .right{
     display: flex;
-}
-.emoji {
-    font-size: 3.2vh;
 }

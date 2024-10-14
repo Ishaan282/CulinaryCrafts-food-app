@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import s from '../Social.module.css';
 import delete_icon from '../icons/delete.png';
 
-// Message component to display messages
-function Message({ id, imgSrc, name, message, messageClass, photo, onDelete }) {
+// Message component to display messages without profile pictures
+function Message({ id, name, message, messageClass, photo, onDelete }) {
     const formattedMessage = useMemo(() => {
         return message?.split('\n').map((line, index) => (
             <React.Fragment key={index}>
@@ -15,7 +15,6 @@ function Message({ id, imgSrc, name, message, messageClass, photo, onDelete }) {
 
     return (
         <div className={s.profile2}>
-            <img src={imgSrc} alt={`${name}'s profile picture`} className={s.profile_picture} />
             <div id={s.text}>
                 <p className={s.profile_name}>{name}</p>
                 <p className={messageClass} style={{ marginBottom: `-10px` }}>

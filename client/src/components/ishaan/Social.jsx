@@ -4,8 +4,7 @@ import { handleFileSelect, handleTextMessageSubmit, handleDeleteMessage } from '
 import s from './Social.module.css';
 import Message from './components/Message.jsx';
 import Profile from './components/Profile.jsx';
-
-// Importing icons
+import io from 'socket.io-client';  // Import Socket.io client
 import upload_icon from './icons/upload.png';
 
 function Social() {
@@ -15,8 +14,32 @@ function Social() {
     const [selectedImage, setSelectedImage] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [isTyping, setIsTyping] = useState(false);  // State for typing indicator
+    
+    const socket = useRef(null);  // Socket reference
 
-    //! Fetch messages from the backend on mount
+    // Establish socket connection on mount
+    useEffect(() => {
+        socket.current = io('http://localhost:5000');  // Adjust to your server URL
+
+        socket.current.on('chat message', (msg) => {
+            setMessages((prevMessages) => [...prevMessages, msg]);
+        });
+
+        socket.current.on('typing', (data) => {
+            setIsTyping(data.typing);
+        });
+
+        socket.current.on('delete message', (messageId) => {
+            setMessages((prevMessages) => prevMessages.filter(message => message._id !== messageId));
+        });
+
+        return () => {
+            socket.current.disconnect();
+        };
+    }, []);
+
+    // Fetch messages from the backend on mount
     useEffect(() => {
         const loadMessages = async () => {
             setLoading(true);
@@ -44,19 +67,22 @@ function Social() {
     // File input ref
     const fileInputRef = useRef();
 
+    const handleTextMessageChange = (e) => {
+        setTextMessage(e.target.value);
+        socket.current.emit('typing', { typing: e.target.value.length > 0 });
+    };
+
     return (
         <div id={s.main}>
             {/* Sidebar */}
             <div className={`${s.main1}`}>
                 <header id={`${s.head}`}>  People </header>
                 <hr style={{ border: 'none', borderTop: '2px solid black', width: '103%', margin: `0 -3%` }} />
-
                 <div id={s.profiles}>
                     <Profile id={s.pr1} name="Lucifer hamster" />
                     <Profile id={s.pr2} name="Bread" />
                 </div>
             </div>
-
             {/* Chatting area */}
             <div className={`${s.main2}`}>
                 <div className={`${s.chat}`} ref={chatRef}>
@@ -73,24 +99,24 @@ function Social() {
                                 photo={message.picture}
                                 imgSrc={message.profilePicture}
                                 name={message.profileName}
-                                onDelete={() => handleDeleteMessage(index, messages, deleteMessage, setMessages, setError)}
+                                onDelete={() => handleDeleteMessage(index, messages, deleteMessage, setMessages, setError, socket.current)}
                             />
                         ))
                     ) : (
                         <p>No messages yet.</p>
                     )}
+                    {isTyping && <p>Someone is typing...</p>}  {/* Typing indicator */}
                 </div>
-
                 {/* Texting bar */}
                 <div id={s.bottom}>
-                    <input type="file" style={{ display: 'none' }} onChange={(e) => handleFileSelect(e, setSelectedImage, sendMessage, setMessages, setError)} ref={fileInputRef} />
+                    <input type="file" style={{ display: 'none' }} onChange={(e) => handleFileSelect(e, setSelectedImage, sendMessage, setMessages, setError, socket.current)} ref={fileInputRef} />
                     <img src={upload_icon} alt="Upload file" className={s.bottom_icon} onClick={() => fileInputRef.current.click()} />
                     <textarea
                         id={s.enter_text}
                         placeholder="Type a message..."
                         value={textMessage}
-                        onChange={(e) => setTextMessage(e.target.value)}
-                        onKeyDown={(e) => handleTextMessageSubmit(e, textMessage, setTextMessage, sendMessage, setMessages, setError)}
+                        onChange={handleTextMessageChange}
+                        onKeyDown={(e) => handleTextMessageSubmit(e, textMessage, setTextMessage, sendMessage, setMessages, setError, socket.current)}
                     />
                 </div>
             </div>

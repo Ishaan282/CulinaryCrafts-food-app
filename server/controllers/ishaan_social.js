@@ -22,7 +22,6 @@ const chat_create = async (req, res) => {
             picture: req.body.picture,
             profileName: req.body.profileName
         });
-
         const result = await chat.save(); // Saves the chat
         res.status(201).json(result);
     } catch (error) {

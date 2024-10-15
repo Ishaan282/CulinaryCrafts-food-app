@@ -1,4 +1,3 @@
-// socialApi.js
 import axios from 'axios';
 
 export const fetchMessages = async () => {
@@ -17,7 +16,6 @@ export const sendMessage = async (message, picture = '') => {
         picture,
         profileName: "User",
     };
-
     try {
         const response = await axios.post('/Social', newMessage);
         return response.data;

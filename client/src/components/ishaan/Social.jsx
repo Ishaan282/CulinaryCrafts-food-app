@@ -21,23 +21,24 @@ function Social() {
     // Establish socket connection on mount
     useEffect(() => {
         socket.current = io('http://localhost:5000');  // Adjust to your server URL
-
+    
         socket.current.on('chat message', (msg) => {
-            setMessages((prevMessages) => [...prevMessages, msg]);
+            setMessages((prevMessages) => Array.isArray(prevMessages) ? [...prevMessages, msg] : [msg]);
         });
-
+    
         socket.current.on('typing', (data) => {
             setIsTyping(data.typing);
         });
-
+    
         socket.current.on('delete message', (messageId) => {
-            setMessages((prevMessages) => prevMessages.filter(message => message._id !== messageId));
+            setMessages((prevMessages) => Array.isArray(prevMessages) ? prevMessages.filter(message => message._id !== messageId) : []);
         });
-
+    
         return () => {
             socket.current.disconnect();
         };
     }, []);
+    
 
     // Fetch messages from the backend on mount
     useEffect(() => {

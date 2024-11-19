@@ -1,15 +1,15 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import ChocolateCake from './ChocolateCake';
-import Soup from './Soup';
-import Salads from './Salads';
-import Pizza from './Pizza';
-import Sushi from './Sushi';
-import Pastasss from './Pastasss';
-import Banana from './Banana';
-import Waffels from './Waffels';
-import CheeseCake from './CheeseCake';
+import ChocolateCake from './recipes/ChocolateCake';
+import Soup from './recipes/Soup';
+import Salads from './recipes/Salads';
+import Pizza from './recipes/Pizza';
+import Sushi from './recipes/Sushi';
+import Pastasss from './recipes/Pastasss';
+import Banana from './recipes/Banana';
+import Waffels from './recipes/Waffels';
+import CheeseCake from './recipes/CheeseCake';
 
 const recipeRoutes = [
   <Route key="CheeseCake" path="/recipie/CheeseCake" element={<CheeseCake />} />,

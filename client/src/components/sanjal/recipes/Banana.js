@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import backgroundImage from './depictions/pizza12.jpg';
+import backgroundImage from '../depictions/cheesecake.jpg';
 import './cheesecake.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons';
 
-const Pizza = () => {
+const Banana = () => {
   const [ingredientsChecked, setIngredientsChecked] = useState({
     "1 1/2 cups graham cracker, crushed": false,
     "6 tablespoons butter, melted": false,
@@ -50,9 +50,6 @@ const Pizza = () => {
     if (event.key === 'Enter') {
       handleAddIngredient();
     }
-    window.onload = () => {
-        window.scrollTo(0, 0);
-      };
   };
 
   const backgroundStyle = {
@@ -63,9 +60,6 @@ const Pizza = () => {
   };
   const color = {
     color : 'white',
-  };
-  window.onload = () => {
-    window.scrollTo(0, 0);
   };
 
   return (
@@ -161,4 +155,4 @@ const Pizza = () => {
   );
 }
 
-export default Pizza;
+export default Banana;

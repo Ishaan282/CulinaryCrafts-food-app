@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import backgroundImage from './depictions/chococake.jpg';
+import backgroundImage from '../depictions/chococake.jpg';
 import './cheesecake.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons';

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import backgroundImage from './depictions/pasta33.jpg';
+import backgroundImage from '../depictions/waffel.jpg';
 import './cheesecake.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons';
 
-const Pastasss = () => {
+const Waffels = () => {
   const [ingredientsChecked, setIngredientsChecked] = useState({
     "1 1/2 cups graham cracker, crushed": false,
     "6 tablespoons butter, melted": false,
@@ -58,16 +58,13 @@ const Pastasss = () => {
     backgroundPosition: 'center',
     backgroundAttachment: 'fixed',
   };
-  const color = {
-    color : 'white',
-  };
 
   return (
     <div style={backgroundStyle}>
-      <h1 className='recepie-name-sj' style={color}>Pasta</h1>
+      <h1 className='recepie-name-sj' >Vanilla Waffels</h1>
 
       <div className='non-title'>
-        <div className='ingredriants-todo-list 'style={color}>
+        <div className='ingredriants-todo-list '>
           <h2 className='title-ing-sj'>Ingredients</h2>
           <ul>
             {/* Render checked ingredients */}
@@ -91,7 +88,7 @@ const Pastasss = () => {
                   onChange={() => handleToggleCustomIngredient(index)}
                 />
                 <label>{ingredient.name}</label>
-                <button onClick={() => handleRemoveIngredient(index)} className='button-plus' style={color}><i class="fa-solid fa-minus"></i></button>
+                <button onClick={() => handleRemoveIngredient(index)} className='button-plus'><i class="fa-solid fa-minus"></i></button>
               </li>
             ))}
           </ul>
@@ -105,7 +102,7 @@ const Pastasss = () => {
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}
             />
-            <button className='button-plus' onClick={handleAddIngredient} style={color}><i class="fa-solid fa-plus"></i></button>
+            <button className='button-plus' onClick={handleAddIngredient}><i class="fa-solid fa-plus"></i></button>
           </div>
         </div>
 
@@ -155,4 +152,4 @@ const Pastasss = () => {
   );
 }
 
-export default Pastasss;
+export default Waffels;

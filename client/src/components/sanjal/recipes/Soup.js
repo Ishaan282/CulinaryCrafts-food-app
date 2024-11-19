@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import backgroundImage from './depictions/soup11.jpg';
+import backgroundImage from '../depictions/soup12.jpg';
 import './cheesecake.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons';
 
-const Salads = () => {
-    window.onload = () => {
-        window.scrollTo(0, 0);
-      };
+const Soup = () => {
   const [ingredientsChecked, setIngredientsChecked] = useState({
     "1 1/2 cups graham cracker, crushed": false,
     "6 tablespoons butter, melted": false,
@@ -53,9 +50,6 @@ const Salads = () => {
     if (event.key === 'Enter') {
       handleAddIngredient();
     }
-    window.onload = () => {
-        window.scrollTo(0, 0);
-      };
   };
 
   const backgroundStyle = {
@@ -65,18 +59,15 @@ const Salads = () => {
     backgroundAttachment: 'fixed',
   };
   const color = {
-    color : 'white',
-  };
-  window.onload = () => {
-    window.scrollTo(0, 0);
+    // color : 'hotpink',
   };
 
   return (
     <div style={backgroundStyle}>
-      <h1 className='recepie-name-sj' style={color}>Salads</h1>
+      <h1 className='recepie-name-sj' style={color}>Soup</h1>
 
       <div className='non-title'>
-        <div className='ingredriants-todo-list ' style={color}>
+        <div className='ingredriants-todo-list '>
           <h2 className='title-ing-sj'>Ingredients</h2>
           <ul>
             {/* Render checked ingredients */}
@@ -164,4 +155,4 @@ const Salads = () => {
   );
 }
 
-export default Salads;
+export default Soup;

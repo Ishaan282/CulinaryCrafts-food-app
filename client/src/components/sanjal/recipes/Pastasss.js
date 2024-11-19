@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import backgroundImage from './depictions/cheesecake.jpg';
+import backgroundImage from '../depictions/pasta33.jpg';
 import './cheesecake.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons';
 
-const CheeseCake = () => {
+const Pastasss = () => {
   const [ingredientsChecked, setIngredientsChecked] = useState({
     "1 1/2 cups graham cracker, crushed": false,
     "6 tablespoons butter, melted": false,
@@ -50,9 +50,6 @@ const CheeseCake = () => {
     if (event.key === 'Enter') {
       handleAddIngredient();
     }
-    window.onload = () => {
-      window.scrollTo(0, 0);
-    };
   };
 
   const backgroundStyle = {
@@ -61,13 +58,16 @@ const CheeseCake = () => {
     backgroundPosition: 'center',
     backgroundAttachment: 'fixed',
   };
+  const color = {
+    color : 'white',
+  };
 
   return (
     <div style={backgroundStyle}>
-      <h1 className='recepie-name-sj'>CheeseCake</h1>
+      <h1 className='recepie-name-sj' style={color}>Pasta</h1>
 
       <div className='non-title'>
-        <div className='ingredriants-todo-list '>
+        <div className='ingredriants-todo-list 'style={color}>
           <h2 className='title-ing-sj'>Ingredients</h2>
           <ul>
             {/* Render checked ingredients */}
@@ -91,7 +91,7 @@ const CheeseCake = () => {
                   onChange={() => handleToggleCustomIngredient(index)}
                 />
                 <label>{ingredient.name}</label>
-                <button onClick={() => handleRemoveIngredient(index)} className='button-plus'><i class="fa-solid fa-minus"></i></button>
+                <button onClick={() => handleRemoveIngredient(index)} className='button-plus' style={color}><i class="fa-solid fa-minus"></i></button>
               </li>
             ))}
           </ul>
@@ -105,7 +105,7 @@ const CheeseCake = () => {
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}
             />
-            <button className='button-plus' onClick={handleAddIngredient}><i class="fa-solid fa-plus"></i></button>
+            <button className='button-plus' onClick={handleAddIngredient} style={color}><i class="fa-solid fa-plus"></i></button>
           </div>
         </div>
 
@@ -155,4 +155,4 @@ const CheeseCake = () => {
   );
 }
 
-export default CheeseCake;
+export default Pastasss;

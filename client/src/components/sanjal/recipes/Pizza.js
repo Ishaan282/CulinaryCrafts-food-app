@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import backgroundImage from './depictions/soup11.jpg';
+import backgroundImage from '../depictions/pizza12.jpg';
 import './cheesecake.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons';
 
-const Sushi = () => {
+const Pizza = () => {
   const [ingredientsChecked, setIngredientsChecked] = useState({
     "1 1/2 cups graham cracker, crushed": false,
     "6 tablespoons butter, melted": false,
@@ -50,6 +50,9 @@ const Sushi = () => {
     if (event.key === 'Enter') {
       handleAddIngredient();
     }
+    window.onload = () => {
+        window.scrollTo(0, 0);
+      };
   };
 
   const backgroundStyle = {
@@ -61,14 +64,17 @@ const Sushi = () => {
   const color = {
     color : 'white',
   };
+  window.onload = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div style={backgroundStyle}>
-      <h1 className='recepie-name-sj' style={color}>Vegetarian Sushi</h1>
+      <h1 className='recepie-name-sj' style={color}>Pizza</h1>
 
       <div className='non-title'>
         <div className='ingredriants-todo-list ' style={color}>
-          <h2 className='title-ing-sj'>Ingredients</h2>
+          <h2 className='title-ing-sj' style={color}>Ingredients</h2>
           <ul>
             {/* Render checked ingredients */}
             {Object.entries(ingredientsChecked).map(([id, isChecked]) => (
@@ -155,4 +161,4 @@ const Sushi = () => {
   );
 }
 
-export default Sushi;
+export default Pizza;

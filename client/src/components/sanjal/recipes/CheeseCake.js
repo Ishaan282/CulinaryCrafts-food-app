@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import backgroundImage from './depictions/waffel.jpg';
+import backgroundImage from '../depictions/cheesecake.jpg';
 import './cheesecake.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons';
 
-const Waffels = () => {
+const CheeseCake = () => {
   const [ingredientsChecked, setIngredientsChecked] = useState({
     "1 1/2 cups graham cracker, crushed": false,
     "6 tablespoons butter, melted": false,
@@ -50,6 +50,9 @@ const Waffels = () => {
     if (event.key === 'Enter') {
       handleAddIngredient();
     }
+    window.onload = () => {
+      window.scrollTo(0, 0);
+    };
   };
 
   const backgroundStyle = {
@@ -61,7 +64,7 @@ const Waffels = () => {
 
   return (
     <div style={backgroundStyle}>
-      <h1 className='recepie-name-sj' >Vanilla Waffels</h1>
+      <h1 className='recepie-name-sj'>CheeseCake</h1>
 
       <div className='non-title'>
         <div className='ingredriants-todo-list '>
@@ -152,4 +155,4 @@ const Waffels = () => {
   );
 }
 
-export default Waffels;
+export default CheeseCake;

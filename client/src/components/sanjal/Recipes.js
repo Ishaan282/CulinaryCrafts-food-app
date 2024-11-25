@@ -3,7 +3,7 @@ import r from './Recipes.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBowlFood, faClock, faFire } from '@fortawesome/free-solid-svg-icons'; 
 import { Link } from 'react-router-dom';
-import backgroundImg from './purple.jpeg';
+// import backgroundImg from './purple.jpeg';
 
 import burger1 from './depictions-menu/burger1.jpg';
 import pasta from './depictions-menu/pasta.jpg';
@@ -24,23 +24,27 @@ import risoto from './depictions-menu/risoto.jpg';
 import crep from './depictions-menu/crep.jpg';
 import sushi from './depictions-menu/sushi.jpeg';
 
+// import Todo from './todo/Todo.js';
+
 const backgroundStyle = {
-  backgroundImage: `url(${backgroundImg})`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundAttachment: 'fixed',
+  backgroundcolor: 'green'
 };
 
 function Recipes() {
   return (
     <div className={r.mainMenu} style={backgroundStyle}>
+      
+
       {/* Sweets */}
-      <h1>Deserts</h1>
+      <h1 className={`${r.hi}`}>Deserts</h1>
       <div className={r.sweetFood}>
+      <div className={`${r.cheeseccake} ${r.sweet}`}>
         <Link to="/recipie/CheeseCake">
-          <div className={`${r.cheeseccake} ${r.sweet}`}>
+          {/* <div className={`${r.cheeseccake} ${r.sweet}`}> */}
             <img src={ccc} className={r.imgDish} alt="CheeseCake" />
             <div className={r.nameDish}>Baked CheeseCake</div>
+            </Link>
+            <div className={r.extra}>
             <div className={r.stars}>
               <i className="fa-solid fa-star"></i>
               <i className="fa-solid fa-star"></i>
@@ -48,8 +52,12 @@ function Recipes() {
               <i className="fa-solid fa-star"></i>
               <i className="fa-solid fa-star-half"></i>
             </div>
+            <div className={r.bookmarkDiv}>
+              <button className={r.bookmark}><i class="fa-regular fa-bookmark"></i></button>
+            </div>
+            </div>
           </div>
-        </Link>
+        
 
         <Link to="/recipie/ChocolateCake">
           <div className={`${r.Chocolate} ${r.sweet}`}>
@@ -120,7 +128,7 @@ function Recipes() {
       </div>
 
       {/* Pastas */}
-      <h1>Pastas</h1>
+      <h1 className={`${r.hi}`}>Pastas</h1>
       <div className={r.pastas}>
         <Link to="/recipie/Pastasss">
           <div className={`${r.Ravioli} ${r.pasta}`}>
@@ -208,7 +216,7 @@ function Recipes() {
       </div>
 
       {/* soups  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
-      <h1>Soups</h1>
+      <h1 className={`${r.hi}`}>Soups</h1>
       <div className={r.soups}>
         <Link to="/recipie/TomatoSoup">
           <div className={`${r.Tomato} ${r.soup}`}>
@@ -262,7 +270,7 @@ function Recipes() {
       </div>
 
       {/*vegetarian ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/}
-      <h1>Vegetarian</h1>
+      <h1 className={`${r.hi}`}>Vegetarian</h1>
       <div className={r.vegetarians}>
         <Link to="/recipie/MushroomRisotto">
           <div className={`${r.MRisotto} ${r.vegetarian}`}>
@@ -345,7 +353,7 @@ function Recipes() {
 
 
     {/* salads  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
-    <h1>Salads</h1>
+    <h1 className={`${r.hi}`}>Salads</h1>
     <div className={r.salads}>
     <Link to="/Salads">
       <div className={`${r.CaesarS} ${r.salad}`}>

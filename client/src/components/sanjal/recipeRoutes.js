@@ -10,6 +10,7 @@ import Pastasss from './recipes/Pastasss';
 import Banana from './recipes/Banana';
 import Waffels from './recipes/Waffels';
 import CheeseCake from './recipes/CheeseCake';
+// import Dodo from '../sanjal2/Dodo';
 
 const recipeRoutes = [
   <Route key="CheeseCake" path="/recipie/CheeseCake" element={<CheeseCake />} />,
@@ -21,6 +22,7 @@ const recipeRoutes = [
   <Route key="Pastasss" path="/recipie/Pastasss" element={<Pastasss />} />,
   <Route key="Banana" path="/recipie/Banana" element={<Banana />} />,
   <Route key="Waffels" path="/recipie/Waffels" element={<Waffels />} />,
+  // <Route key="Dodo" path="/recipie/Dodo" element={<Dodo />} />
 ];
 
 export default recipeRoutes;

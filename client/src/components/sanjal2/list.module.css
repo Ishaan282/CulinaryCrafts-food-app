@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.entire{
+    margin-top: 25vh;
+    /* background-color: rgb(255, 255, 154); */
+    overflow: auto; 
+    position:fixed;
+    width: 70vh; 
+    margin-left: 90vh;
+    margin-top:75vh !important; 
+    box-shadow: 10vh 1vh 10vh 1vh rgb(62, 144, 0);
+}
+
+.main{
+    background-color: rgba(255, 255, 255, 0.934);
+    backdrop-filter: blur(10px);  
+    border-radius: 0.5vh;  
+    padding: 20px;  
+    z-index: 1000; 
+    text-align: left;  
+    /* width: 70vh; 
+    margin-left: 90vh; */
+    margin-top:7.5vh !important;  
+    /* margin-bottom: auto; */
+    max-height: 50vh; 
+    overflow: auto;
+    /* position: fixed;
+    margin-left: 90vh;
+    width: 70vh; 
+    box-shadow: 1vh 1vh 1vh 1vh rgb(144, 0, 0); */  
+}
+
+.listHeader{
+    text-align: center !important;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    font-size: 3vh;
+    font-weight: bold;
+    /* font-family: "Cinzel", serif !important; */
+    font-family: "Noto Sans", sans-serif;
+    color: green;
+}
+.closeButton{
+    background-color: rgba(0, 128, 128, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 3vh;
+    /* color: blue; */
+}
+.closeButton:hover{
+    color: orangered;
+}

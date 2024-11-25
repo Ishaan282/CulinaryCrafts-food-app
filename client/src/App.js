@@ -8,6 +8,8 @@ import Social from './components/ishaan/Social';
 import Login from './components/samiksha/Login';
 import Signup from './components/samiksha/Signup';
 import Incrediants from './components/sameer/Incrediants';
+import ShoppinList from './components/sanjal2/ShoppingList';
+
 import { ShopContextProvider } from "./components/sameer/context/shop-context";
 
 import recipeRoutes from './components/sanjal/recipeRoutes'; // Import the recipeRoutes array
@@ -26,6 +28,7 @@ function App() {
           <Route path="/Incrediants" element={<Incrediants />} />
           <Route path="/Social" element={<Social />} />
           <Route path="/Recipes" element={<Recipes />} />
+          <Route path= "/ShoppinList" element={<ShoppinList />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
           {recipeRoutes} {/* Use the recipeRoutes array */}

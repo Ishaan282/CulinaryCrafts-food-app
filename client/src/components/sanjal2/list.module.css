@@ -3,7 +3,7 @@
 
 .entire{
     margin-top: 25vh;
-    /* background-color: rgb(255, 255, 154); */
+    background-color: rgb(255, 255, 74);
     overflow: auto; 
     position:fixed;
     width: 70vh; 
@@ -21,14 +21,14 @@
     text-align: left;  
     /* width: 70vh; 
     margin-left: 90vh; */
-    margin-top:7.5vh !important;  
+    top:8vh !important;  
     /* margin-bottom: auto; */
-    max-height: 50vh; 
+    max-height: 60vh; 
     overflow: auto;
-    /* position: fixed;
+    position: fixed;
     margin-left: 90vh;
     width: 70vh; 
-    box-shadow: 1vh 1vh 1vh 1vh rgb(144, 0, 0); */  
+    box-shadow: 1vh 1vh 1vh 1vh rgba(36, 0, 30, 0.442);  
 }
 
 .listHeader{
@@ -50,5 +50,43 @@
     /* color: blue; */
 }
 .closeButton:hover{
-    color: orangered;
+    color: rgb(255, 34, 0);
+}
+
+
+
+/* create ki css */
+.addbtn{
+    background-color: rgba(24, 0, 0, 0.857);
+    padding: 1vh;
+    width: 8vh;
+    margin-left: 3vh;
+    border-radius: 1vh;  
+    color:  rgb(255, 255, 255);
+    font-weight: bold;
+    border: 0.2vh solid rgb(43, 0, 22);
+    cursor: pointer;
+}
+.addtext{
+    margin-top: 1vh;
+    border-radius: 1vh;  
+    border:0vh;
+    border-bottom: 0.1vh solid;
+    padding: 1vh;
+    background-color: rgb(234, 255, 229);
+    width: 30vh;
+    margin-bottom: 2vh;
+}
+
+
+/* House ki css */
+.donebtn{
+    border-radius: 100vh;
+    /* padding: 1vh; */
+    border: none;
+}
+.delbtn{
+    padding: 1vh;
+    background-color: rgb(201, 0, 0);
+    cursor: pointer;
 }

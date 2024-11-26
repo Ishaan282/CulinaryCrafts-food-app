@@ -59,46 +59,64 @@ function Recipes() {
           </div>
         
 
-        <Link to="/recipie/ChocolateCake">
           <div className={`${r.Chocolate} ${r.sweet}`}>
-            <img src={chococover} className={r.imgDish} alt="Chocolate Cake" />
-            <div className={r.nameDish}>Chocolate Cake</div>
-            <div className={r.stars}>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-            </div>
-          </div>
-        </Link>
+  <Link to="/recipie/ChocolateCake">
+    <img src={chococover} className={r.imgDish} alt="Chocolate Cake" />
+    <div className={r.nameDish}>Chocolate Cake</div>
+  </Link>
+  <div className={r.extra}>
+    <div className={r.stars}>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+    </div>
+    <div className={r.bookmarkDiv}>
+      <button className={r.bookmark}><i className="fa-regular fa-bookmark"></i></button>
+    </div>
+  </div>
+</div>
 
-        <Link to="/recipie/Crembrule">
-          <div className={`${r.Crembrule} ${r.sweet}`}>
-            <img src={crembrule} className={r.imgDish} alt="Crembrule" />
-            <div className={r.nameDish}>Crembrule</div>
-            <div className={r.stars}>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star-half"></i>
-            </div>
-          </div>
-        </Link>
 
-        <Link to="/recipie/Banana">
-          <div className={`${r.Bannana} ${r.sweet}`}>
-            <img src={banana} className={r.imgDish} alt="Banana Sunday" />
-            <div className={r.nameDish}>Banana Sunday</div>
-            <div className={r.stars}>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-            </div>
-          </div>
-        </Link>
+<div className={`${r.Crembrule} ${r.sweet}`}>
+  <Link to="/recipie/Crembrule">
+    <img src={crembrule} className={r.imgDish} alt="Crembrule" />
+    <div className={r.nameDish}>Crembrule</div>
+  </Link>
+  <div className={r.extra}>
+    <div className={r.stars}>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star-half"></i>
+    </div>
+    <div className={r.bookmarkDiv}>
+      <button className={r.bookmark}><i className="fa-regular fa-bookmark"></i></button>
+    </div>
+  </div>
+</div>
+
+
+<div className={`${r.Bannana} ${r.sweet}`}>
+  <Link to="/recipie/Banana">
+    <img src={banana} className={r.imgDish} alt="Banana Sunday" />
+    <div className={r.nameDish}>Banana Sunday</div>
+  </Link>
+  <div className={r.extra}>
+    <div className={r.stars}>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
+    </div>
+    <div className={r.bookmarkDiv}>
+      <button className={r.bookmark}><i className="fa-regular fa-bookmark"></i></button>
+    </div>
+  </div>
+</div>
+
 
         <Link to="/recipie/Waffels">
           <div className={`${r.Waffels} ${r.sweet}`}>

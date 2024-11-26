@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const TodoModel = require('../models/sanjal_schema'); // Adjust the path as necessary
 
-// GET /get
+// GET 
 router.get("/get", (req, res) => {
     TodoModel.find()
         .then(result => res.json(result))

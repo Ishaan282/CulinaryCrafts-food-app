@@ -39,6 +39,9 @@
 
 .nameDish{
   text-align: none !important;
+  /* background-color: #9cdf50; */
+  text-decoration: none !important;
+  color: #2c2c2c;
 }
 
 .extra{
@@ -61,6 +64,9 @@
   background-color: #2c2c2c00;
   border: none !important;
   cursor: pointer;
+}
+.bookmark:hover{
+  color: aqua !important;
 }
 
 .hi{

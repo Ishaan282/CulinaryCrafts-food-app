@@ -7,13 +7,13 @@ function House() {
     const [todos, setTodos] = useState([]);
     
     useEffect(() => {
-        axios.get('http://localhost:5000/get')
+        axios.get('/Recipe/todo/get')
             .then(result => setTodos(result.data))
             .catch(err => console.log(err));
     }, []);
 
     const handleEdit = (id) => {
-        axios.put(`http://localhost:5000/update/${id}`)
+        axios.put(`/Recipe/todo/update/${id}`)
             .then(() => {
                 setTodos(todos.map(todo => 
                     todo._id === id ? { ...todo, done: !todo.done } : todo
@@ -23,7 +23,7 @@ function House() {
     };
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:5000/delete/${id}`)
+        axios.delete(`/Recipe/todo/delete/${id}`)
             .then(() => {
                 setTodos(todos.filter(todo => todo._id !== id));
             })
@@ -32,7 +32,7 @@ function House() {
 
     return (
         <div>
-            <Create refreshTodos={() => axios.get('http://localhost:3001/get').then(result => setTodos(result.data))} />
+            <Create refreshTodos={() => axios.get('/Recipe/todo/get').then(result => setTodos(result.data))} />
             {todos.length === 0
                 ? <div><h3>No record</h3></div>
                 : todos.map(todo => (

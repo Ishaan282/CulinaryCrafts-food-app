@@ -20,7 +20,7 @@ function Social() {
 
     // Establish socket connection on mount
     useEffect(() => {
-        socket.current = io('http://localhost:5000');  // Adjust to your server URL
+        socket.current = io();  // server url from proxy 
     
         socket.current.on('chat message', (msg) => {
             setMessages((prevMessages) => Array.isArray(prevMessages) ? [...prevMessages, msg] : [msg]);

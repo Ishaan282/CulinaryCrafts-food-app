@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import y from './list.module.css'; 
+import u from './create.module.css';
 
 function Create({ refreshTodos }) {
     const [task, setTask] = useState('');
@@ -15,6 +15,11 @@ function Create({ refreshTodos }) {
                 .catch(err => console.log(err));
         }
     };
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {  // Check if the pressed key is Enter
+            handleAdd();  // Call addTask function
+        }
+      };
 
     return (
         <div>
@@ -23,9 +28,10 @@ function Create({ refreshTodos }) {
                 placeholder='Enter' 
                 value={task} 
                 onChange={(e) => setTask(e.target.value)} 
-                className={`${y.addtext}`}
+                className={`${u.addtext}`}
+                onKeyDown={handleKeyDown}
             />
-            <button className={`${y.addbtn}`} onClick={handleAdd}>Add</button>
+            <button className={`${u.addbtn}`} onClick={handleAdd}>Add</button>
         </div>
     );
 }

@@ -1,0 +1,62 @@
+
+.allTask {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 0vh;
+    font-size: 2vh;
+  }
+  
+  .Task {
+    display: flex;
+    align-items: center;
+    margin: 1vh;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 25vw;
+    font-size: 0.5vh;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .donebtn {
+    width: 1.2vh;
+    height: 95%;
+    border-left: 0.5vh solid #4caf50;
+    margin-right: 2vh;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: xx-small;
+    border-radius: 100vh;
+  }
+  
+  .Task p {
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-size: 2vh;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .Task p[style*="line-through"] {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  .delbtn {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    padding: 1vh;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 2vh;
+  }
+  
+  .delbtn:hover {
+    background-color: darkred;
+  }
+  

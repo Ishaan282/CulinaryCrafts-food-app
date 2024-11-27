@@ -1,11 +1,11 @@
 # Project title: CulinaryCrafts
 
 ## Description
-CulinaryCrafts is your ultimate companion in the kitchen. This all-in-one food application, built with React, is designed to inspire, facilitate, and enhance your culinary journey. Whether you're a seasoned chef or a beginner, CulinaryCrafts offers a rich and interactive platform to discover new recipes, connect with fellow food lovers, shop for ingredients, and showcase your own culinary masterpieces.
+CulinaryCrafts is your ultimate companion in the kitchen. This all-in-one food application, built with MERN, is designed to inspire, facilitate, and enhance your culinary journey. Whether you're a seasoned chef or a beginner, CulinaryCrafts offers a rich and interactive platform to discover new recipes, connect with fellow food lovers, shop for ingredients, and showcase your own culinary masterpieces.
 
-The application is designed with a user-friendly interface, featuring a navigation bar for easy access to various sections - Home, Recipes, Socials, Ingredients, and Cart. Explore a diverse range of recipes, each accompanied by a detailed guide and a customizable ingredient checklist. Connect with other food enthusiasts in the Socials section, equipped with a chat feature for sharing your food experiences. The Ingredients section serves as your digital marketplace, listing all available ingredients for purchase. The application also includes a login/signup feature, allowing you to create a personal account and save your preferences.
+The application is designed with a user-friendly interface, featuring a navigation bar for easy access to various sections - Home, Recipes, Socials, Ingredients, Shopping List and Cart. Explore a diverse range of recipes, each accompanied by a detailed guide and ingredient checklist. Connect with other food enthusiasts in the Socials section, equipped with a chat feature for sharing your food experiences. The Ingredients section serves as your digital marketplace, listing all available ingredients for purchase. By going to the Shopping List you can create your presonalized list. The application also includes a login/signup feature, allowing you to create a personal account and save your preferences.
 
-Whether you're planning a meal, learning a new dish, or shopping for ingredients, CulinaryCrafts is your go-to food application. Dive in and let your culinary adventure begin!
+Whether you're planning a meal, learning a new dish, shopping for ingredients, or just creating your next grocery list CulinaryCrafts is your go-to food application. Dive in and let your culinary adventure begin!
 
 ## Features
 1. **Navigation Bar**: The navigation bar includes options for Home, Recipes, Socials, Ingredients, Login/Signup, and a Cart button.
@@ -18,9 +18,11 @@ Whether you're planning a meal, learning a new dish, or shopping for ingredients
 
 5. **Ingredients**: This section lists all available ingredients for purchase. Users can easily add ingredients to their cart with a single click.
 
-6. **Cart**: The cart allows users to review their orders before checkout.
+6. **Shoppin List**: This section allows users to creat a list, that they can check off later.
 
-7. **Login/Signup**: Users can create an account through the signup option or log into their existing account.
+7. **Cart**: The cart allows users to review their orders before checkout.
+
+8. **Login/Signup**: Users can create an account through the signup option or log into their existing account.
 
 # technologies:
 

@@ -96,17 +96,7 @@ const Pastasss = () => {
             ))}
           </ul>
 
-          <div className='add-todo-ingr'>
-            <input
-              className='enter-new-ing'
-              type="text"
-              placeholder="Add custom Ingredients"
-              value={customIngredient}
-              onChange={handleInputChange}
-              onKeyPress={handleKeyPress}
-            />
-            <button className='button-plus' onClick={handleAddIngredient} style={color}><i class="fa-solid fa-plus"></i></button>
-          </div>
+        
         </div>
 
         <div className='container-addi-info'>

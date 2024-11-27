@@ -1,0 +1,23 @@
+.addbtn{
+    background-color: black;
+    padding: 1vh;
+    width: 8vh;
+    margin-left: 3vh;
+    border-radius: 1vh;  
+    color:  rgb(255, 255, 255);
+    font-weight: bold;
+    border: 0.2vh solid rgb(43, 0, 22);
+    cursor: pointer;
+}
+.addtext{
+    margin-top: 1vh;
+    border-radius: 1vh;  
+    border:0vh;
+    border-bottom: 0.1vh solid;
+    padding: 1vh;
+    background-color: rgb(234, 255, 229);
+    width: 20vw;
+    margin-bottom: 2vh;
+}
+
+

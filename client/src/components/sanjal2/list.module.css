@@ -3,18 +3,17 @@
 
 .entire{
     margin-top: 25vh;
-    background-color: rgb(255, 255, 74);
+    background-color: rgb(45, 45, 0);
     overflow: auto; 
     position:fixed;
-    width: 70vh; 
-    margin-left: 90vh;
+    width: 70vw; 
+    margin-left: 90vw;
     margin-top:75vh !important; 
     box-shadow: 10vh 1vh 10vh 1vh rgb(62, 144, 0);
 }
 
 .main{
-    background-color: rgba(255, 255, 255, 0.934);
-    backdrop-filter: blur(10px);  
+    background-color:rgba(250, 255, 193, 0.852);
     border-radius: 0.5vh;  
     padding: 20px;  
     z-index: 1000; 
@@ -51,42 +50,4 @@
 }
 .closeButton:hover{
     color: rgb(255, 34, 0);
-}
-
-
-
-/* create ki css */
-.addbtn{
-    background-color: rgba(24, 0, 0, 0.857);
-    padding: 1vh;
-    width: 8vh;
-    margin-left: 3vh;
-    border-radius: 1vh;  
-    color:  rgb(255, 255, 255);
-    font-weight: bold;
-    border: 0.2vh solid rgb(43, 0, 22);
-    cursor: pointer;
-}
-.addtext{
-    margin-top: 1vh;
-    border-radius: 1vh;  
-    border:0vh;
-    border-bottom: 0.1vh solid;
-    padding: 1vh;
-    background-color: rgb(234, 255, 229);
-    width: 30vh;
-    margin-bottom: 2vh;
-}
-
-
-/* House ki css */
-.donebtn{
-    border-radius: 100vh;
-    /* padding: 1vh; */
-    border: none;
-}
-.delbtn{
-    padding: 1vh;
-    background-color: rgb(201, 0, 0);
-    cursor: pointer;
 }

@@ -96,7 +96,7 @@ const Soup = () => {
             ))}
           </ul>
 
-          <div className='add-todo-ingr'>
+          {/* <div className='add-todo-ingr'>
             <input
               className='enter-new-ing'
               type="text"
@@ -106,7 +106,7 @@ const Soup = () => {
               onKeyPress={handleKeyPress}
             />
             <button className='button-plus' onClick={handleAddIngredient}><i class="fa-solid fa-plus"></i></button>
-          </div>
+          </div> */}
         </div>
 
         <div className='container-addi-info'>

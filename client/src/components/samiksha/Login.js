@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 // import React from 'react';
 import { Link } from 'react-router-dom';
 import a from './Login.module.css'; 
-import loginImage from './loginimg.jpg'; 
+import loginImage from './Assets/loginimg.jpg'; 
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -48,9 +48,5 @@ localStorage.setItem("name", user.name);
 };
 
 export default Login;
-
-
-
-
 
 

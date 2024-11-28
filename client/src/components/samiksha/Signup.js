@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import a from './Signup.module.css'; 
-import signupImage from './signupimage.jpg'; 
+import signupImage from './Assets/signupimage.jpg'; 
 
 const Signup= () => {
     const navigate = useNavigate();
@@ -42,6 +42,3 @@ const Signup= () => {
 };
 
 export default Signup;
-
-
-

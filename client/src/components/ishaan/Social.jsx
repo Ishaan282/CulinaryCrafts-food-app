@@ -18,7 +18,7 @@ function Social() {
     
     const socket = useRef(null);  // Socket reference
 
-    // Establish socket connection on mount
+    // receiving messages via socket.io
     useEffect(() => {
         socket.current = io();  // server url from proxy 
     
@@ -40,19 +40,19 @@ function Social() {
     }, []);
     
 
-    // Fetch messages from the backend on mount
+    // Fetch messages from the backend 
     useEffect(() => {
         const loadMessages = async () => {
             setLoading(true);
             try {
-                const data = await fetchMessages();
+                const data = await fetchMessages(); //socialHandler
                 setMessages(data);
             } catch (error) {
                 setError(error.message);
             }
             setLoading(false);
         };
-        loadMessages();
+        loadMessages(); //calling the function
     }, []);
 
     // Chat container ref to manage auto-scrolling
@@ -65,7 +65,7 @@ function Social() {
         }
     }, [messages]);
 
-    // File input ref
+    // File input 
     const fileInputRef = useRef();
 
     const handleTextMessageChange = (e) => {
@@ -84,6 +84,7 @@ function Social() {
                     <Profile id={s.pr2} name="Bread" />
                 </div>
             </div>
+
             {/* Chatting area */}
             <div className={`${s.main2}`}>
                 <div className={`${s.chat}`} ref={chatRef}>
@@ -108,6 +109,7 @@ function Social() {
                     )}
                     {isTyping && <p>Someone is typing...</p>}  {/* Typing indicator */}
                 </div>
+
                 {/* Texting bar */}
                 <div id={s.bottom}>
                     <input type="file" style={{ display: 'none' }} onChange={(e) => handleFileSelect(e, setSelectedImage, sendMessage, setMessages, setError, socket.current)} ref={fileInputRef} />

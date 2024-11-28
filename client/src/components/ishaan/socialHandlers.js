@@ -24,7 +24,7 @@ export const handleFileSelect = (event, setSelectedImage, sendMessage, setMessag
             setSelectedImage(reader.result);
             sendMessage('', reader.result)
                 .then(newMessage => {
-                    socket.emit('chat message', newMessage); // Emit the new message event
+                    socket.emit('chat message', newMessage); 
                 })
                 .catch(error => setError(error.message));
         };
@@ -38,7 +38,7 @@ export const handleDeleteMessage = async (index, messages, deleteMessage, setMes
     try {
         await deleteMessage(messageToDelete._id);
         setMessages((prevMessages) => prevMessages.filter((_, i) => i !== index));
-        socket.emit('delete message', messageToDelete._id); // Emit delete message event
+        socket.emit('delete message', messageToDelete._id); 
     } catch (error) {
         setError(error.message);
     }

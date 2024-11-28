@@ -9,7 +9,7 @@ mongoose.connect(dbURI)
         const server = http.createServer(app);
 
         //#socket.io
-        Sock(server);
+        Sock(server); 
 
         server.listen(PORT, () => {
             console.log('Server connected!');

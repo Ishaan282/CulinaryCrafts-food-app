@@ -1,4 +1,5 @@
-import axios from 'axios';
+//axios is used to make requests to the server
+import axios from 'axios'; 
 
 export const fetchMessages = async () => {
     try {
@@ -9,7 +10,7 @@ export const fetchMessages = async () => {
         throw new Error('Failed to load messages.');
     }
 };
-
+ 
 export const sendMessage = async (message, picture = '') => {
     const newMessage = {
         message: message.trim(),

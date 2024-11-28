@@ -1,17 +1,4 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-require('dotenv').config();
-const bodyParser = require('body-parser');
-const http = require('http');
-const Sock = require('./socket');
-
-//routes 
-const chat = require('./routes/ishaan_social');
-const signup = require('./routes/Samiksha2_post');
-const todo = require('./routes/sanjal_todo');
-const shop = require('./routes/Sameer_incredients');
-
+const { app, http, Sock, mongoose, chat, signup, todo, shop } = require('./config');
 
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
@@ -33,12 +20,6 @@ mongoose.connect(dbURI)
         console.log("Unable to connect to the database", error);
     });
 
-// Middleware to parse JSON request bodies with a higher limit
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
-
-
-
 app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');
 });
@@ -56,7 +37,7 @@ app.use('/api/Signup', signup );
 app.use('/Recipe/todo', todo);
 
 //$Sameer part
-app.use('/shop',shop);
+app.use('/shop', shop);
 
 //!handling error page 
 app.use((req, res, next) => {

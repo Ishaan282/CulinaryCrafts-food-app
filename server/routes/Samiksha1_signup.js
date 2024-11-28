@@ -1,4 +1,4 @@
-const User = require("../models/Samiksha1_schema");
+const User = require("../models/user");
 const bcrypt = require("bcrypt");  // Corrected typo
 
 module.exports.register = async (req, res, next) => {

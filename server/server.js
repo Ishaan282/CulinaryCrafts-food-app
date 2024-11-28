@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const http = require('http');
-const socketIo = require('socket.io');
+const Sock = require('./socket');
 
 //routes 
 const chat = require('./routes/ishaan_social');
@@ -12,9 +12,6 @@ const signup = require('./routes/Samiksha2_post');
 const todo = require('./routes/sanjal_todo');
 const shop = require('./routes/Sameer_incredients');
 
-// Middleware to parse JSON request bodies with a higher limit
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
@@ -23,32 +20,9 @@ const PORT = 5000;
 mongoose.connect(dbURI)
     .then((result) => {
         const server = http.createServer(app);
-        const io = socketIo(server, {
-            cors: {
-                origin: "http://localhost:3000", // adjust to your frontend URL
-            },
-        });
 
-        io.on('connection', (socket) => {
-            console.log('a user connected');
-        
-            socket.on('chat message', (msg) => {
-                io.emit('chat message', msg);
-            });
-        
-            socket.on('typing', (data) => {
-                socket.broadcast.emit('typing', data);
-            });
-        
-            socket.on('delete message', (messageId) => {
-                io.emit('delete message', messageId); // Emit delete message event
-            });
-        
-            socket.on('disconnect', () => {
-                console.log('user disconnected');
-            });
-        });
-        
+        //#socket.io
+        Sock(server);
 
         server.listen(PORT, () => {
             console.log('Server connected!');
@@ -58,6 +32,12 @@ mongoose.connect(dbURI)
     .catch((error) => {
         console.log("Unable to connect to the database", error);
     });
+
+// Middleware to parse JSON request bodies with a higher limit
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+
+
 
 app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');

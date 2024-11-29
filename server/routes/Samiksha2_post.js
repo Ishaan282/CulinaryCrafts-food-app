@@ -37,6 +37,39 @@ router.delete('/user/:username', async (req, res) => {
     }
 });
 
+router.patch('/update-user', async (req, res) => {
+    try {
+        const { userId, newUsername, newemail } = req.body; // Destructure fields from request body
+
+        // Validate the input
+        if (!userId || !newUsername || !newemail) {
+            return res.status(400).json({ error: 'userId, newUsername, and newemail are required' });
+        }
+
+        // Find the user by ID and update username and email
+        const updatedUser = await User.findByIdAndUpdate(
+            userId, // Find user by ID
+            { username: newUsername, email: newemail }, // Update fields
+            { new: true } // Return the updated document
+        );
+
+        // If user not found, return an error
+        if (!updatedUser) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Respond with the updated user
+        res.status(200).json({
+            message: 'User updated successfully',
+            user: updatedUser,
+        });
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).json({ error: 'An error occurred while updating the user' });
+    }
+});
+
+
 
 router.post('/login', login);
 

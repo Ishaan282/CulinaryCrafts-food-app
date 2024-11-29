@@ -8,12 +8,10 @@ import io from 'socket.io-client';  // Import Socket.io client
 import upload_icon from './icons/upload.png';
 
 function Social() {
-    // States for messages, text input, image, loading, and error
-    const [messages, setMessages] = useState([]);
-    const [textMessage, setTextMessage] = useState('');
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const [messages, setMessages] = useState([]); //rendering messages
+    const [textMessage, setTextMessage] = useState(''); //text input
+    const [loading, setLoading] = useState(false); //loading state
+    const [error, setError] = useState(''); //if error occurs
     const [isTyping, setIsTyping] = useState(false);  // State for typing indicator
     
     const socket = useRef(null);  // Socket reference
@@ -86,6 +84,7 @@ function Social() {
             </div>
 
             {/* Chatting area */}
+            {/* messages state is being used to render  */}
             <div className={`${s.main2}`}>
                 <div className={`${s.chat}`} ref={chatRef}>
                     {loading ? (
@@ -112,7 +111,7 @@ function Social() {
 
                 {/* Texting bar */}
                 <div id={s.bottom}>
-                    <input type="file" style={{ display: 'none' }} onChange={(e) => handleFileSelect(e, setSelectedImage, sendMessage, setMessages, setError, socket.current)} ref={fileInputRef} />
+                    <input type="file" style={{ display: 'none' }} onChange={(e) => handleFileSelect(e, sendMessage, setMessages, setError, socket.current)} ref={fileInputRef} />
                     <img src={upload_icon} alt="Upload file" className={s.bottom_icon} onClick={() => fileInputRef.current.click()} />
                     <textarea
                         id={s.enter_text}

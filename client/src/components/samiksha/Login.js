@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import a from './Login.module.css'; 
 import loginImage from './Assets/loginimg.jpg'; 
 import { useNavigate } from 'react-router-dom';
+import { loginService } from '../samiksha/services/auth.service';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -15,17 +16,21 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-        const user = accounts.find((account) => account.email === input.email 
-        && account.password === input.password);
-        if (user) {
-          localStorage.setItem("loggedin", true);
-          // After successful signup or login
-localStorage.setItem("name", user.name);
-
-          navigate("/home");
-        } else {
-          alert("Wrong Email or Password");
+        try{
+            loginService(input.email, input.password)
+            .then((data) => {
+                if(data.status){
+                  console.log("Login Successful");
+                  navigate("/Home", { state: { user: data.user } });
+                }
+                else{
+                    alert("Incorrect email or password");
+                }
+            });
+        }
+        catch(error){
+            console.error('There was a problem with the fetch operation:', error);
+            throw error;
         }
       };
 

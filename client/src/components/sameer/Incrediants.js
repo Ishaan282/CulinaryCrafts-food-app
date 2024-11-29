@@ -17,14 +17,14 @@ export const Incrediants = () => {
                 <p>A recipe has no soul.</p>
                 <p>You as a cook, must bring soul to the recipe.</p>
                 <p>That is why we bring the best incrediants.</p>
-                <p>For all works deserves to be a masterpiece.</p>
+                <p>For every craft deserves to be a masterpiece.</p>
             </div>
             <div className={IncrediantsCSS.gridcontainer}>
 
                 <div className={IncrediantsCSS.griditem}>
                     <img src={tomato} alt='tomato'></img>
                     <h1>Tomato</h1>
-                    <h2>Price: ₹312 per kg</h2>
+                    <h2>Price: ₹200 per kg</h2>
                     <button className={IncrediantsCSS.button} onClick={() => addToCart(1)}>
                         Add To Cart
                         {cartItems[1] > 0 && <> ({cartItems[1]})</>}
@@ -34,7 +34,7 @@ export const Incrediants = () => {
                 <div className={IncrediantsCSS.griditem}>
                     <img src={apple} alt='apple'></img>
                     <h1>Apple</h1>
-                    <h2>Price: ₹1050 per kg</h2>
+                    <h2>Price: ₹150 per kg</h2>
                     <button className={IncrediantsCSS.button} onClick={() => addToCart(2)}>
                         Add To Cart
                         {cartItems[2] > 0 && <> ({cartItems[2]})</>}

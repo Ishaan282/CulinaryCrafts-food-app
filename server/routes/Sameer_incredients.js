@@ -6,21 +6,21 @@ const Ingredients = require('../models/Sameer_schema');
 // GET 
 router.get('/', async (req, res) => {
     try {
-        const ingredients = await Ingredients.find();
+        const ingredients = await Ingredients.find(); //Getting every ingredients.
         res.json(ingredients);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: err.message }); //returning error message.
     }
 });
 
 // POST 
 router.post('/', async (req, res) => {
-    const ingredient = new Ingredients({
+    const ingredient = new Ingredients({ //Posting the ingredients into the database.
         name: req.body.name,
         price: req.body.price
     });
 
-    try {
+    try { // error handling for posting.
         const newIngredient = await ingredient.save();
         res.status(201).json(newIngredient);
     } catch (err) {
@@ -29,14 +29,14 @@ router.post('/', async (req, res) => {
 });
 
 // DELETE 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => { // deleting the ingredinet.
     try {
         const ingredient = await Ingredients.findByIdAndDelete(req.params.id);
 
         if (!ingredient) return res.status(404).json({ message: 'Ingredient not found' });
 
         res.json(ingredient);
-    } catch (err) {
+    } catch (err) { //error handling while deleting.
         res.status(500).json({ message: err.message });
     }
 });
@@ -44,7 +44,7 @@ router.delete('/:id', async (req, res) => {
 // UPDATE 
 router.patch('/:id', async (req, res) => {
     try {
-        const ingredient = await Ingredients.findById(req.params.id);
+        const ingredient = await Ingredients.findById(req.params.id); //getting the id for update.
 
         if (!ingredient) return res.status(404).json({ message: 'Ingredient not found' });
 

@@ -1,5 +1,5 @@
 const express = require('express');
-const User = require('../models/user'); // Import the User model
+const User = require('../models/Samiksha1_schema'); // Import the User model
 const { register, login } = require('../routes/Samiksha1_signup'); // Import the register function
 
 const router = express.Router();

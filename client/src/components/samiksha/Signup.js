@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import a from './Signup.module.css'; 
-import signupImage from './Assets/signupimage.jpg'; 
+import signupImage from './Assets/signupimage.jpg';
+import {registerService} from '../samiksha/services/auth.service';
 
 const Signup= () => {
     const navigate = useNavigate();
@@ -16,9 +17,20 @@ const Signup= () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const existingAccounts = JSON.parse(localStorage.getItem("accounts")) || [];
-        const updatedAccounts = [...existingAccounts, input];
-        localStorage.setItem("accounts", JSON.stringify(updatedAccounts));
+        try{
+          const response = registerService(input.name, input.email, input.password);
+          if(response.status){
+            console.log("Signup Successful");
+            navigate("/login");
+          }
+          else{
+              alert("Signup Unsuccessful");
+          }
+        }
+        catch(error){
+            console.error('There was a problem with the fetch operation:', error);
+            throw error;
+        }
         navigate("/login");
       };
    

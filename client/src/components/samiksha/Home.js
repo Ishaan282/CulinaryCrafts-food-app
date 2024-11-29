@@ -1,6 +1,6 @@
 // Home.js
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useRef, useEffect, useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import a from './Home.module.css';
 import chef from './Assets/chef1.png';
 import ingredient from './Assets/ingredients.jpg';
@@ -28,6 +28,16 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const Home = () => {
+  const location = useLocation();
+  const sliderRef = useRef(null);
+  const [user, setUser] = useState({ username: "Guest", email: "" });
+
+  useEffect(() => {
+    if (location.state && location.state.user) {
+      setUser(location.state.user);
+    }
+  }, [location.state]);
+
   const handleClick = () => {
     window.scrollTo({
       top: 0,
@@ -35,24 +45,10 @@ const Home = () => {
     });
   };
 
-  const [email, setEmail] = useState('');
-
   const handleSubmit = (event) => {
     event.preventDefault();
     alert('Thank you for subscribing to Culinary Crafts');
   };
-
-  const navigate = useNavigate();
-  const [userName, setUserName] = useState('');
-
-  useEffect(() => {
-    const name = localStorage.getItem("name");
-    if (name) {
-      setUserName(name);
-    }
-  }, []);
-
-  const sliderRef = useRef(null);
 
   const goToPrev = () => {
     if (sliderRef.current) {
@@ -81,7 +77,6 @@ const Home = () => {
         <div className={a.homeContainer}>
           <div className={a.leftSection}>
             <div className={a.curvedText}>
-              {/* "npm install react-curved-text"  for this to work*/}
               <ReactCurvedText
                 width={300}
                 height={120}
@@ -98,12 +93,12 @@ const Home = () => {
                 ellipseProps={null}
                 svgProps={null}
               />
-              {/* {userName && <p className={a.userName}>{userName}</p>} */}
+              <p className={a.userName}>{user.username}</p>
             </div>
             <div className={a.mainText}>
               <h1>Recipe</h1>
               <h1>Destination</h1>
-              <p className={a.subText}>Be Your Own Masterchef {userName && userName}</p>
+              <p className={a.subText}>Be Your Own Masterchef {user.username}</p>
               <div className={a.buttons}>
                 <Link to="/recipes" className={a.recipeBtn}>Recipe</Link>
                 <Link to="/cart" className={a.cartBtn}>Cart</Link>
@@ -260,19 +255,15 @@ const Home = () => {
           <h2 className={a.carouselTitle}>Featured YouTube Videos</h2>
           <Slider {...videoSettings} ref={sliderRef}>
             <div>
-              {/* Embed YouTube video 1 */}
               <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ov4u0ARMWKQ?si=GnebIrLfYoFQ1Yy1&amp;start=2" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
             <div>
-              {/* Embed YouTube video 1 */}
               <iframe width="100%" height="315" src="https://www.youtube.com/embed/GdcCVZ_D7hQ?si=vD3KP7X7YF6wXIYG&amp;start=2" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
             <div>
-              {/* Embed YouTube video 1 */}
               <iframe width="100%" height="315" src="https://www.youtube.com/embed/vxOzUCYJQ8M?si=_efDbfWzp9HkGFLt&amp;start=2" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
             <div>
-              {/* Embed YouTube video 1 */}
               <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ds-3VyRIyCU?si=4wsCZzCvcX8Y3nLA&amp;start=2" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
           </Slider>
@@ -285,7 +276,6 @@ const Home = () => {
         <div className={a.todayCookSection}>
           <h2 className={a.sectionTitle}>So, what will you cook today?</h2>
           <div className={a.cookContainer}>
-            {/* First section */}
             <div className={a.section}>
               <Link to="/recipes" className={a.link}>
                 <img src={dish1} alt="Most searched dish" />
@@ -298,7 +288,6 @@ const Home = () => {
                 <p className={a.paraidk}>New recipes just for you</p>
               </Link>
             </div>
-            {/* Second section */}
             <div className={a.section}>
               <Link to="/recipes" className={a.link}>
                 <img src={main} alt="Egg salad" />
@@ -306,7 +295,6 @@ const Home = () => {
                 <div className={a.stars}>★★★★☆</div>
               </Link>
             </div>
-            {/* Third section */}
             <div className={a.section}>
               <Link to="/recipes" className={a.link}>
                 {[snack1, snack2, snack3, snack4, snack5].map((dish, index) => (
@@ -344,32 +332,15 @@ const Home = () => {
               <p>email@example.com</p>
               <p>+123 456 7890</p>
             </div>
-        <div className={a.footerSection}>
-        <form onSubmit={handleSubmit}>
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                value={email} // Bind input value to state
-                onChange={(e) => setEmail(e.target.value)} // Update state when input changes
-              />
-              <button type="submit">Subscribe</button>
-            </form>
+          </div>
+          <div className={a.copyRight}>
+            © 2024 Team-4 G22. All rights reserved.
+          </div>
+          <button className={a.buttontogo} onClick={handleClick}>
+            <i className="fas fa-arrow-up"></i>
+          </button>
         </div>
       </div>
-      <div className={a.copyRight}>
-        © 2024 Team-4 G22. All rights reserved.
-      </div>
-      <button className={a.buttontogo} onClick={handleClick}>
-      <i className="fas fa-arrow-up"></i> {/* Font Awesome icon for arrow */}
-    </button>
-    </div>
-   
-
-
-</div>
-    
     </>
   );
 };

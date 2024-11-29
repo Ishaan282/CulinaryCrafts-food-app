@@ -1,12 +1,12 @@
-const User = require('../models/user');
+const User = require('../models/Samiksha1_schema');
 const bcrypt = require('bcrypt');
 const login= async(req, res)=>{
     try {
-        const { username, password } = req.body;
-        const user = await User.findOne({ username });
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
 
         if (!user) {
-            return res.status(404).json({ msg: "Incorrect username or password", status: false });
+            return res.status(404).json({ msg: "Incorrect email or password", status: false });
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);

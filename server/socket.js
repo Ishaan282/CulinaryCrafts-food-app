@@ -21,12 +21,10 @@ module.exports = (server) => {
             socket.broadcast.emit('typing', data); 
         });
 
-        //listen for delete message event
         socket.on('delete message', (messageId) => {
             io.emit('delete message', messageId);
         });
 
-        //listen for disconnect event
         socket.on('disconnect', () => {
             console.log('user disconnected');
         });

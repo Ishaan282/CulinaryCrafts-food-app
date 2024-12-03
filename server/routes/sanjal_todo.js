@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const TodoModel = require('../models/sanjal_schema'); // Adjust the path as necessary
+const TodoModel = require('../models/sanjal2_schema'); // Adjust the path as necessary
 
 // GET 
 router.get("/get", (req, res) => {

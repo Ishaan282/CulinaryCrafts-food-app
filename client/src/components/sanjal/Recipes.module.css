@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-.mainMenu{
+.main{
+  
+}
+.mainMenu {
   margin-top: 4.55rem;
-  /* background: linear-gradient(to right,#f1f5f9, #4ade80); */
-  background: linear-gradient( #e7ffce, #e0e0e0);
-  /* font-family:'poppins'; */
+  background: linear-gradient(#e7ffce);
+  font-family: 'Noto Sans', sans-serif;
+  padding: 2vh 2vw; 
 }
 
-.sweetFood, 
-.pastas, 
-.soups,
-.vegetarians,
-.salads{
+
+.dishesContainer{
   display: grid;
-  grid-template-columns: repeat(4, 48vh); 
+  grid-template-columns: repeat(auto-fill, minmax(40vh, 1fr)); 
   gap: 2vh;
-  text-decoration: none !important;
+  justify-items: center; 
 }
 
 .sweet,
@@ -24,12 +24,20 @@
 .vegetarian,
 .salad{
   /* background-color: #49b533; */
+  /* background-color: #f7a79f;
+  width: max-content;
+  padding: 3vh;
+  margin-left: 5vh;
+  text-align: center;
+  color: rgb(28, 28, 28); */
   background-color: #f7a79f;
   width: max-content;
   padding: 3vh;
   margin-left: 5vh;
   text-align: center;
   color: rgb(28, 28, 28);
+  border-radius: 8px; /* Slight rounding for corners */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .imgDish{

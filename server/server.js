@@ -7,7 +7,7 @@ const PORT = 5000;
 mongoose.connect(dbURI)
     .then((result) => {
         const server = http.createServer(app);
-
+        console.log("db connected");
         //#socket.io
         Sock(server); 
 

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { app, http, Sock, mongoose, chat, signup, todo, shop } = require('./config');
 
 //connecting to server

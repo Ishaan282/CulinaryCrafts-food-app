@@ -17,7 +17,7 @@ const chat = require('./routes/ishaan_social');
 const signup = require('./routes/Samiksha2_post');
 const todo = require('./routes/sanjal_todo');
 const shop = require('./routes/Sameer_incredients');
-const recepies = require('./routes/sanjal_recipies');
+const recepies = require('./routes/sanjal_recepies');
 
 
 module.exports = { app, http, Sock, mongoose, chat, signup, todo, shop, recepies };

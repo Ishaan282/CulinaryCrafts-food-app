@@ -25,7 +25,7 @@ import crep from './depictions-menu/crep.jpg';
 import sushi from './depictions-menu/sushi.jpeg';
 
 // Reusable Dish Component
-const Dish = ({ link, image, name, starsCount }) => {
+const Dish = ({ name, image, link, starsCount }) => {
   const fullStars = Math.floor(starsCount); // Full stars
   const hasHalfStar = starsCount % 1 !== 0; // Check for half star
 
@@ -100,13 +100,14 @@ const Recipes = () => {
   // useEffect is now inside the component function, correctly using dishesData
   useEffect(() => {
     // Make a POST request to save the recipes
-    axios.post('http://localhost:5000/api/recipes', dishesData)
-      .then(response => {
-        console.log('Recipes saved successfully:', response.data);
-      })
-      .catch(error => {
-        console.error('Error saving recipes:', error);
-      });
+    axios.post('http://localhost:5000/Recipe/todo/api/recipes', dishesData)
+  .then(response => {
+    console.log('Recipes saved successfully:', response.data);
+  })
+  .catch(error => {
+    console.error('Error saving recipes:', error);
+  });
+
   }, []); // Ensure the effect runs once after the component mounts
 
   return (

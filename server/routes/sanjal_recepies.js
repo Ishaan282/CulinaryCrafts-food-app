@@ -1,54 +1,37 @@
-// backend/server.js
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
+const Recipe = require('./models/sanjal_recepies_schema');    
 const app = express();
-const port = 5000;
 
-// MongoDB URI (replace with your actual MongoDB URI)
-const mongoURI = 'mongodb://localhost:27017/recipesDB'; 
-
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.log('Error connecting to MongoDB:', err));
-
-// Middleware
+// Middleware to parse JSON request bodies
 app.use(cors());
 app.use(bodyParser.json());
 
-// Dish Schema
-const dishSchema = new mongoose.Schema({
-  category: String,
-  link: String,
-  image: String,
-  name: String,
-  starsCount: Number,
-});
+// MongoDB connection (Replace with your MongoDB URI)
+mongoose.connect('mongodb://your_mongo_connection_string', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.log('MongoDB connection error:', err));
 
-const Dish = mongoose.model('Dish', dishSchema);
 
-// API route to get all dishes
-app.get('/api/dishes', async (req, res) => {
+// POST route to save recipes data
+app.post('/api/recipes', async (req, res) => {
+  const recipesData = req.body; // Expecting data in the same format as in your React component
+
   try {
-    const dishes = await Dish.find();
-    res.json(dishes);
+    // Save recipes data to MongoDB
+    const savedRecipes = await Recipe.insertMany(recipesData);
+    res.status(200).json(savedRecipes); // Respond with the saved recipes
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(400).json({ message: 'Error saving recipes', error: err });
   }
 });
 
-// API route to add a new dish
-app.post('/api/dishes', async (req, res) => {
-  try {
-    const { category, link, image, name, starsCount } = req.body;
-    const newDish = new Dish({ category, link, image, name, starsCount });
-    await newDish.save();
-    res.json(newDish);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 
-module.exports = router;
+// Start the Express server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

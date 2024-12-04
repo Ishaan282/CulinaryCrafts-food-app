@@ -7,7 +7,7 @@ function Create({ refreshTodos }) {
 
     const handleAdd = () => {
         if (task.trim()) {
-            axios.post('/Recipe/todo/add', { task }) // adding a task to the list
+            axios.post('/ShoppingList/todo/add', { task }) // adding a task to the list
                 .then(() => {
                     setTask(''); 
                     refreshTodos(); // Refresh the list

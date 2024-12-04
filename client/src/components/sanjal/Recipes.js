@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react'; // Import useEffect here
 import r from './Recipes.module.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 import burger1 from './depictions-menu/burger1.jpg';
 import pasta from './depictions-menu/pasta.jpg';
@@ -25,11 +26,10 @@ import sushi from './depictions-menu/sushi.jpeg';
 
 // Reusable Dish Component
 const Dish = ({ link, image, name, starsCount }) => {
-  // Calculate full stars and handle the fractional part
   const fullStars = Math.floor(starsCount); // Full stars
   const hasHalfStar = starsCount % 1 !== 0; // Check for half star
 
-  return ( 
+  return (
     <div className={`${r.dish} ${r.sweet}`}>
       <Link to={link}>
         <img src={image} className={r.imgDish} alt={name} />
@@ -37,11 +37,9 @@ const Dish = ({ link, image, name, starsCount }) => {
       </Link>
       <div className={r.extra}>
         <div className={r.stars}>
-          {/* Render full stars */}
           {[...Array(fullStars)].map((_, idx) => (
             <FontAwesomeIcon key={idx} icon={faStar} />
           ))}
-          {/* Render half star if applicable */}
           {hasHalfStar && <FontAwesomeIcon icon={faStarHalf} />}
         </div>
         <div className={r.bookmarkDiv}>
@@ -54,8 +52,8 @@ const Dish = ({ link, image, name, starsCount }) => {
   );
 };
 
-
 const Recipes = () => {
+  // Define dishesData inside the component function
   const dishesData = [
     {
       category: 'Deserts',
@@ -99,10 +97,22 @@ const Recipes = () => {
     }
   ];
 
+  // useEffect is now inside the component function, correctly using dishesData
+  useEffect(() => {
+    // Make a POST request to save the recipes
+    axios.post('http://localhost:5000/api/recipes', dishesData)
+      .then(response => {
+        console.log('Recipes saved successfully:', response.data);
+      })
+      .catch(error => {
+        console.error('Error saving recipes:', error);
+      });
+  }, []); // Ensure the effect runs once after the component mounts
+
   return (
     <div className={r.main}>
       {dishesData.map((categoryData, index) => (
-        <div key={index}  className={r.mainMenu} >
+        <div key={index} className={r.mainMenu}>
           <h1 className={r.hi}>{categoryData.category}</h1>
           <div className={r.dishesContainer}>
             {categoryData.dishes.map((dish, dishIndex) => (

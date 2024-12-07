@@ -8,7 +8,7 @@ import io from 'socket.io-client';
 import upload_icon from './icons/upload.png';
 
 function Social() {
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState([]); // Ensure messages is initialized as an array
     const [textMessage, setTextMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -18,19 +18,19 @@ function Social() {
 
     useEffect(() => {
         socket.current = io();
-
+    
         socket.current.on('chat message', (msg) => {
-            setMessages((prevMessages) => Array.isArray(prevMessages) ? [...prevMessages, msg] : [msg]);
+            setMessages((prevMessages) => [...prevMessages, msg]); // Ensure prevMessages is iterable
         });
-
+    
         socket.current.on('typing', (data) => {
             setIsTyping(data.typing);
         });
-
+    
         socket.current.on('delete message', (messageId) => {
-            setMessages((prevMessages) => Array.isArray(prevMessages) ? prevMessages.filter(message => message._id !== messageId) : []);
+            setMessages((prevMessages) => prevMessages.filter((message) => message._id !== messageId));
         });
-
+    
         return () => {
             socket.current.disconnect();
         };
@@ -51,7 +51,6 @@ function Social() {
     }, []);
 
     const chatRef = useRef(null);
-
     useEffect(() => {
         if (chatRef.current) {
             chatRef.current.scrollTop = chatRef.current.scrollHeight;
@@ -64,7 +63,6 @@ function Social() {
         setTextMessage(e.target.value);
         socket.current.emit('typing', { typing: e.target.value.length > 0 });
 
-        // Adjust the height of the textarea based on its content
         const textarea = e.target;
         textarea.style.height = 'auto';
         textarea.style.height = `${textarea.scrollHeight}px`;
@@ -73,7 +71,7 @@ function Social() {
     return (
         <div id={s.main}>
             <div className={`${s.main1}`}>
-                <header id={`${s.head}`}>  People </header>
+                <header id={`${s.head}`}>People</header>
                 <hr style={{ border: 'none', borderTop: '2px solid black', width: '103%', margin: `0 -3%` }} />
                 <div id={s.profiles}>
                     <Profile id={s.pr1} name="Lucifer hamster" />
@@ -88,15 +86,15 @@ function Social() {
                     ) : error ? (
                         <p>{error}</p>
                     ) : messages.length > 0 ? (
-                        messages.map((message, index) => (
+                        messages.map((message) => (
                             <Message
-                                key={message._id} // Use unique _id as the key
+                                key={message._id}
                                 id={message._id}
                                 message={message.message}
-                                photo={message.picture} // Photo could be Base64 or URL
+                                photo={message.picture} // Photo is either Base64 or URL
                                 imgSrc={message.profilePicture}
                                 name={message.profileName}
-                                onDelete={() => handleDeleteMessage(index, messages, deleteMessage, setMessages, setError, socket.current)}
+                                onDelete={() => handleDeleteMessage(message._id, messages, deleteMessage, setMessages, setError, socket.current)}
                             />
                         ))
                     ) : (

@@ -1,13 +1,16 @@
+import axios from 'axios';
+import { sendMessage, uploadImage } from './socialApi'; // Import the new uploadImage function
+
 // Handles text message submission
 export const handleTextMessageSubmit = async (event, textMessage, setTextMessage, sendMessage, setMessages, setError, socket) => {
     if (event.key === 'Enter' && !event.shiftKey) {
         event.preventDefault();
         if (textMessage.trim() !== '') {
             try {
-                const newMessage = await sendMessage(textMessage); // Make sure sendMessage is passed correctly
+                const newMessage = await sendMessage(textMessage); // Send the text message
                 setTextMessage('');
-                socket.emit('chat message', newMessage); // Emit the new message event
-                socket.emit('typing', { typing: false }); // Emit typing event
+                socket.emit('chat message', newMessage); // Emit the new message to socket
+                socket.emit('typing', { typing: false });
             } catch (error) {
                 setError(error.message);
             }
@@ -19,30 +22,33 @@ export const handleTextMessageSubmit = async (event, textMessage, setTextMessage
 export const handleFileSelect = async (event, sendMessage, setMessages, setError, socket) => {
     const file = event.target.files[0];
     if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            // Get the base64 string from the file
-            const base64Image = reader.result;
+        try {
+            // Upload the image to the backend
+            const imageUrl = await uploadImage(file);
 
-            // Send the base64 image to the backend (as the 'picture' field)
-            sendMessage('', base64Image).then(newMessage => {
-                socket.emit('chat message', newMessage);
-            }).catch(error => {
-                setError(error.message);
-            });
-        };
-        reader.readAsDataURL(file); // Read the file as a base64 string
+            // Once the image is uploaded, send the message with the image URL
+            const messageData = {
+                message: '', // Optionally, include a text message
+                picture: imageUrl, // URL of the uploaded image
+                profileName: 'User', // Replace with actual user profile name
+            };
+
+            await sendMessage(messageData.message, messageData.picture); // Send message with image URL
+
+            // Emit the new message to the socket
+            socket.emit('chat message', messageData);
+        } catch (error) {
+            setError('Error uploading image: ' + error.message);
+        }
     }
 };
 
-
 // Handles deleting messages
-export const handleDeleteMessage = async (index, messages, deleteMessage, setMessages, setError, socket) => {
-    const messageToDelete = messages[index];
+export const handleDeleteMessage = async (messageId, messages, deleteMessage, setMessages, setError, socket) => {
     try {
-        await deleteMessage(messageToDelete._id);
-        setMessages((prevMessages) => prevMessages.filter((_, i) => i !== index));
-        socket.emit('delete message', messageToDelete._id);
+        await deleteMessage(messageId);
+        setMessages((prevMessages) => prevMessages.filter((message) => message._id !== messageId));
+        socket.emit('delete message', messageId); // Emit message delete event
     } catch (error) {
         setError(error.message);
     }

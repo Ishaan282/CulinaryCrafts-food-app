@@ -8,6 +8,8 @@ const recipeSchema = new mongoose.Schema({
       image: {type: String,},
       link: {type: String, },
       starsCount: {type: Number, },
+      bookmarked: { type: Boolean, default: false },
+      ///// bookmarks: [{ type: String }]
     },
   ],
 });

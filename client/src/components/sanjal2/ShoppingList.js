@@ -18,4 +18,4 @@ function ShoppingList({ setOpenShoppingList }) {
     );
 }
 
-export default ShoppingList;
+export default ShoppingList;   

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 .main{
-  
+  margin-top: 12vh;
 }
 .mainMenu {
-  margin-top: 4.55rem;
+  
   background: linear-gradient(#e7ffce);
   font-family: 'Noto Sans', sans-serif;
   padding: 2vh 2vw; 
@@ -91,4 +91,75 @@
   font-weight: bolder;
   color: #2c2c2c;
   font-family: "Noto Sans", sans-serif;
+}
+
+
+.searchBar {
+  position: relative;
+  width: 30vw;
+  max-width: 30vw;
+  height: 7vh;
+  margin: 10vh auto;
+  padding: 1vh 2vw;
+  border-radius: 25px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  width: 75%;
+  padding: 1vh 2vw;
+  font-size: 2vh;
+  border-radius: 25px;
+  background-color: #f5f5f5;
+  color: #333;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.searchInput:focus {
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(66, 133, 244, 0.5);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 2vw;
+  font-size: 2.5vw;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.searchIcon:hover {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .searchBar {
+    width: 90vw;
+    margin: 15vh auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchBar {
+    width: 95vw;
+    height: 8vh;
+    padding: 2vh 4vw;
+  }
+
+  .searchInput {
+    font-size: 3vw;
+  }
+
+  .searchIcon {
+    font-size: 4vw;
+  }
 }

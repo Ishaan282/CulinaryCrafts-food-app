@@ -1,16 +1,10 @@
+// server/routes/ishaan_social.js
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const Social = require('../models/social_schema');
-const ChatController = require('../controllers/ishaan_social');
+const { chat_index, chat_create, chat_delete } = require('../controllers/ishaan_social');
 
-// GET
-router.get('/' , ChatController.chat_index);
+router.get('/', chat_index);
+router.post('/', chat_create);
+router.delete('/:id', chat_delete);
 
-// POST
-router.post('/', ChatController.chat_create);
-
-// DELETE
-router.delete('/:id', ChatController.chat_delete);
-
-module.exports = router; // Export the router
+module.exports = router;

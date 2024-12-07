@@ -4,76 +4,74 @@ import { handleFileSelect, handleTextMessageSubmit, handleDeleteMessage } from '
 import s from './Social.module.css';
 import Message from './components/Message.jsx';
 import Profile from './components/Profile.jsx';
-import io from 'socket.io-client';  // Import Socket.io client
+import io from 'socket.io-client';
 import upload_icon from './icons/upload.png';
 
 function Social() {
-    const [messages, setMessages] = useState([]); //rendering messages
-    const [textMessage, setTextMessage] = useState(''); //text input
-    const [loading, setLoading] = useState(false); //loading state
-    const [error, setError] = useState(''); //if error occurs
-    const [isTyping, setIsTyping] = useState(false);  // State for typing indicator
-    
-    const socket = useRef(null);  // Socket reference
+    const [messages, setMessages] = useState([]);
+    const [textMessage, setTextMessage] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
 
-    // receiving messages via socket.io
+    const socket = useRef(null);
+
     useEffect(() => {
-        socket.current = io();  // server url from proxy 
-    
+        socket.current = io();
+
         socket.current.on('chat message', (msg) => {
             setMessages((prevMessages) => Array.isArray(prevMessages) ? [...prevMessages, msg] : [msg]);
         });
-    
+
         socket.current.on('typing', (data) => {
             setIsTyping(data.typing);
         });
-    
+
         socket.current.on('delete message', (messageId) => {
             setMessages((prevMessages) => Array.isArray(prevMessages) ? prevMessages.filter(message => message._id !== messageId) : []);
         });
-    
+
         return () => {
             socket.current.disconnect();
         };
     }, []);
-    
 
-    // Fetch messages from the backend 
     useEffect(() => {
         const loadMessages = async () => {
             setLoading(true);
             try {
-                const data = await fetchMessages(); //socialHandler
+                const data = await fetchMessages();
                 setMessages(data);
             } catch (error) {
                 setError(error.message);
             }
             setLoading(false);
         };
-        loadMessages(); //calling the function
+        loadMessages();
     }, []);
 
-    // Chat container ref to manage auto-scrolling
     const chatRef = useRef(null);
 
-    // Scroll to bottom when messages change
     useEffect(() => {
         if (chatRef.current) {
             chatRef.current.scrollTop = chatRef.current.scrollHeight;
         }
     }, [messages]);
 
-    // File input 
     const fileInputRef = useRef();
 
     const handleTextMessageChange = (e) => {
         setTextMessage(e.target.value);
         socket.current.emit('typing', { typing: e.target.value.length > 0 });
+
+        // Adjust the height of the textarea based on its content
+        const textarea = e.target;
+        textarea.style.height = 'auto';
+        textarea.style.height = `${textarea.scrollHeight}px`;
     };
 
     return (
         <div id={s.main}>
-            {/* Sidebar */}
             <div className={`${s.main1}`}>
                 <header id={`${s.head}`}>  People </header>
                 <hr style={{ border: 'none', borderTop: '2px solid black', width: '103%', margin: `0 -3%` }} />
@@ -83,8 +81,6 @@ function Social() {
                 </div>
             </div>
 
-            {/* Chatting area */}
-            {/* messages state is being used to render  */}
             <div className={`${s.main2}`}>
                 <div className={`${s.chat}`} ref={chatRef}>
                     {loading ? (
@@ -94,10 +90,10 @@ function Social() {
                     ) : messages.length > 0 ? (
                         messages.map((message, index) => (
                             <Message
-                                key={index}
+                                key={message._id} // Use unique _id as the key
                                 id={message._id}
                                 message={message.message}
-                                photo={message.picture}
+                                photo={message.picture} // Photo could be Base64 or URL
                                 imgSrc={message.profilePicture}
                                 name={message.profileName}
                                 onDelete={() => handleDeleteMessage(index, messages, deleteMessage, setMessages, setError, socket.current)}
@@ -106,10 +102,9 @@ function Social() {
                     ) : (
                         <p>No messages yet.</p>
                     )}
-                    {isTyping && <p>Someone is typing...</p>}  {/* Typing indicator */}
+                    {isTyping && <p>Someone is typing...</p>}
                 </div>
 
-                {/* Texting bar */}
                 <div id={s.bottom}>
                     <input type="file" style={{ display: 'none' }} onChange={(e) => handleFileSelect(e, sendMessage, setMessages, setError, socket.current)} ref={fileInputRef} />
                     <img src={upload_icon} alt="Upload file" className={s.bottom_icon} onClick={() => fileInputRef.current.click()} />

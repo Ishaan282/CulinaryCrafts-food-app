@@ -6,16 +6,16 @@ const socialSchema = new mongoose.Schema({
         required: false
     },
     picture: {
-        type: String,
+        type: String, // URL or base64 string
         required: false
     },
     profileName: {
         type: String,
-        required: true // Set to true if you always want a profile name
+        required: true
     },
-    // Removed profilePicture as it's no longer needed
 }, {
     timestamps: true
 });
 
 module.exports = mongoose.model('Social', socialSchema, 'social');
+

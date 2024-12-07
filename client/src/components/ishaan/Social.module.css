@@ -6,10 +6,11 @@
     position: fixed;
     display: flex;
     flex-direction: row;
+
 }
 
 :root {
-    --chat_area: 96%;
+    --chat_area: 75vw;
     --main_height: 89vh
 }
 
@@ -61,9 +62,9 @@
 }
 
 /*! chat area */
-.main2{
+.main2 {
     width: 78%;
-    height: var(--main_height);
+    height: var(--main_height); /* Constant height for the container */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -71,17 +72,25 @@
     background-image: linear-gradient(rgba(99, 166, 136, 0.941), rgba(67, 131, 135, 0.934)), url('./images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative; 
+    position: relative;
 }
 
-.main2 .chat{
-    width: var(--chat_area);
-    height: 80vh;
+.main2 .chat {
+    width: 75vw;
+    height: calc(var(--main_height) - 50px); /* Constant height with some spacing */
+    display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-    overflow-y: auto;
-    max-height: calc(var(--main_height) - 50px);
+    overflow-y: hidden;
+    word-wrap: break-word; 
+    white-space: pre-wrap; 
+    text-align: left;
+    padding: 10px;
+    box-sizing: border-box; 
+    line-height: 1.5; 
 }
+
+
 
 .profile2{
     display: flex;
@@ -151,12 +160,10 @@
     outline: none;
     resize: none;
     overflow-y: hidden; /* Disable vertical scroll */
-    
-    /* Center text vertically */
+    word-wrap: break-word; /* Ensure long words break to the next line */
+    white-space: pre-wrap; /* Preserve whitespace and wrap text */
     line-height: 1.5; /* Make the text look vertically spaced */
-    font-size: 16px; /* Adjust font size if necessary */
 }
-
 
 .right{
     display: flex;

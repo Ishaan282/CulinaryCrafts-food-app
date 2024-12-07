@@ -28,9 +28,9 @@ export const sendMessage = async (message, picture = '') => {
 };
 
 // Delete a message by ID
-export const deleteMessage = async (messageId) => {
+export const deleteMessage = async (messageId, pictureUrl) => {
     try {
-        await axios.delete(`/Social/${messageId}`);
+        await axios.delete(`/Social/${messageId}`, { data: { pictureUrl } }); // Send picture URL in the request body
     } catch (error) {
         console.error('Error deleting message:', error);
         throw new Error('Failed to delete message.');

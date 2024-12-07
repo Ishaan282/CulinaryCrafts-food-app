@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { sendMessage, uploadImage } from './socialApi'; // Import the new uploadImage function
 
 // Handles text message submission
@@ -46,7 +45,8 @@ export const handleFileSelect = async (event, sendMessage, setMessages, setError
 // Handles deleting messages
 export const handleDeleteMessage = async (messageId, messages, deleteMessage, setMessages, setError, socket) => {
     try {
-        await deleteMessage(messageId);
+        const messageToDelete = messages.find((message) => message._id === messageId);
+        await deleteMessage(messageId, messageToDelete.picture); // Pass the picture URL to the deleteMessage function
         setMessages((prevMessages) => prevMessages.filter((message) => message._id !== messageId));
         socket.emit('delete message', messageId); // Emit message delete event
     } catch (error) {

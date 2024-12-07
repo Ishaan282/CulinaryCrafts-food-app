@@ -9,11 +9,9 @@ module.exports = (server) => {
     io.on('connection', (socket) => {
         console.log('a user connected');
 
-//parameters like msg are coming from client side
         //listen for chat message event
         socket.on('chat message', (msg) => {
             io.emit('chat message', msg); 
-            //emit chat message event to all clients
         });
 
         //listing for typing events

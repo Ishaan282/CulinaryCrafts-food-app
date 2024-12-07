@@ -8,7 +8,7 @@ import io from 'socket.io-client';
 import upload_icon from './icons/upload.png';
 
 function Social() {
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState([]); // Ensure messages is initialized as an array
     const [textMessage, setTextMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -20,7 +20,7 @@ function Social() {
         socket.current = io();
     
         socket.current.on('chat message', (msg) => {
-            setMessages((prevMessages) => [...prevMessages, msg]);
+            setMessages((prevMessages) => [...prevMessages, msg]); // Ensure prevMessages is iterable
         });
     
         socket.current.on('typing', (data) => {
@@ -88,7 +88,7 @@ function Social() {
                     ) : messages.length > 0 ? (
                         messages.map((message) => (
                             <Message
-                                key={message._id} // Ensure each Message has a unique key
+                                key={message._id}
                                 id={message._id}
                                 message={message.message}
                                 photo={message.picture} // Photo is either Base64 or URL

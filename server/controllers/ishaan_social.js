@@ -1,5 +1,5 @@
 const Social = require('../models/social_schema'); // Import the Social model
-const { uploadImageToOneDrive, deleteImageFromOneDrive } = require('./onedrive.auth.controller.js'); // Import the OneDrive functions
+const { uploadImageToOneDrive } = require('./onedrive.auth.controller.js'); // Import the OneDrive upload function
 const multer = require('multer');
 const path = require('path');
 
@@ -32,21 +32,25 @@ const chat_index = async (req, res) => {
 // Create a new chat message (text or image)
 const chat_create = async (req, res) => {
     try {
-        let imageUrl = null;
-        if (req.file) {
-            // Upload the image file to OneDrive and get the URL
-            imageUrl = await uploadImageToOneDrive(req.file.path, req.file.originalname);
+        const { message, picture, profileName } = req.body;
+
+        let pictureUrl = '';
+        
+        // If there's a picture, upload it to OneDrive
+        if (picture) {
+            pictureUrl = await uploadImageToOneDrive(picture); // Upload image and get OneDrive URL or ID
         }
 
-        // Create a new chat message with the image URL
-        const newChat = new Social({
-            profileName: req.body.profileName,
-            message: req.body.message,
-            picture: imageUrl // Store the image URL as a string
+        // Create a new chat message entry
+        const chat = new Social({
+            message,
+            picture: pictureUrl,  // Store the OneDrive URL/ID of the picture
+            profileName
         });
 
-        await newChat.save();
-        res.status(201).json(newChat);
+        // Save the chat message to the database
+        const result = await chat.save(); 
+        res.status(201).json(result);  // Respond with the created chat message
     } catch (error) {
         console.error('Error saving chat:', error);
         res.status(500).json({ error: error.message });
@@ -56,18 +60,13 @@ const chat_create = async (req, res) => {
 // Delete a chat message by ID
 const chat_delete = async (req, res) => {
     try {
-        const { pictureUrl } = req.body; // Get picture URL from request body
         const result = await Social.findByIdAndDelete(req.params.id);
         if (result) {
-            if (pictureUrl) {
-                await deleteImageFromOneDrive(pictureUrl); // Delete the image from OneDrive
-            }
             res.status(200).send('Chat deleted!');
         } else {
             res.status(404).send('Chat not found!');
         }
     } catch (error) {
-        console.error('Error deleting chat:', error);
         res.status(500).json({ error: error.message });
     }
 };
@@ -80,8 +79,7 @@ const upload_image = async (req, res) => {
         }
 
         // Upload the image file to OneDrive and get the URL
-        const imageUrl = await uploadImageToOneDrive(req.file.path, req.file.originalname);
-        console.log('Image URL:', imageUrl); // Log the image URL
+        const imageUrl = await uploadImageToOneDrive(req.file.path);
 
         res.status(200).json({ picture: imageUrl }); // Return the image URL in the response
     } catch (error) {
@@ -94,5 +92,5 @@ module.exports = {
     chat_index,
     chat_create,
     chat_delete,
-    upload_image,
+    upload_image, // Export the image upload function
 };

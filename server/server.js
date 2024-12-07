@@ -1,23 +1,5 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const http = require('http');
-const Sock = require('./socket');
 require('dotenv').config();
-
-// Initialize express app
-const app = express();
-
-// Middleware to parse JSON request bodies with a higher limit
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
-
-// Import routes
-const chat = require('./routes/ishaan_social');
-const signup = require('./routes/Samiksha2_post');
-const todo = require('./routes/sanjal_todo');
-const shop = require('./routes/Sameer_incredients');
-const recepies = require('./routes/sanjal_recepies');
+const { app, http, Sock, mongoose, chat, signup, todo, shop ,recepies} = require('./config');
 
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
@@ -41,16 +23,6 @@ mongoose.connect(dbURI)
 
 app.get('/', (req, res) => {
     res.send('Amaricaya Halo :D');
-});
-
-// Add the OneDrive callback route
-app.get('/auth/onedrive/callback', (req, res) => {
-    const authorizationCode = req.query.code;
-    if (authorizationCode) {
-        res.send(`Authorization code received: ${authorizationCode}`);
-    } else {
-        res.send('Authorization code not found');
-    }
 });
 
 //#DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location

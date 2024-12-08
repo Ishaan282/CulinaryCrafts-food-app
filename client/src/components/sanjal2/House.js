@@ -38,14 +38,14 @@ function House() {
     : todos.map(todo => (
         <div className={`${o.allTask}`} key={todo._id}>  {/* Add 'key' prop here to avoid key warnings */}
           <div className={`${o.Task}`}>
-            <button
+            <button // red/green
               className={`${o.donebtn}`}
               onClick={() => handleEdit(todo._id)}
               style={{ backgroundColor: todo.done ? '#49b533' : 'red' }}
             >
-              .
+              '
             </button>
-            <p
+            <p   // the task
               style={{
                 textDecoration: todo.done ? 'line-through' : 'none',
                 cursor: 'pointer', 

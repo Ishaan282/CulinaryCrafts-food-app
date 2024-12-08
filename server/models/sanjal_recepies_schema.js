@@ -10,6 +10,8 @@ const recipeSchema = new mongoose.Schema({
       starsCount: {type: Number, },
       bookmarked: { type: Boolean, default: false },
       ///// bookmarks: [{ type: String }]
+      bookmarks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] // Store user IDs who bookmarked
+    
     },
   ],
 });

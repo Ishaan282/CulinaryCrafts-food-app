@@ -108,6 +108,7 @@
   align-items: center;
   justify-content: space-between;
   transition: all 0.3s ease;
+  align-items: center;
 }
 
 .searchInput {
@@ -118,6 +119,7 @@
   font-size: 2vh;
   border-radius: 25px;
   background-color: #f5f5f5;
+  margin-left: 20vh;
   color: #333;
   align-items: center;
   transition: background-color 0.3s ease;

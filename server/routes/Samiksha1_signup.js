@@ -31,11 +31,11 @@ try {
 
 module.exports.login = async (req, res, next) => {
     try {
-        const { username, password } = req.body;
-        const user = await User.findOne({ username });
+        const { email, password } = req.body; // Change from username to email
+        const user = await User.findOne({ email }); // Search by email instead
         
         if (!user) {
-            return res.status(404).json({ msg: "Incorrect username or password", status: false });
+            return res.status(404).json({ msg: "Incorrect email or password", status: false });
         }
         
         const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -44,7 +44,7 @@ module.exports.login = async (req, res, next) => {
             return res.status(400).json({ msg: "Incorrect password", status: false });
         }
         
-        delete user.password; // Avoid sending the password back in the response
+        user.password = undefined; // Better way to remove password
         return res.json({ status: true, user });
     } catch (ex) {
         next(ex);

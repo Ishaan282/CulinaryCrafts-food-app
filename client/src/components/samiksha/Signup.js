@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import a from './Signup.module.css'; 
 import signupImage from './Assets/signupimage.jpg';
-import {registerService} from '../samiksha/services/auth.service';
+import {registerService} from '../services/auth.service';
 
 const Signup= () => {
     const navigate = useNavigate();

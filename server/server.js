@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 app.use('/Social', chat);
 
 //$Samiksha part
-app.use('/api/Signup', signup );
+app.use('/api/auth', signup );
 
 //$sanjal part 
 app.use('/Recipe/todo', recepies);       

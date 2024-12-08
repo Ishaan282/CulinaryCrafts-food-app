@@ -3,10 +3,19 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const http = require('http');
 const Sock = require('./socket');
+const cors = require('cors'); 
 require('dotenv').config();
 
 // Initialize express app
 const app = express();
+
+
+// Add CORS middleware
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
+
 
 // Middleware to parse JSON request bodies with a higher limit
 app.use(bodyParser.json({ limit: '10mb' }));

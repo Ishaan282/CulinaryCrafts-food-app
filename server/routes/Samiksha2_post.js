@@ -5,7 +5,7 @@ const { register, login } = require('../routes/Samiksha1_signup'); // Import the
 const router = express.Router();
 
 // Route for user registration (POST request)
-router.post('/register', register);
+router.post('/signup', register);
 
 // GET route to retrieve all users
 router.get('/users', async (req, res) => {

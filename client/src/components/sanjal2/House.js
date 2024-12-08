@@ -8,13 +8,14 @@ function House() {
     
     useEffect(() => {
         axios.get('/ShoppingList/todo/get')
-            .then(result => setTodos(result.data))
+            .then(result => setTodos(result.data)) // 
             .catch(err => console.log(err));
     }, []);
 
     const handleEdit = (id) => {
         axios.put(`/ShoppingList/todo/update/${id}`)
             .then(() => {
+              // console.log(path);
                 setTodos(todos.map(todo => 
                     todo._id === id ? { ...todo, done: !todo.done } : todo
                 ));

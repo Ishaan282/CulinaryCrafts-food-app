@@ -72,7 +72,6 @@
   background-color: #2c2c2c1b;
   border: none !important;
   cursor: pointer;
-  /* border-radius: 90%; */
   padding: 1vh;
 }
 .bookmark:hover{
@@ -127,7 +126,7 @@
 
 .searchInput:focus {
   background-color: #fff;
-  box-shadow: 0 0 5px rgba(66, 133, 244, 0.5);
+  box-shadow: 0 0 5px #9cdf50;
 }
 
 .searchIcon {

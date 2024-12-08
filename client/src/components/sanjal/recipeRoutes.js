@@ -10,7 +10,6 @@ import Pastasss from './recipes/Pastasss';
 import Banana from './recipes/Banana';
 import Waffels from './recipes/Waffels';
 import CheeseCake from './recipes/CheeseCake';
-// import Dodo from '../sanjal2/Dodo';
 
 const recipeRoutes = [
   <Route key="CheeseCake" path="/recipie/CheeseCake" element={<CheeseCake />} />,

@@ -34,13 +34,13 @@ app.use('/Social', chat);
 //$Samiksha part
 app.use('/api/auth', signup );
 
-//$sanjal part 
-app.use('/Recipe/todo', recepies);       
+//$sanjal bookmark part 
+app.use('/Recipe', recepies);  
 
 //$Sameer part
 app.use('/shop', shop);
 
-//$sanjal part 
+//$sanjal todo part 
 app.use('/ShoppingList/todo', todo); 
 
 //!handling error page 

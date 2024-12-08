@@ -1,108 +1,144 @@
-require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const Recipe = require('../models/sanjal_recepies_schema'); // Import your Recipe model
-
+const Recipe = require('../models/sanjal_recepies_schema');
 const router = express.Router();
 
-// Middleware
-router.use(cors());
-router.use(bodyParser.json()); // Parse incoming request bodies as JSON
-
-// POST route to add recipes
-router.post('/api/recipes', async (req, res) => {
-  const recipesData = req.body;
-
+// Route to fetch all bookmarks
+router.get('/', async (req, res) => {
   try {
-    const savedRecipes = await Recipe.insertMany(recipesData); // Insert all recipes
-    res.status(200).json(savedRecipes);
-  } catch (err) {
-    res.status(400).json({ message: 'Error saving recipes', error: err });
+    const bookmarks = await Recipe.find();  // Fetch all bookmarks from the database
+    res.json({ bookmarks: bookmarks.map(b => b.dishId) }); // Return only the dish IDs
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch bookmarks' });
   }
 });
 
-// PATCH route to toggle bookmark for a dish
-router.patch('/api/recipes/:recipeId/dishes/:dishId/bookmark', async (req, res) => {
-  const { recipeId, dishId } = req.params;
-  const userId = req.body.userId; // Ensure the userId is passed in the request body
-
-  if (!userId) {
-    return res.status(400).json({ message: 'User ID is required' });
-  }
-
+// Route to add a bookmark
+router.post('/', async (req, res) => {
   try {
-    // Find the recipe by ID
-    const recipe = await Recipe.findById(recipeId);
-    if (!recipe) {
-      return res.status(404).json({ message: 'Recipe not found' });
+    const { id } = req.body; // Dish ID from the frontend
+    const existingBookmark = await Recipe.findOne({ dishId: id });
+
+    if (existingBookmark) {
+      return res.status(400).json({ error: 'Dish already bookmarked' });
     }
 
-    // Find the dish by ID within the recipe's dishes array
-    const dish = recipe.dishes.id(dishId);
-    if (!dish) {
-      return res.status(404).json({ message: 'Dish not found' });
-    }
-
-    // Toggle the bookmark status for the user
-    if (dish.bookmarks.includes(userId)) {
-      // If already bookmarked by the user, remove the bookmark
-      dish.bookmarks = dish.bookmarks.filter(id => id.toString() !== userId);
-    } else {
-      // If not bookmarked, add the userId to the bookmarks array
-      dish.bookmarks.push(userId);
-    }
-
-    // Save the updated recipe
-    await recipe.save();
-
-    res.status(200).json({ message: 'Bookmark toggled', bookmarked: dish.bookmarks.includes(userId) });
-  } catch (err) {
-    res.status(500).json({ message: 'Server error', error: err });
+    const newBookmark = new Recipe({ dishId: id });
+    await newBookmark.save();
+    res.status(201).json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to add bookmark' });
   }
 });
 
-
-// GET route to fetch all recipes with dishes
-router.get('/api/recipes', async (req, res) => {
+// Route to remove a bookmark
+router.delete('/:id', async (req, res) => {
   try {
-    const recipes = await Recipe.find(); // Fetch all recipes from the database
-    res.status(200).json(recipes); // Send the recipes as response
-  } catch (err) {
-    res.status(500).json({ message: 'Error fetching recipes', error: err });
+    const { id } = req.params; // Dish ID to be removed
+    await Recipe.deleteOne({ dishId: id });
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to remove bookmark' });
   }
 });
 
-module.exports = router; // Export the router
+module.exports = router;
+
+
 
 
 
 // const express = require('express');
-// const Recipe = require('../models/sanjal_recepies_schema');
+// const Recipe = require('../models/sanjal_recepies_schema'); // Adjust this path according to your project structure
 // const router = express.Router();
+// const mongoose = require('mongoose');
 
-// // API Routes
-// // Fetch all dishes
-// router.get('/api/dishes', async (req, res) => {
+// // Default dish IDs to be inserted
+// const defaultDishes = [
+//   "doughnuts-id", "chocolate-cake-id", "crembrule-id", "banana-sunday-id", 
+//   "waffels-id", "cheese-cake-id", "spinach-corn-ravioli-id", "pesto-id",
+//   "alfredo-fettuccine-id", "arrabbiata-id", "aglio-e-olio-id", "four-cheese-sauce-id",
+//   "spinach-white-bean-soup-id", "thai-coconut-curry-soup-id", "lentil-soup-id",
+//   "mushroom-risotto-id", "veggie-burger-id", "alfredo-futticini-id", "falafel-wrap-id", 
+//   "vegetarian-sushi-rolls-id"
+// ];
+
+// // Function to insert default dishes with bookmarked = false
+// const insertDefaultDishes = async () => {
 //   try {
-//     const dishes = await Dish.find();
-//     res.json(dishes);
-//   } catch (err) {
-//     res.status(500).json({ message: 'Error fetching dishes' });
+//     // Check if dishes already exist in the database before inserting
+//     const existingDishes = await Recipe.find({ dishId: { $in: defaultDishes } });
+//     const existingDishIds = existingDishes.map(dish => dish.dishId);
+    
+//     // Filter out dishes that already exist
+//     const dishesToInsert = defaultDishes.filter(dishId => !existingDishIds.includes(dishId));
+
+//     if (dishesToInsert.length > 0) {
+//       // Insert only new dishes
+//       await Recipe.insertMany(dishesToInsert.map(dishId => ({ dishId, bookmarked: false })));
+//       console.log(`Inserted ${dishesToInsert.length} new dishes with bookmarked = false.`);
+//     } else {
+//       console.log('All dishes already exist in the database.');
+//     }
+//   } catch (error) {
+//     console.error('Error inserting default dishes:', error);
+//   }
+// };
+
+// // Call the function only once, and ideally, this should be part of an initialization route.
+// insertDefaultDishes(); // You can also move this function call to an endpoint (one-time setup) if needed
+
+// // Route to fetch all bookmarks
+// router.get('/', async (req, res) => {
+//   try {
+//     const bookmarks = await Recipe.find();  // Fetch all bookmarks from the database
+//     res.json({
+//       bookmarks: bookmarks.map(b => ({ dishId: b.dishId, bookmarked: b.bookmarked }))
+//     }); // Return dishId and bookmark status
+//   } catch (error) {
+//     res.status(500).json({ error: 'Failed to fetch bookmarks' });
 //   }
 // });
 
-// // Bookmark a dish (toggle)
-// router.patch('/api/dishes/:id/bookmark', async (req, res) => {
+// // Route to add/remove bookmark
+// router.post('/', async (req, res) => {
 //   try {
-//     const dish = await Dish.findById(req.params.id);
-//     if (!dish) return res.status(404).json({ message: 'Dish not found' });
+//     const { id } = req.body; // Dish ID from the frontend
+//     const existingBookmark = await Recipe.findOne({ dishId: id });
 
-//     dish.bookmark = !dish.bookmark; // Toggle bookmark status
-//     await dish.save();
-//     res.json(dish);
-//   } catch (err) {
-//     res.status(500).json({ message: 'Error toggling bookmark' });
+//     if (existingBookmark) {
+//       // Toggle the bookmark status
+//       existingBookmark.bookmarked = !existingBookmark.bookmarked;
+//       await existingBookmark.save();
+//       res.status(200).json({
+//         success: true,
+//         bookmarked: existingBookmark.bookmarked
+//       });
+//     } else {
+//       // If the dish doesn't exist, create a new bookmark
+//       const newBookmark = new Recipe({ dishId: id, bookmarked: true });
+//       await newBookmark.save();
+//       res.status(201).json({ success: true });
+//     }
+//   } catch (error) {
+//     res.status(500).json({ error: 'Failed to toggle bookmark' });
+//   }
+// });
+
+// // Route to remove a bookmark
+// router.delete('/:id', async (req, res) => {
+//   try {
+//     const { id } = req.params; // Dish ID to be removed
+//     const existingBookmark = await Recipe.findOne({ dishId: id });
+
+//     if (existingBookmark) {
+//       existingBookmark.bookmarked = false;  // Set the bookmarked field to false
+//       await existingBookmark.save();
+//       res.status(200).json({ success: true });
+//     } else {
+//       res.status(404).json({ error: 'Dish not found' });
+//     }
+//   } catch (error) {
+//     res.status(500).json({ error: 'Failed to remove bookmark' });
 //   }
 // });
 

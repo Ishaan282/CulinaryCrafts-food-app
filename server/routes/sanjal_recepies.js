@@ -38,8 +38,8 @@ const insertDefaultDishes = async () => {
       const newDishes = dishesToInsert.map(dish => ({
         dishId: dish.dishId,
         dishName: dish.name,
-        image: dish.image,  // Image URL
-        link: dish.link,  // Recipe Link
+        // // image: dish.image,  // Image URL
+        // // link: dish.link,  // Recipe Link
         bookmarked: false,
       }));
       await Recipe.insertMany(newDishes);
@@ -67,8 +67,8 @@ router.get('/', async (req, res) => {
       bookmarks: bookmarks.map(b => ({
         dishId: b.dishId,
         dishName: b.dishName,
-        image: b.image,  
-        link: b.link,  
+        // // image: b.image,  
+        // // link: b.link,  
         bookmarked: b.bookmarked,
       }))
     });
@@ -95,8 +95,8 @@ router.post('/', async (req, res) => {
       const newBookmark = new Recipe({
         dishId: id,
         dishName: name,
-        image: image,
-        link: link,  
+        // // image: image,
+        // // link: link,  
         bookmarked: true  
       });
       await newBookmark.save();

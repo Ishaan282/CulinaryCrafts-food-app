@@ -54,7 +54,7 @@ function House() {
               onClick={() => handleEdit(todo._id)} 
             >
               {todo.todo}
-            </p>
+            </p>  
 
             <button onClick={() => handleDelete(todo._id)} className={`${o.delbtn}`}>
               -

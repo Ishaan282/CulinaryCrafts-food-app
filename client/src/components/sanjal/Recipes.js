@@ -27,10 +27,10 @@
 
 // const Dish = ({ name, image, link, starsCount, id, toggleBookmark, bookmarks }) => {
 //   const fullStars = Math.floor(starsCount);
-//   const hasHalfStar = starsCount % 1 !== 0; 
+//   const hasHalfStar = starsCount % 1 !== 0;
 
-//   const isBookmarked = bookmarks.includes(id);
-
+//   // Check if the dish is bookmarked
+//   const isBookmarked = bookmarks.some(bookmark => bookmark.dishId === id && bookmark.bookmarked);
 
 //   return (
 //     <div className={`${r.dish} ${r.sweet}`}>
@@ -55,43 +55,69 @@
 //   );
 // };
 
-// const Recipes = () => {
-//   const [bookmarks, setBookmarks] = useState([]); // For storing bookmarks fetched from MongoDB
-
-//   // Toggle bookmark function
-//   const toggleBookmark = async (id) => {
-//     if (bookmarks.includes(id)) {
-//       // Remove bookmark from backend
-//       try {
-//         await axios.delete(`/Recipe/${id}`);  // Delete from backend
-//         setBookmarks((prevBookmarks) => prevBookmarks.filter((bookmarkId) => bookmarkId !== id)); // Remove from frontend
-//       } catch (error) {
-//         console.error('Error removing bookmark:', error);
-//       }
-//     } else {
-//       // Add bookmark to backend
-//       try {
-//         await axios.post('/Recipe', { id });  // Add to backend
-//         setBookmarks((prevBookmarks) => [...prevBookmarks, id]); // Add to frontend
-//       } catch (error) {
-//         console.error('Error adding bookmark:', error);
-//       }
-//     }
+// // search bar ///////-------------/////
+// const SearchBar = ({ onSearch }) => {
+//   const handleChange = (e) => {
+//     onSearch(e.target.value);  
 //   };
 
-//   // Fetch bookmarks from backend
+//   return (
+//     <div>
+//       <input
+//         type="text"
+//         placeholder="Search for dishes..."
+//         onChange={handleChange}  // Use onChange used for live search
+//         className={r.searchInput}
+//       />
+//     </div>
+//   );
+// };
+
+
+
+// // og //////////////// ------------ /////////
+// const Recipes = () => {
+//   const [bookmarks, setBookmarks] = useState([]); // For storing bookmarks fetched from MongoDB
+//   const [searchTerm, setSearchTerm] = useState("");
+
+//   // Fetch bookmarks from backend with search term
 //   useEffect(() => {
 //     const fetchBookmarks = async () => {
 //       try {
 //         const response = await axios.get('/Recipe');
-//         setBookmarks(response.data.bookmarks); // Assuming the API returns an array of bookmarked dish IDs
+//         setBookmarks(response.data.bookmarks); // Update bookmarks state
 //       } catch (error) {
 //         console.error('Error fetching bookmarks:', error);
 //       }
 //     };
-
+  
 //     fetchBookmarks();
-//   }, []);
+//   }, []);  // Empty dependency array ensures this runs only once on mount
+  
+
+//   const toggleBookmark = async (id) => {
+//     try {
+//       const response = await axios.post('/Recipe', { id });
+//       const updatedBookmarkStatus = response.data.bookmarked;
+
+//       // Update the frontend state based on the response
+//       setBookmarks(prevBookmarks => 
+//         prevBookmarks.map(bookmark => 
+//           bookmark.dishId === id ? { ...bookmark, bookmarked: updatedBookmarkStatus } : bookmark
+//         )
+//       );
+//     } catch (error) {
+//       console.error('Error toggling bookmark:', error);
+//     }
+//   };
+
+//   const handleSearch = (term) => {
+//     setSearchTerm(term);  // Update search term when user types
+//   };
+
+  
+
+
 
 //   // Static data 
 //   const dishesData = [
@@ -139,17 +165,22 @@
 
 //   return (
 //     <div className={r.main}>
+//       <div className={r.searchbar}>
+//         <SearchBar onSearch={handleSearch} />  {/* Pass search handler to SearchBar */}
+//       </div>
 //       {dishesData.map((categoryData, index) => (
 //         <div key={index} className={r.mainMenu}>
 //           <h1 className={r.hi}>{categoryData.category}</h1>
 //           <div className={r.dishesContainer}>
-//             {categoryData.dishes.map((dish, dishIndex) => (
-//               <Dish
-//                 key={dish.id}
-//                 {...dish}
-//                 toggleBookmark={toggleBookmark}
-//                 bookmarks={bookmarks}  // Pass the bookmark state to each dish
-//               />
+//             {categoryData.dishes
+//               .filter(dish => dish.name.toLowerCase().includes(searchTerm.toLowerCase())) // Apply search filtering on the frontend
+//               .map((dish) => (
+//                 <Dish
+//                   key={dish.id}
+//                   {...dish}
+//                   toggleBookmark={toggleBookmark}
+//                   bookmarks={bookmarks}
+//                 />
 //             ))}
 //           </div>
 //         </div>
@@ -159,9 +190,6 @@
 // };
 
 // export default Recipes;
-
-
-
 
 
 
@@ -193,7 +221,6 @@ import risoto from './depictions-menu/risoto.jpg';
 import crep from './depictions-menu/crep.jpg';
 import sushi from './depictions-menu/sushi.jpeg';
 
-
 const Dish = ({ name, image, link, starsCount, id, toggleBookmark, bookmarks }) => {
   const fullStars = Math.floor(starsCount);
   const hasHalfStar = starsCount % 1 !== 0;
@@ -224,48 +251,64 @@ const Dish = ({ name, image, link, starsCount, id, toggleBookmark, bookmarks }) 
   );
 };
 
+// Search bar component
+const SearchBar = ({ onSearch }) => {
+  const handleChange = (e) => {
+    onSearch(e.target.value);  
+  };
 
-const Recipes = () => {
-  const [bookmarks, setBookmarks] = useState([]); // For storing bookmarks fetched from MongoDB
-
-// Toggle bookmark function
-// Toggle bookmark function
-const toggleBookmark = async (id) => {
-  try {
-    const response = await axios.post('/Recipe', { id });
-    const updatedBookmarkStatus = response.data.bookmarked;  // Get updated bookmark status
-
-    // Update the frontend state based on the response
-    setBookmarks(prevBookmarks => 
-      prevBookmarks.map(bookmark => 
-        bookmark.dishId === id ? { ...bookmark, bookmarked: updatedBookmarkStatus } : bookmark
-      )
-    );
-  } catch (error) {
-    console.error('Error toggling bookmark:', error);
-  }
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Search for dishes..."
+        onChange={handleChange}  // Use onChange for live search
+        className={r.searchInput}
+      />
+    </div>
+  );
 };
 
-
-
+// Main Recipes component
+const Recipes = () => {
+  const [bookmarks, setBookmarks] = useState([]); // For storing bookmarks fetched from MongoDB
+  const [searchTerm, setSearchTerm] = useState("");  // Stores the current search term
 
   // Fetch bookmarks from backend
-// Fetch bookmarks from backend
-useEffect(() => {
-  const fetchBookmarks = async () => {
+  useEffect(() => {
+    const fetchBookmarks = async () => {
+      try {
+        const response = await axios.get('/Recipe');
+        setBookmarks(response.data.bookmarks); // Update bookmarks state
+      } catch (error) {
+        console.error('Error fetching bookmarks:', error);
+      }
+    };
+  
+    fetchBookmarks();
+  }, []);  // Empty dependency array ensures this runs only once on mount
+
+  const toggleBookmark = async (id) => {
     try {
-      const response = await axios.get('/Recipe');
-      setBookmarks(response.data.bookmarks); // Assuming the API returns an array of { dishId, bookmarked }
+      const response = await axios.post('/Recipe', { id });
+      const updatedBookmarkStatus = response.data.bookmarked;
+
+      // Update the frontend state based on the response
+      setBookmarks(prevBookmarks => 
+        prevBookmarks.map(bookmark => 
+          bookmark.dishId === id ? { ...bookmark, bookmarked: updatedBookmarkStatus } : bookmark
+        )
+      );
     } catch (error) {
-      console.error('Error fetching bookmarks:', error);
+      console.error('Error toggling bookmark:', error);
     }
   };
 
-  fetchBookmarks();
-}, []);
+  const handleSearch = (term) => {
+    setSearchTerm(term);  // Update search term when user types
+  };
 
-
-  // Static data 
+  // Static data for dishes
   const dishesData = [
     {
       category: 'Deserts',
@@ -311,17 +354,22 @@ useEffect(() => {
 
   return (
     <div className={r.main}>
+      <div className={r.searchbar}>
+        <SearchBar onSearch={handleSearch} />  {/* Pass search handler to SearchBar */}
+      </div>
       {dishesData.map((categoryData, index) => (
         <div key={index} className={r.mainMenu}>
           <h1 className={r.hi}>{categoryData.category}</h1>
           <div className={r.dishesContainer}>
-            {categoryData.dishes.map((dish, dishIndex) => (
-              <Dish
-                key={dish.id}
-                {...dish}
-                toggleBookmark={toggleBookmark}
-                bookmarks={bookmarks}  // Pass the bookmark state to each dish
-              />
+            {categoryData.dishes
+              .filter(dish => dish.name.toLowerCase().includes(searchTerm.toLowerCase())) // Apply search filtering on the frontend
+              .map((dish) => (
+                <Dish
+                  key={dish.id}
+                  {...dish}
+                  toggleBookmark={toggleBookmark}
+                  bookmarks={bookmarks}
+                />
             ))}
           </div>
         </div>

@@ -1,80 +1,165 @@
 // const express = require('express');
-// const Recipe = require('../models/sanjal_recepies_schema');
+// const Recipe = require('../models/sanjal_recepies_schema');  // Ensure the schema has `image`, `link`, and `bookmarked` fields
 // const router = express.Router();
 
-// // Route to fetch all bookmarks
+// // Default dish IDs, names, images, and links to be inserted
+// const defaultDishes = [
+//   { dishId: "doughnuts-id", name: "Doughnuts" },
+//   { dishId: "chocolate-cake-id", name: "Chocolate Cake" },
+//   { dishId: "crembrule-id", name: "Creme Brulee" },
+//   { dishId: "banana-sunday-id", name: "Banana Sunday" },
+//   { dishId: "waffels-id", name: "Waffles" },
+//   { dishId: "cheese-cake-id", name: "Cheese Cake" },
+//   { dishId: "spinach-corn-ravioli-id", name: "Spinach Corn Ravioli" },
+//   { dishId: "pesto-id", name: "Pesto" },
+//   { dishId: "alfredo-fettuccine-id", name: "Alfredo Fettuccine" },
+//   { dishId: "arrabbiata-id", name: "Arrabbiata" },
+//   { dishId: "aglio-e-olio-id", name: "Aglio e Olio" },
+//   { dishId: "four-cheese-sauce-id", name: "Four Cheese Sauce" },
+//   { dishId: "spinach-white-bean-soup-id", name: "Spinach White Bean Soup" },
+//   { dishId: "thai-coconut-curry-soup-id", name: "Thai Coconut Curry Soup" },
+//   { dishId: "lentil-soup-id", name: "Lentil Soup" },
+//   { dishId: "mushroom-risotto-id", name: "Mushroom Risotto" },
+//   { dishId: "veggie-burger-id", name: "Veggie Burger" },
+//   { dishId: "alfredo-futticini-id", name: "Alfredo Fettuccine" },
+//   { dishId: "falafel-wrap-id", name: "Falafel Wrap" },
+//   { dishId: "vegetarian-sushi-rolls-id", name: "Vegetarian Sushi Rolls" },
+// ];
+
+// // Function to insert default dishes with bookmarked = false, including image and link
+// const insertDefaultDishes = async () => {
+//   try {
+//     const existingDishes = await Recipe.find({ dishId: { $in: defaultDishes.map(dish => dish.dishId) } });
+//     const existingDishIds = existingDishes.map(dish => dish.dishId);
+
+//     const dishesToInsert = defaultDishes.filter(dish => !existingDishIds.includes(dish.dishId));
+
+//     if (dishesToInsert.length > 0) {
+//       const newDishes = dishesToInsert.map(dish => ({
+//         dishId: dish.dishId,
+//         dishName: dish.name,
+//         image: dish.image,  // Image URL
+//         link: dish.link,  // Recipe Link
+//         bookmarked: false,
+//       }));
+//       await Recipe.insertMany(newDishes);
+//       console.log(`Inserted ${dishesToInsert.length} new dishes with bookmarked = false.`);
+//     } else {
+//       console.log('All dishes already exist in the database.');
+//     }
+//   } catch (error) {
+//     console.error('Error inserting default dishes:', error);
+//   }
+// };
+
+// // Call the function to insert default dishes once (this can be moved to an initialization route)
+// insertDefaultDishes();
+
+// // Route to fetch all bookmarks with optional search query
 // router.get('/', async (req, res) => {
 //   try {
-//     const bookmarks = await Recipe.find();  // Fetch all bookmarks from the database
-//     res.json({ bookmarks: bookmarks.map(b => b.dishId) }); // Return only the dish IDs
+//     const searchTerm = req.query.search || '';  // Get search term from query parameters
+
+//     // Fetch dishes that match the search term (case-insensitive search on dishName)
+//     const bookmarks = await Recipe.find({
+//       dishName: { $regex: searchTerm, $options: 'i' }  // Case-insensitive search
+//     });
+
+//     res.json({
+//       bookmarks: bookmarks.map(b => ({
+//         dishId: b.dishId,
+//         dishName: b.dishName,
+//         image: b.image,  // Include image in the response
+//         link: b.link,  // Include link in the response
+//         bookmarked: b.bookmarked,
+//       }))
+//     });
 //   } catch (error) {
 //     res.status(500).json({ error: 'Failed to fetch bookmarks' });
 //   }
 // });
 
-// // Route to add a bookmark
+// // Route to add/remove bookmark
 // router.post('/', async (req, res) => {
 //   try {
-//     const { id } = req.body; // Dish ID from the frontend
+//     const { id, name, image, link } = req.body;  // Dish ID, name, image, and link from the frontend
+
 //     const existingBookmark = await Recipe.findOne({ dishId: id });
 
 //     if (existingBookmark) {
-//       return res.status(400).json({ error: 'Dish already bookmarked' });
+//       existingBookmark.bookmarked = !existingBookmark.bookmarked;  // Toggle bookmark status
+//       await existingBookmark.save();
+//       res.status(200).json({
+//         success: true,
+//         bookmarked: existingBookmark.bookmarked
+//       });
+//     } else {
+//       const newBookmark = new Recipe({
+//         dishId: id,
+//         dishName: name,
+//         image: image,
+//         link: link,  // Store the recipe link
+//         bookmarked: true  // Mark as bookmarked initially
+//       });
+//       await newBookmark.save();
+//       res.status(201).json({
+//         success: true,
+//         bookmarked: true
+//       });
 //     }
-
-//     const newBookmark = new Recipe({ dishId: id });
-//     await newBookmark.save();
-//     res.status(201).json({ success: true });
 //   } catch (error) {
-//     res.status(500).json({ error: 'Failed to add bookmark' });
-//   }
-// });
-
-// // Route to remove a bookmark
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const { id } = req.params; // Dish ID to be removed
-//     await Recipe.deleteOne({ dishId: id });
-//     res.status(200).json({ success: true });
-//   } catch (error) {
-//     res.status(500).json({ error: 'Failed to remove bookmark' });
+//     res.status(500).json({ error: 'Failed to toggle bookmark' });
 //   }
 // });
 
 // module.exports = router;
 
 
-
-
-
 const express = require('express');
-const Recipe = require('../models/sanjal_recepies_schema'); // Adjust this path according to your project structure
+const Recipe = require('../models/sanjal_recepies_schema');  // Ensure the schema has `image`, `link`, and `bookmarked` fields
 const router = express.Router();
-const mongoose = require('mongoose');
 
-// Default dish IDs to be inserted
+// Default dish IDs, names, images, and links to be inserted
 const defaultDishes = [
-  "doughnuts-id", "chocolate-cake-id", "crembrule-id", "banana-sunday-id", 
-  "waffels-id", "cheese-cake-id", "spinach-corn-ravioli-id", "pesto-id",
-  "alfredo-fettuccine-id", "arrabbiata-id", "aglio-e-olio-id", "four-cheese-sauce-id",
-  "spinach-white-bean-soup-id", "thai-coconut-curry-soup-id", "lentil-soup-id",
-  "mushroom-risotto-id", "veggie-burger-id", "alfredo-futticini-id", "falafel-wrap-id", 
-  "vegetarian-sushi-rolls-id"
+  { dishId: "doughnuts-id", name: "Doughnuts" },
+  { dishId: "chocolate-cake-id", name: "Chocolate Cake" },
+  { dishId: "crembrule-id", name: "Creme Brulee" },
+  { dishId: "banana-sunday-id", name: "Banana Sunday" },
+  { dishId: "waffels-id", name: "Waffles" },
+  { dishId: "cheese-cake-id", name: "Cheese Cake" },
+  { dishId: "spinach-corn-ravioli-id", name: "Spinach Corn Ravioli" },
+  { dishId: "pesto-id", name: "Pesto" },
+  { dishId: "alfredo-fettuccine-id", name: "Alfredo Fettuccine" },
+  { dishId: "arrabbiata-id", name: "Arrabbiata" },
+  { dishId: "aglio-e-olio-id", name: "Aglio e Olio" },
+  { dishId: "four-cheese-sauce-id", name: "Four Cheese Sauce" },
+  { dishId: "spinach-white-bean-soup-id", name: "Spinach White Bean Soup" },
+  { dishId: "thai-coconut-curry-soup-id", name: "Thai Coconut Curry Soup" },
+  { dishId: "lentil-soup-id", name: "Lentil Soup" },
+  { dishId: "mushroom-risotto-id", name: "Mushroom Risotto" },
+  { dishId: "veggie-burger-id", name: "Veggie Burger" },
+  { dishId: "alfredo-futticini-id", name: "Alfredo Fettuccine" },
+  { dishId: "falafel-wrap-id", name: "Falafel Wrap" },
+  { dishId: "vegetarian-sushi-rolls-id", name: "Vegetarian Sushi Rolls" },
 ];
 
-// Function to insert default dishes with bookmarked = false
+// Function to insert default dishes with bookmarked = false, including image and link
 const insertDefaultDishes = async () => {
   try {
-    // Check if dishes already exist in the database before inserting
-    const existingDishes = await Recipe.find({ dishId: { $in: defaultDishes } });
+    const existingDishes = await Recipe.find({ dishId: { $in: defaultDishes.map(dish => dish.dishId) } });
     const existingDishIds = existingDishes.map(dish => dish.dishId);
-    
-    // Filter out dishes that already exist
-    const dishesToInsert = defaultDishes.filter(dishId => !existingDishIds.includes(dishId));
+
+    const dishesToInsert = defaultDishes.filter(dish => !existingDishIds.includes(dish.dishId));
 
     if (dishesToInsert.length > 0) {
-      // Insert only new dishes
-      await Recipe.insertMany(dishesToInsert.map(dishId => ({ dishId, bookmarked: false })));
+      const newDishes = dishesToInsert.map(dish => ({
+        dishId: dish.dishId,
+        dishName: dish.name,
+        image: dish.image,  // Image URL
+        link: dish.link,  // Recipe Link
+        bookmarked: false,
+      }));
+      await Recipe.insertMany(newDishes);
       console.log(`Inserted ${dishesToInsert.length} new dishes with bookmarked = false.`);
     } else {
       console.log('All dishes already exist in the database.');
@@ -84,16 +169,28 @@ const insertDefaultDishes = async () => {
   }
 };
 
-// Call the function only once, and ideally, this should be part of an initialization route.
-insertDefaultDishes(); // You can also move this function call to an endpoint (one-time setup) if needed
+// Call the function to insert default dishes once (this can be moved to an initialization route)
+insertDefaultDishes();
 
-// Route to fetch all bookmarks
+// Route to fetch all bookmarks with optional search query
 router.get('/', async (req, res) => {
   try {
-    const bookmarks = await Recipe.find();  // Fetch all bookmarks from the database
+    const searchTerm = req.query.search || '';  // Get search term from query parameters
+
+    // Fetch dishes that match the search term (case-insensitive search on dishName)
+    const bookmarks = await Recipe.find({
+      dishName: { $regex: searchTerm, $options: 'i' }  // Case-insensitive search
+    });
+
     res.json({
-      bookmarks: bookmarks.map(b => ({ dishId: b.dishId, bookmarked: b.bookmarked }))
-    }); // Return dishId and bookmark status
+      bookmarks: bookmarks.map(b => ({
+        dishId: b.dishId,
+        dishName: b.dishName,
+        image: b.image,  // Include image in the response
+        link: b.link,  // Include link in the response
+        bookmarked: b.bookmarked,
+      }))
+    });
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch bookmarks' });
   }
@@ -102,43 +199,33 @@ router.get('/', async (req, res) => {
 // Route to add/remove bookmark
 router.post('/', async (req, res) => {
   try {
-    const { id } = req.body; // Dish ID from the frontend
+    const { id, name, image, link } = req.body;  // Dish ID, name, image, and link from the frontend
+
     const existingBookmark = await Recipe.findOne({ dishId: id });
 
     if (existingBookmark) {
-      // Toggle the bookmark status
-      existingBookmark.bookmarked = !existingBookmark.bookmarked;
+      existingBookmark.bookmarked = !existingBookmark.bookmarked;  // Toggle bookmark status
       await existingBookmark.save();
       res.status(200).json({
         success: true,
         bookmarked: existingBookmark.bookmarked
       });
     } else {
-      // If the dish doesn't exist, create a new bookmark
-      const newBookmark = new Recipe({ dishId: id, bookmarked: true });
+      const newBookmark = new Recipe({
+        dishId: id,
+        dishName: name,
+        image: image,
+        link: link,  // Store the recipe link
+        bookmarked: true  // Mark as bookmarked initially
+      });
       await newBookmark.save();
-      res.status(201).json({ success: true });
+      res.status(201).json({
+        success: true,
+        bookmarked: true
+      });
     }
   } catch (error) {
     res.status(500).json({ error: 'Failed to toggle bookmark' });
-  }
-});
-
-// Route to remove a bookmark
-router.delete('/:id', async (req, res) => {
-  try {
-    const { id } = req.params; // Dish ID to be removed
-    const existingBookmark = await Recipe.findOne({ dishId: id });
-
-    if (existingBookmark) {
-      existingBookmark.bookmarked = false;  // Set the bookmarked field to false
-      await existingBookmark.save();
-      res.status(200).json({ success: true });
-    } else {
-      res.status(404).json({ error: 'Dish not found' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to remove bookmark' });
   }
 });
 

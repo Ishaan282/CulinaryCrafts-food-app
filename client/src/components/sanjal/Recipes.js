@@ -29,7 +29,7 @@ const Dish = ({ name, image, link, starsCount, id, toggleBookmark, bookmarks }) 
   const hasHalfStar = starsCount % 1 !== 0;
 
   // Check if the dish is bookmarked
-  const isBookmarked = bookmarks.some(bookmark => bookmark.dishId === id && bookmark.bookmarked);
+  const isBookmarked = bookmarks.some(bookmark => bookmark.dishId === id && bookmark.bookmarked); // checks if isBookmarked
 
   return (
     <div className={`${r.dish} ${r.sweet}`}>
@@ -65,7 +65,7 @@ const SearchBar = ({ onSearch }) => {
       <input
         type="text"
         placeholder="Search for dishes..."
-        onChange={handleChange}  // Use onChange for live search
+        onChange={handleChange}  // onChange for live search
         className={r.searchInput}
       />
     </div>
@@ -74,22 +74,22 @@ const SearchBar = ({ onSearch }) => {
 
 // Main Recipes component
 const Recipes = () => {
-  const [bookmarks, setBookmarks] = useState([]); // For storing bookmarks fetched from MongoDB
-  const [searchTerm, setSearchTerm] = useState("");  // Stores the current search term
+  const [bookmarks, setBookmarks] = useState([]); //for bookmarks
+  const [searchTerm, setSearchTerm] = useState("");  // for current search 
 
   // Fetch bookmarks from backend
   useEffect(() => {
     const fetchBookmarks = async () => {
       try {
         const response = await axios.get('/Recipe');
-        setBookmarks(response.data.bookmarks); // Update bookmarks state
+        setBookmarks(response.data.bookmarks); // Update bookmark
       } catch (error) {
         console.error('Error fetching bookmarks:', error);
       }
     };
   
     fetchBookmarks();
-  }, []);  // Empty dependency array ensures this runs only once on mount
+  }, []);  // Empty array makes sure this runs only once 
 
   const toggleBookmark = async (id) => {
     try {
@@ -108,7 +108,7 @@ const Recipes = () => {
   };
 
   const handleSearch = (term) => {
-    setSearchTerm(term);  // Update search term when user types
+    setSearchTerm(term);  // Updates search term when I type
   };
 
   // Static data for dishes
@@ -158,14 +158,14 @@ const Recipes = () => {
   return (
     <div className={r.main}>
       <div className={r.searchbar}>
-        <SearchBar onSearch={handleSearch} />  {/* Pass search handler to SearchBar */}
+        <SearchBar onSearch={handleSearch} />  
       </div>
       {dishesData.map((categoryData, index) => (
         <div key={index} className={r.mainMenu}>
           <h1 className={r.hi}>{categoryData.category}</h1>
           <div className={r.dishesContainer}>
             {categoryData.dishes
-              .filter(dish => dish.name.toLowerCase().includes(searchTerm.toLowerCase())) // Apply search filtering on the frontend
+              .filter(dish => dish.name.toLowerCase().includes(searchTerm.toLowerCase())) // to handel lowecase and uppercases
               .map((dish) => (
                 <Dish
                   key={dish.id}

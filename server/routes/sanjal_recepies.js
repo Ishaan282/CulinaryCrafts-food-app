@@ -52,25 +52,23 @@ const insertDefaultDishes = async () => {
   }
 };
 
-// Call the function to insert default dishes once (this can be moved to an initialization route)
+
 insertDefaultDishes();
 
-// Route to fetch all bookmarks with optional search query
 router.get('/', async (req, res) => {
   try {
-    const searchTerm = req.query.search || '';  // Get search term from query parameters
+    const searchTerm = req.query.search || '';  // Getting search term from query 
 
-    // Fetch dishes that match the search term (case-insensitive search on dishName)
     const bookmarks = await Recipe.find({
-      dishName: { $regex: searchTerm, $options: 'i' }  // Case-insensitive search
+      dishName: { $regex: searchTerm, $options: 'i' }  // Case-insensitity in searching
     });
 
     res.json({
       bookmarks: bookmarks.map(b => ({
         dishId: b.dishId,
         dishName: b.dishName,
-        image: b.image,  // Include image in the response
-        link: b.link,  // Include link in the response
+        image: b.image,  
+        link: b.link,  
         bookmarked: b.bookmarked,
       }))
     });
@@ -79,15 +77,15 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Route to add/remove bookmark
+// add/remove bookmark
 router.post('/', async (req, res) => {
   try {
-    const { id, name, image, link } = req.body;  // Dish ID, name, image, and link from the frontend
+    const { id, name, image, link } = req.body;  
 
     const existingBookmark = await Recipe.findOne({ dishId: id });
 
     if (existingBookmark) {
-      existingBookmark.bookmarked = !existingBookmark.bookmarked;  // Toggle bookmark status
+      existingBookmark.bookmarked = !existingBookmark.bookmarked;  
       await existingBookmark.save();
       res.status(200).json({
         success: true,
@@ -98,8 +96,8 @@ router.post('/', async (req, res) => {
         dishId: id,
         dishName: name,
         image: image,
-        link: link,  // Store the recipe link
-        bookmarked: true  // Mark as bookmarked initially
+        link: link,  
+        bookmarked: true  
       });
       await newBookmark.save();
       res.status(201).json({

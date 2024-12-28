@@ -50,7 +50,7 @@ function Social() {
         loadMessages();
     }, []);
 
-    const chatRef = useRef(null);
+    const chatRef = useRef(null); //storing the useEffect hook in a variable
 
     useEffect(() => {
         if (chatRef.current) {

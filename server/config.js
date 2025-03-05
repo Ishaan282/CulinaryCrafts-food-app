@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 const chat = require('./routes/ishaan_social');
 const signup = require('./routes/Samiksha2_post');
 const todo = require('./routes/sanjal_todo');
-const shop = require('./routes/Sameer_incredients');
+const shop = require('./routes/sanya_incredients');
 const recepies = require('./routes/sanjal_recepies');
 
 

@@ -2,15 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/samiksha/Home';
-import Cart from './components/sameer/Cart';
+import Cart from './components/sanya/Cart';
 import Recipes from './components/sanjal/Recipes';
 import Social from './components/ishaan/Social';
 import Login from './components/samiksha/Login';
 import Signup from './components/samiksha/Signup';
-import Incrediants from './components/sameer/Incrediants';
+import Incrediants from './components/sanya/Incrediants';
 import ShoppinList from './components/sanjal2/ShoppingList';
 
-import { ShopContextProvider } from "./components/sameer/context/shop-context";
+import { ShopContextProvider } from "./components/sanya/context/shop-context";
 
 import recipeRoutes from './components/sanjal/recipeRoutes'; // Import the recipeRoutes array
 

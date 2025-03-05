@@ -45,7 +45,7 @@ Whether you're planning a meal, learning a new dish, shopping for ingredients, o
 ## Team
 - [Ishaan Singla](https://github.com/Ishaan282)
 - [Samiksha Singh](https://github.com/SamikshaSingh25)
-- [Sameer Chandra](https://github.com/MajesterSmith)
+- [sanya Chandra](https://github.com/MajesterSmith)
 - [Sanjal](https://github.com/SanjalJain)
 
 ## Installation

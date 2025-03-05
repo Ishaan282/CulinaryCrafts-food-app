@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Home from './samiksha/Home';
-import Cart from './sameer/Incrediants';
+import Cart from './sanya/Incrediants';
 import Recipes from './sanjal/Recipes';
 import Social from './ishaan/Social';
 import Login from './samiksha/Login'

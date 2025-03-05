@@ -37,7 +37,7 @@ app.use('/api/auth', signup );
 //$sanjal bookmark part 
 app.use('/Recipe', recepies);  
 
-//$Sameer part
+//$sanya part
 app.use('/shop', shop);
 
 //$sanjal todo part 

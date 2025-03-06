@@ -6,7 +6,7 @@ const socialSchema = new mongoose.Schema({
         required: false
     },
     picture: {
-        type: String, // URL or base64 string
+        type: String, 
         required: false
     },
     profileName: {

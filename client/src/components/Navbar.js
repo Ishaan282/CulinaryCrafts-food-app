@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 // import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import ShoppingList from './sanjal2/ShoppingList';
+import ShoppingList from './Shoppinglist/ShoppingList';
 
 
 const Navbar = () => {

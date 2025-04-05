@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './components/samiksha/Home';
-import Cart from './components/sanya/Cart';
-import Recipes from './components/sanjal/Recipes';
+import Home from './components/Home/Home';
+import Cart from './components/Ingrediants_Section/Cart';
+import Recipes from './components/Recipe_Section/Recipes';
 import Social from './components/ishaan/Social';
-import Login from './components/samiksha/Login';
-import Signup from './components/samiksha/Signup';
-import Incrediants from './components/sanya/Incrediants';
-import ShoppinList from './components/sanjal2/ShoppingList';
+import Login from './components/Authentication/Login';
+import Signup from './components/Authentication/Signup';
+import Incrediants from './components/Ingrediants_Section/Incrediants';
+import ShoppinList from './components/Shoppinglist/ShoppingList';
 
-import { ShopContextProvider } from "./components/sanya/context/shop-context";
+import { ShopContextProvider } from "./components/Ingrediants_Section/context/shop-context";
 
-import recipeRoutes from './components/sanjal/recipeRoutes'; // Import the recipeRoutes array
+import recipeRoutes from './components/Recipe_Section/recipeRoutes'; // Import the recipeRoutes array
 
 import Error404 from './404'; // Import the Error404 component
 

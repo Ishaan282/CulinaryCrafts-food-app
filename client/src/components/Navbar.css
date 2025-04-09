@@ -10,9 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: #9cdf5079; */
     background-color: #9cdf5079;
-    /* background-color: #eb750d; */
     padding: 1vw;
     position: fixed;
     top: 0;
@@ -25,9 +23,8 @@
 
 .scrolled {
     background-color: #49b533;
-    /* background-color: #d3690c; */
-  
 }
+
 .logo a {
     text-decoration: none;
     font-size: 1.5vw; 
@@ -42,7 +39,6 @@
 .nav-link {
     margin-right: 2vw; 
     text-decoration: none;
-    /* color: #50727B; */
     color: #3d3d3d;
     transition: color 0.3s ease;
 }
@@ -51,21 +47,40 @@
     color:#000000;
 }
 
-.login-btn {
+.login {
+    margin-right: 0.5vw; 
+    padding: 0 0 0.2vw 0px;
+    display: flex;
+    align-items: center;
+}
+
+/* New user auth container */
+.user-auth, .guest-auth {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+/* New username display */
+.username-display {
+    color: #3d3d3d;
+    font-weight: 500;
+    font-size: 0.9vw;
+}
+
+.login-btn, .logout-btn {
     padding: 0.6vw 1vw; 
     background-color: #3d3d3d;
     border: none;
     border-radius: 50px;
     color: white;
     text-decoration: none;
-}
-.login {
-    margin-right: 0.5vw; 
-    padding: 0 0 0.2vw 0px;
-    
+    cursor: pointer;
+    font-size: 0.9vw;
+    transition: all 0.3s ease;
 }
 
-.login-btn:hover {
+.login-btn:hover, .logout-btn:hover {
     border: 0.14vw solid #3d3d3d; 
     color: #000000;
     background: transparent;
@@ -74,25 +89,26 @@
 
 .cart-btn {
     padding:0vw 1vw 0 0;
-    margin-left: 2vw; 
+    margin-left: 1vw; 
 }
 
 .fa-cart-shopping {
     font-size: 1.6vw; 
     color: #3d3d3d; 
+    transition: color 0.3s ease;
 }
-.logout-btn {
-    padding: 0.6vw 1vw; 
-    background-color: #3d3d3d;
-    border: none;
-    border-radius: 50px;
-    color: white;
-    text-decoration: none;
-  }
-  
-  .logout-btn:hover {
-    border: 0.14vw solid #3d3d3d; 
+
+.fa-cart-shopping:hover {
     color: #000000;
-    background: transparent;
-    transition: 0.1s;
-  }
+}
+
+/* Shopping list modal backdrop */
+.shopping-list-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}

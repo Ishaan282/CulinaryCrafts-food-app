@@ -1,35 +1,40 @@
 const loginService = async (email, password) => {
-    // console.log(email, password);
     try {
-        const response = await fetch('http://localhost:5000/api/auth/login', {
+        const response = await fetch('/api/auth/login', {  // Remove full URL since you're using proxy
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ email, password })
         });
-        // console.log(response);
+
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
 
         const data = await response.json();
+        
+        // Store authentication status in localStorage
+        localStorage.setItem('loggedin', 'true');
+        localStorage.setItem('user', JSON.stringify(data.user));
+        
         return data;
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
         throw error;
     }
 };
+
 const registerService = async (username, email, password) => {
     try {
-        const response = await fetch('http://localhost:5000/api/auth/signup', {
+        const response = await fetch('/api/auth/signup', {  // Remove full URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({username, email, password })
         });
-        // console.log(response);
+
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -41,7 +46,5 @@ const registerService = async (username, email, password) => {
         throw error;
     }
 };
-module.exports = {
-    loginService,
-    registerService
-}
+
+export { loginService, registerService };  // Use ES6 exports

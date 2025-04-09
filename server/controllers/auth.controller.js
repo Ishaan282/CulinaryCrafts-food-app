@@ -1,6 +1,8 @@
 const User = require('../models/Samiksha1_schema');
 const bcrypt = require('bcrypt');
-const login= async(req, res)=>{
+
+// Login
+const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
@@ -10,42 +12,46 @@ const login= async(req, res)=>{
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
-
         if (!isPasswordValid) {
-            return res.status(400).json({ msg: "Incorrect password", status: false });
+            return res.status(400).json({ msg: "Incorrect email or password", status: false });
         }
-        const UserInfo = {username: user.username, email: user.email};
-        return res.json({ status: true, user: UserInfo });
+
+        const UserInfo = { username: user.username, email: user.email };
+        return res.status(200).json({ status: true, user: UserInfo });
     } catch (error) {
-        res.json({ message: "login failed" });
+        console.error(error);
+        return res.status(500).json({ message: "Login failed", error: error.message });
     }
 };
-const signUp= async(req, res)=>{
+
+// Signup
+const signUp = async (req, res) => {
     try {
         const { username, email, password } = req.body;
+
         const usernameCheck = await User.findOne({ username });
-        if (usernameCheck !== null) {
-            return res.json({ msg: "Username already used", status: false });
+        if (usernameCheck) {
+            return res.status(409).json({ msg: "Username already used", status: false });
         }
 
         const emailCheck = await User.findOne({ email });
-        if (emailCheck  !== null) {
-            return res.json({ msg: "Email already used", status: false });
+        if (emailCheck) {
+            return res.status(409).json({ msg: "Email already used", status: false });
         }
-        const hashedPassword = await bcrypt.hash(password, 10);  // 2^ 10 1024 Corrected typo
+
+        const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({
             email,
             username,
             password: hashedPassword,
         });
-        user.save();
-        const UserInfo = {username: user.username, email: user.email};
-        return res.json({ status: true, user: UserInfo });
+
+        const UserInfo = { username: user.username, email: user.email };
+        return res.status(201).json({ status: true, user: UserInfo });
     } catch (error) {
-        res.json({ message: "sign up failed" });
+        console.error(error);
+        return res.status(500).json({ message: "Sign up failed", error: error.message });
     }
 };
-module.exports = {
-    login,
-    signUp
-};
+
+module.exports = { login, signUp };

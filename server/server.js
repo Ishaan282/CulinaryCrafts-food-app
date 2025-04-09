@@ -13,7 +13,6 @@ mongoose.connect(dbURI)
         Sock(server); 
 
         server.listen(PORT, () => {
-            console.log('Server connected!');
             console.log(`Server running at http://localhost:${PORT}`);
         });
     })
@@ -28,19 +27,19 @@ app.get('/', (req, res) => {
 //#DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
 //please start your code from here :D
 
-//$Ishaan part
+//$chats
 app.use('/Social', chat);
 
-//$Samiksha part
+//$authentication
 app.use('/api/auth', signup );
 
-//$sanjal bookmark part 
+//$recepies 
 app.use('/Recipe', recepies);  
 
-//$sanya part
+//$shopping cart
 app.use('/shop', shop);
 
-//$sanjal todo part 
+//$todoList
 app.use('/ShoppingList/todo', todo); 
 
 //!handling error page 

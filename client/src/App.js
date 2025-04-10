@@ -13,6 +13,7 @@ import Incrediants from './components/Ingrediants_Section/Incrediants';
 import ShoppingList from './components/Shoppinglist/ShoppingList';
 import Error404 from './404';
 import recipeRoutes from './components/Recipe_Section/recipeRoutes';
+import ProtectedRoute from './components/Authentication/ProtectedRoute';
 
 function App() {
   return (
@@ -21,23 +22,50 @@ function App() {
         <ShopContextProvider>
           <Navbar />
           <Routes>
+            {/* Public routes */}
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/incrediants" element={<Incrediants />} />
-            <Route path="/social" element={<Social />} />
-            <Route path="/recipes" element={<Recipes />} />
-            <Route path="/shopping-list" element={<ShoppingList />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             
-            {/* Dynamic recipe routes */}
+            {/* Protected routes */}
+            <Route path="/cart" element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            } />
+            <Route path="/incrediants" element={
+              <ProtectedRoute>
+                <Incrediants />
+              </ProtectedRoute>
+            } />
+            <Route path="/social" element={
+              <ProtectedRoute>
+                <Social />
+              </ProtectedRoute>
+            } />
+            <Route path="/recipes" element={
+              <ProtectedRoute>
+                <Recipes />
+              </ProtectedRoute>
+            } />
+            <Route path="/shopping-list" element={
+              <ProtectedRoute>
+                <ShoppingList />
+              </ProtectedRoute>
+            } />
+            
+            {/* Protected dynamic recipe routes */}
             {Array.isArray(recipeRoutes) && 
               recipeRoutes.map((route) => (
                 <Route 
                   key={route.path} 
                   path={route.path} 
-                  element={route.element} 
+                  element={
+                    <ProtectedRoute>
+                      {route.element}
+                    </ProtectedRoute>
+                  } 
                 />
               ))
             }

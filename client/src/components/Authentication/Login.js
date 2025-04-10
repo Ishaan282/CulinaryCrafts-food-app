@@ -57,7 +57,7 @@
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from './context/AuthContext';
 import { loginService } from '../services/auth.service';
 import styles from './Login.module.css'; 
 import loginImage from './Assets/loginimg.jpg';

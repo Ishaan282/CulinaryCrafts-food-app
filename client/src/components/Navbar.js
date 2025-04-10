@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from './Authentication/context/AuthContext';
 import './Navbar.css';
 import { useState, useEffect } from 'react';
 import ShoppingList from './Shoppinglist/ShoppingList';

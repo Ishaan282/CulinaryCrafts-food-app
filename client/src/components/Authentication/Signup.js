@@ -19,6 +19,7 @@ const Signup= () => {
         e.preventDefault();
         try {
             const response = await registerService(input.username, input.email, input.password); // ✅ await
+            //this will send the data to the backend
         
             if (response.status) {
             console.log("Signup Successful");

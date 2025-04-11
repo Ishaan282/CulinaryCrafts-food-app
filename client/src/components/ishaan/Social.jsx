@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { fetchMessages, sendMessage, deleteMessage } from './socialApi';
-import { handleFileSelect, handleTextMessageSubmit, handleDeleteMessage } from './socialHandlers';
+import { fetchMessages, sendMessage, deleteMessage , fetchUsers} from './social.api.service.js';
+import { handleFileSelect, handleTextMessageSubmit, handleDeleteMessage } from './chat.handlers.js';
 import s from './Social.module.css';
 import Message from './components/Message.jsx';
 import Profile from './components/Profile.jsx';
@@ -13,9 +13,10 @@ function Social() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [isTyping, setIsTyping] = useState(false);
+    const [users, setUsers] = useState([]); // Need setUsers to update the state
 
     const socket = useRef(null);
-
+    //! socket.io
     useEffect(() => {
         socket.current = io();
 
@@ -36,6 +37,7 @@ function Social() {
         };
     }, []);
 
+    //! Fetch messages
     useEffect(() => {
         const loadMessages = async () => {
             setLoading(true);
@@ -51,6 +53,20 @@ function Social() {
     }, []);
 
     const chatRef = useRef(null); //storing the useEffect hook in a variable
+
+    //! fetching users 
+    useEffect(() => {
+        const loadUsers = async () => {
+            try {
+                const userList = await fetchUsers();
+                setUsers(userList);
+            } catch (error) {
+                console.error("Failed to load users:", error);
+                // You can setError here if you want to show it in UI
+            }
+        };
+        loadUsers();
+    }, []);
 
     useEffect(() => {
         if (chatRef.current) {
@@ -75,9 +91,17 @@ function Social() {
             <div className={`${s.main1}`}>
                 <header id={`${s.head}`}>  People </header>
                 <hr style={{ border: 'none', borderTop: '2px solid black', width: '103%', margin: `0 -3%` }} />
+                {/* <div id={s.profiles}>
+                    <Profile  name="Lucifer hamster" />
+                </div> */}
                 <div id={s.profiles}>
-                    <Profile id={s.pr1} name="Lucifer hamster" />
-                    <Profile id={s.pr2} name="Bread" />
+                    {users.length > 0 ? (
+                        users.map((username) => (
+                            <Profile key={username} name={username} />
+                        ))
+                    ) : (
+                        <p>No users registred yet</p>
+                    )}
                 </div>
             </div>
 

@@ -32,6 +32,7 @@ app.use('/Social', chat);
 
 //$authentication
 app.use('/api/auth', signup );
+//$ for getting users :- /api/auth/users
 
 //$recepies 
 app.use('/Recipe', recepies);  

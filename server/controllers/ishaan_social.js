@@ -1,4 +1,4 @@
-const Social = require('../models/social_schema'); // Import the model
+const Social = require('../models/social.model'); // Import the model
 
 //!showing all the chats
 const chat_index = async (req, res) => {

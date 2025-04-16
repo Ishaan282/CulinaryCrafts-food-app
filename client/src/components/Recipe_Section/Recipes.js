@@ -116,41 +116,41 @@ const Recipes = () => {
     {
       category: 'Deserts',
       dishes: [
-        { link: '/recipie/CheeseCake', image: ccc, name: 'Baked CheeseCake', starsCount: 4.5, id: 'cheese-cake-id' },
-        { link: '/recipie/ChocolateCake', image: chococover, name: 'Chocolate Cake', starsCount: 5, id: 'chocolate-cake-id' },
-        { link: '/recipie/Crembrule', image: crembrule, name: 'Crembrule', starsCount: 4.5, id: 'crembrule-id' },
-        { link: '/recipie/Banana', image: banana, name: 'Banana Sunday', starsCount: 5, id: 'banana-sunday-id' },
-        { link: '/recipie/Waffels', image: waffel, name: 'Waffels', starsCount: 5, id: 'waffels-id' },
-        { link: '/recipie/Doughnuts', image: donut, name: 'Doughnuts', starsCount: 5, id: 'doughnuts-id' },
+        { link: '/recipe/CheeseCake', image: ccc, name: 'Baked CheeseCake', starsCount: 4.5, id: 'cheese-cake-id' },
+        { link: '/recipe/ChocolateCake', image: chococover, name: 'Chocolate Cake', starsCount: 5, id: 'chocolate-cake-id' },
+        { link: '/recipe/Crembrule', image: crembrule, name: 'Crembrule', starsCount: 4.5, id: 'crembrule-id' },
+        { link: '/recipe/Banana', image: banana, name: 'Banana Sunday', starsCount: 5, id: 'banana-sunday-id' },
+        { link: '/recipe/Waffels', image: waffel, name: 'Waffels', starsCount: 5, id: 'waffels-id' },
+        { link: '/recipe/Doughnuts', image: donut, name: 'Doughnuts', starsCount: 5, id: 'doughnuts-id' },
       ]
     },
     {
       category: 'Pastas',
       dishes: [
-        { link: '/recipie/Pastasss', image: pasta, name: 'Spinach-Corn Ravioli', starsCount: 4.5, id: 'spinach-corn-ravioli-id' },
-        { link: '/recipie/Pastasss', image: pasta1, name: 'Pesto', starsCount: 4.5, id: 'pesto-id' },
-        { link: '/recipie/Pastasss', image: pasta2, name: 'Alfredo Fettuccine', starsCount: 4.5, id: 'alfredo-fettuccine-id' },
-        { link: '/recipie/Pastasss', image: pasta3, name: 'Arrabbiata', starsCount: 4.5, id: 'arrabbiata-id' },
-        { link: '/recipie/Pastasss', image: pasta, name: 'Aglio e Olio', starsCount: 4.5, id: 'aglio-e-olio-id' },
-        { link: '/recipie/Pastasss', image: pasta1, name: 'Four Cheese Sauce', starsCount: 4.5, id: 'four-cheese-sauce-id' },
+        { link: '/recipe/Pastasss', image: pasta, name: 'Spinach-Corn Ravioli', starsCount: 4.5, id: 'spinach-corn-ravioli-id' },
+        { link: '/recipe/Pastasss', image: pasta1, name: 'Pesto', starsCount: 4.5, id: 'pesto-id' },
+        { link: '/recipe/Pastasss', image: pasta2, name: 'Alfredo Fettuccine', starsCount: 4.5, id: 'alfredo-fettuccine-id' },
+        { link: '/recipe/Pastasss', image: pasta3, name: 'Arrabbiata', starsCount: 4.5, id: 'arrabbiata-id' },
+        { link: '/recipe/Pastasss', image: pasta, name: 'Aglio e Olio', starsCount: 4.5, id: 'aglio-e-olio-id' },
+        { link: '/recipe/Pastasss', image: pasta1, name: 'Four Cheese Sauce', starsCount: 4.5, id: 'four-cheese-sauce-id' },
       ]
     },
     {
       category: 'Soups',
       dishes: [
-        { link: '/recipie/SpinachWhiteBeanSoup', image: soupcover2, name: 'Spinach and White Bean Soup', starsCount: 4.5, id: 'spinach-white-bean-soup-id' },
-        { link: '/recipie/ThaiCoconutCurrySoup', image: soupcover1, name: 'Thai Coconut Curry Soup', starsCount: 3, id: 'thai-coconut-curry-soup-id' },
-        { link: '/recipie/LentilSoup', image: soupcover2, name: 'Lentil Soup', starsCount: 4, id: 'lentil-soup-id' },
+        { link: '/recipe/SpinachWhiteBeanSoup', image: soupcover2, name: 'Spinach and White Bean Soup', starsCount: 4.5, id: 'spinach-white-bean-soup-id' },
+        { link: '/recipe/ThaiCoconutCurrySoup', image: soupcover1, name: 'Thai Coconut Curry Soup', starsCount: 3, id: 'thai-coconut-curry-soup-id' },
+        { link: '/recipe/LentilSoup', image: soupcover2, name: 'Lentil Soup', starsCount: 4, id: 'lentil-soup-id' },
       ]
     },
     {
       category: 'Vegetarian',
       dishes: [
-        { link: '/recipie/MushroomRisotto', image: risoto, name: 'Mushroom Risotto', starsCount: 4.5, id: 'mushroom-risotto-id' },
-        { link: '/recipie/VeggieBurger', image: burger1, name: 'Veggie Burger', starsCount: 4, id: 'veggie-burger-id' },
-        { link: '/recipie/AlfredoFutticini', image: pasta3, name: 'Alfredo Futticini', starsCount: 3, id: 'alfredo-futticini-id' },
-        { link: '/recipie/FalafelWrap', image: crep, name: 'Falafel Wrap', starsCount: 4.5, id: 'falafel-wrap-id' },
-        { link: '/recipie/VegetarianSushiRolls', image: sushi, name: 'Vegetarian Sushi Rolls', starsCount: 4.5, id: 'vegetarian-sushi-rolls-id' },
+        { link: '/recipe/MushroomRisotto', image: risoto, name: 'Mushroom Risotto', starsCount: 4.5, id: 'mushroom-risotto-id' },
+        { link: '/recipe/VeggieBurger', image: burger1, name: 'Veggie Burger', starsCount: 4, id: 'veggie-burger-id' },
+        { link: '/recipe/AlfredoFutticini', image: pasta3, name: 'Alfredo Futticini', starsCount: 3, id: 'alfredo-futticini-id' },
+        { link: '/recipe/FalafelWrap', image: crep, name: 'Falafel Wrap', starsCount: 4.5, id: 'falafel-wrap-id' },
+        { link: '/recipe/VegetarianSushiRolls', image: sushi, name: 'Vegetarian Sushi Rolls', starsCount: 4.5, id: 'vegetarian-sushi-rolls-id' },
       ]
     }
   ];

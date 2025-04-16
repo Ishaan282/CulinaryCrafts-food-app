@@ -12,6 +12,8 @@ import Signup from './components/Authentication/Signup';
 import Incrediants from './components/Ingrediants_Section/Incrediants';
 import ShoppingList from './components/Shoppinglist/ShoppingList';
 import Error404 from './404';
+
+//recipeRoutes 
 import recipeRoutes from './components/Recipe_Section/recipeRoutes';
 import ProtectedRoute from './components/Authentication/ProtectedRoute';
 
@@ -59,7 +61,7 @@ function App() {
             {Array.isArray(recipeRoutes) && 
               recipeRoutes.map((route) => (
                 <Route 
-                  key={route.path} 
+                  key={route.key} 
                   path={route.path} 
                   element={
                     <ProtectedRoute>

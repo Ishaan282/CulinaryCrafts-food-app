@@ -35,7 +35,7 @@ app.use('/api/auth', signup );
 //$ for getting users :- /api/auth/users
 
 //$recepies 
-app.use('/Recipe', recepies);  
+// app.use('/Recipe', recepies);  
 
 //$shopping cart
 app.use('/shop', shop);

@@ -1,6 +1,6 @@
 // Home.js
 import React, { useRef, useEffect, useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import a from './Home.module.css';
 import chef from './Assets/chef1.png';
 import ingredient from './Assets/ingredients.jpg';
@@ -45,10 +45,7 @@ const Home = () => {
         });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        alert('Thank you for subscribing to Culinary Crafts');
-    };
+    
 
     const goToPrev = () => {
         if (sliderRef.current) {
@@ -93,7 +90,7 @@ const Home = () => {
                     ellipseProps={null}
                     svgProps={null}
                 />
-                <p className={a.userName}>{user.username}</p>
+                
                 </div>
                 <div className={a.mainText}>
                 <h1>Recipe</h1>

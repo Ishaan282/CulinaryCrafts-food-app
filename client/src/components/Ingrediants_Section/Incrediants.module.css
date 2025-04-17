@@ -12,14 +12,14 @@
 .headercontent {
     font-size: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-top: 40vh;
+    padding-top: 30vh;
     padding-bottom: 50vh;
     color: white;
     opacity: 0.7;
 }
 
 .gridcontainer {
-    background-color: white;
+    background-color: #6fbf4b;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 30px;
@@ -31,13 +31,15 @@
     background: #e0e0e0;
     text-align: center;
     padding: 20px 0;
-    box-shadow: 15px 15px 30px #bebebe,
-        -15px -15px 30px #ffffff;
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
+    
 }
 
+.griditem:hover{
+    background-color: #137b18; 
+}
 .griditem img {
     border: 2px solid black;
     width: 50vh;

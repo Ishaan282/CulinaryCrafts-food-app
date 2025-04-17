@@ -255,15 +255,16 @@ const Dish = ({ name, image, link, starsCount, id, toggleBookmark, bookmarks }) 
   );
 };
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch , className}) => {
   return (
-    <div>
+    <div className={className}>
       <input
         type="text"
         placeholder="Search for dishes..."
         onChange={(e) => onSearch(e.target.value)}
         className={styles.searchInput}
       />
+      <i className={`fa fa-search ${styles.searchIcon}`}></i>
     </div>
   );
 };
@@ -356,7 +357,7 @@ const Recipes = () => {
   return (
     <div className={styles.main}>
       <div className={styles.searchbar}>
-        <SearchBar onSearch={setSearchTerm} />
+        <SearchBar onSearch={setSearchTerm} className={styles.searchBar} />
       </div>
       
       {dishesData.map((categoryData, index) => (

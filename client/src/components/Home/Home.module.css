@@ -10,7 +10,7 @@
     display: flex;
     margin: 0;
     padding: 0;
-    background-color: #9cdf50;
+    background-color: #6fbf4b;
 }
 
 .leftSection {
@@ -101,7 +101,7 @@
 .buttonContainer {
     display: flex;
     justify-content: space-between;
-    background-color: #9cdf50;
+    background-color: #6fbf4b;
     padding: 2vw 4vw;
   }
   
@@ -110,7 +110,7 @@
     height: 7vw;
     border: none;
     border-radius: 5vw;
-    background-color: #3ca441;
+    background-color: #141414;
     color: white;
     display: flex;
     align-items: center;
@@ -164,7 +164,7 @@
 .categoriesSection {
   text-align: center;
   padding-top: 4vw;
-  background-color: #9cdf50;
+  background-color: #6fbf4b;
 }
 
 .categoryTitle {
@@ -207,7 +207,7 @@
 .latestRecipesSection {
   text-align: center;
   padding-top: 4vw;
-  background-color: #9cdf50;
+  background-color: #6fbf4b;
 }
 
 .heading {
@@ -304,7 +304,7 @@
 .todayCookSection {
   text-align: center;
   padding-top: 2vw;
-  background-color: #9cdf50;
+  background-color: #6fbf4b;
 }
 
 .sectionTitle {
@@ -453,7 +453,7 @@
 .youtubeCarouselSection {
   text-align: center;
   z-index:-1;
-  background-color: #9cdf50;
+  background-color: #6fbf4b;
 }
 .carouselTitle {
   font-size: 2vw;

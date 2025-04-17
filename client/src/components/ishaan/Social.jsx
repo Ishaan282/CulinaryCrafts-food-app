@@ -40,7 +40,7 @@ function Social() {
     //! Fetch messages
     useEffect(() => {
         const loadMessages = async () => {
-            setLoading(true);
+            setLoading(true); //this will show the loading spinner
             try {
                 const data = await fetchMessages();
                 setMessages(data);
@@ -112,7 +112,7 @@ function Social() {
                     ) : error ? (
                         <p>{error}</p>
                     ) : messages.length > 0 ? (
-                        messages.map((message, index) => (
+                        messages.map((message, index) => ( //first para returns a text , second para returns a index of the message
                             <Message
                                 key={message._id} // Use unique _id as the key
                                 id={message._id}

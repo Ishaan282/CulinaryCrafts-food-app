@@ -1,5 +1,5 @@
 const express = require('express');
-const {createCustomRecipe, getCustomRecipes, deleteCustomRecipe} = require('../controllers/customRecipe.controller')
+const {createCustomRecipe, getCustomRecipes, getRecipeById , deleteCustomRecipe} = require('../controllers/customRecipe.controller')
 
 const router = express.Router();
 
@@ -10,7 +10,10 @@ router.post('/',createCustomRecipe);
 //getting all the recipe for user
 router.get('/',getCustomRecipes);
 
+//get recipe by ID
+router.get('/:id',getRecipeById);
+
 //delete the recipe
-router.get('/:id',deleteCustomRecipe);
+router.delete('/:id',deleteCustomRecipe);
 
 module.exports = router;

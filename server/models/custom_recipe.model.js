@@ -20,8 +20,8 @@ const customRecipeSchema = new mongoose.Schema({
         trim: true
     },
 
-    generated_content: {  // Now accepts any JSON structure
-        type: mongoose.Schema.Types.Mixed,
+    generated_content: {  
+        type: String,     
         required: true
     },
 

@@ -10,7 +10,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
  * @param {string} dietaryPreference - Dietary preference from enum
  * @returns {Promise<{recipe_name: string, generated_content: string}>}
  */
-exports.generateRecipe = async (instructions, dietaryPreference) => {
+exports.generateRecipe = async (instructions, dietaryPreference) => { //passing in the parameters 
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
     
@@ -39,8 +39,7 @@ exports.generateRecipe = async (instructions, dietaryPreference) => {
 };
 
 
-//! test 
-// Quick test run
+//! testing the pipeline 
 (async () => {
 try {
     const recipe = await exports.generateRecipe(
@@ -49,7 +48,8 @@ try {
     );
 
     console.log("Generated Recipe:");
-    console.log(JSON.stringify(recipe, null, 2));
+    console.log(recipe.recipe_name); 
+    // console.log(recipe.generated_content);
 } catch (error) {
     console.error("Test run error:", error);
 }

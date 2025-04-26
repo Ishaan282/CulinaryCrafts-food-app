@@ -20,10 +20,9 @@ const customRecipeSchema = new mongoose.Schema({
         trim: true
     },
 
-    generated_content: {  // Renamed from 'answer' for clarity
-        type: String,
-        required: false,
-        trim: true
+    generated_content: {  // Now accepts any JSON structure
+        type: mongoose.Schema.Types.Mixed,
+        required: true
     },
 
     dietary_preference: {  // More descriptive than isVegetarian

@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { app, http, Sock, mongoose, chat, signup, todo,recepies} = require('./config');
+const { app, http, Sock, mongoose, chat, signup, todo, customRecipeRoutes} = require('./config');
 
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
@@ -20,11 +20,7 @@ mongoose.connect(dbURI)
         console.log("Unable to connect to the database", error);
     });
 
-app.get('/', (req, res) => {
-    res.send('Amaricaya Halo :D');
-});
-
-//#DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
+//!DON'T YOU DARE EDIT THE ABOVE PORTION or else i'll send Jerry at your location
 //please start your code from here :D
 
 //$chats
@@ -32,7 +28,10 @@ app.use('/Social', chat);
 
 //$authentication
 app.use('/api/auth', signup );
-//$ for getting users :- /api/auth/users
+//@ for getting users :- /api/auth/users
+
+//$AI genrated recepies
+app.use('/api/recipes/custom', customRecipeRoutes);
 
 //$recepies 
 // app.use('/Recipe', recepies);  
@@ -43,12 +42,18 @@ app.use('/api/auth', signup );
 //$todoList
 app.use('/ShoppingList/todo', todo); 
 
-//!handling error page 
+
+//#default route
+app.get('/', (req, res) => {
+    res.send('Amaricaya Halo :D');
+});
+
+//#handling error page 
 app.use((req, res, next) => {
     res.status(404).send('Page not found');
 });
 
-//!middleware for handling errors
+//#middleware for handling errors
 app.use((err, req, res, next) => {
     console.error(err.stack); 
     res.status(500).json({

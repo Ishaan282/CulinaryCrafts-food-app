@@ -27,15 +27,16 @@ app.use(session({
     }
 }));
 
+// console.log(process.env.SESSION_SECRET)
 
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 
-const chat = require('./routes/ishaan_social');
+const chat = require('./routes/social.routes.js');
 const signup = require('./routes/Samiksha2_post'); //route for log-in
 const todo = require('./routes/sanjal_todo');
-const shop = require('./routes/sanya_incredients');
+// const shop = require('./routes/sanya_incredients');
 // const recepies = require('./routes/sanjal_recepies');
 
-module.exports = { app, http, Sock, mongoose, chat, signup, todo, shop};
+module.exports = { app, http, Sock, mongoose, chat, signup, todo};

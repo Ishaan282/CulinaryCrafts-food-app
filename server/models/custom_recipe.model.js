@@ -1,6 +1,7 @@
+// server/models/customRecipe.model.js
 const mongoose = require("mongoose");
 
-const ingredientsSchema = new mongoose.Schema({
+const customRecipeSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -13,21 +14,23 @@ const ingredientsSchema = new mongoose.Schema({
         trim: true
     },
 
-    prompt: {
-        type: String,
-        required: false,
-        trim: true
-    },
-    answer: {
+    instructions: {
         type: String,
         required: false,
         trim: true
     },
 
-    isVegetarian: {
-        type: Boolean,
-        default: true
+    generated_content: {  // Renamed from 'answer' for clarity
+        type: String,
+        required: false,
+        trim: true
     },
+
+    dietary_preference: {  // More descriptive than isVegetarian
+        type: String,
+        enum: ['vegetarian', 'non-vegetarian', 'vegan', 'flexitarian'],
+        default: 'vegetarian'
+    }, //gonna be a drop down in frontend
 
     createdAt: {
         type: Date,
@@ -35,4 +38,4 @@ const ingredientsSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Ingredients', ingredientsSchema);
+module.exports = mongoose.model('CustomRecipe', customRecipeSchema);

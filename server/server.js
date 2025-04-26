@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { app, http, Sock, mongoose, chat, signup, todo, shop ,recepies} = require('./config');
+const { app, http, Sock, mongoose, chat, signup, todo,recepies} = require('./config');
 
 //connecting to server
 const dbURI = process.env.MONGODB_URI;
@@ -38,7 +38,7 @@ app.use('/api/auth', signup );
 // app.use('/Recipe', recepies);  
 
 //$shopping cart
-app.use('/shop', shop);
+// app.use('/shop', shop);
 
 //$todoList
 app.use('/ShoppingList/todo', todo); 

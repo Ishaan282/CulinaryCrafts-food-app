@@ -12,7 +12,7 @@ const customRecipeSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
-    },
+    }, //ai
 
     instructions: {
         type: String,
@@ -23,9 +23,9 @@ const customRecipeSchema = new mongoose.Schema({
     generated_content: {  
         type: String,     
         required: true
-    },
+    }, //ai
 
-    dietary_preference: {  // More descriptive than isVegetarian
+    dietary_preference: { 
         type: String,
         enum: ['vegetarian', 'non-vegetarian', 'vegan', 'flexitarian'],
         default: 'vegetarian'

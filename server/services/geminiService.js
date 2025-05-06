@@ -1,4 +1,3 @@
-//
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
 
@@ -54,7 +53,3 @@ exports.generateRecipe = async (instructions, dietaryPreference) => {
 //     console.error("Test run error:", error);
 //   }
 // })();
-
-
-// console.log(process.send.GEMINI_API_KEY);
-//const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });

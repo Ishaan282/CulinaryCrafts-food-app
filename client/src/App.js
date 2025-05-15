@@ -12,7 +12,7 @@ import Signup from './components/Authentication/Signup';
 import Incrediants from './components/Ingrediants_Section/Incrediants';
 import ShoppingList from './components/Shoppinglist/ShoppingList';
 import Error404 from './404';
-
+import GenerateRecipePage from './components/CustomRecipes/generate-recipe-page';
 //recipeRoutes 
 import recipeRoutes from './components/Recipe_Section/recipeRoutes';
 import ProtectedRoute from './components/Authentication/ProtectedRoute';
@@ -56,6 +56,12 @@ function App() {
                 <ShoppingList />
               </ProtectedRoute>
             } />
+            <Route path="/generaterecipe" element={
+              <ProtectedRoute>
+                <GenerateRecipePage />
+              </ProtectedRoute>
+            } />
+            
             
             {/* Protected dynamic recipe routes */}
             {Array.isArray(recipeRoutes) && 

@@ -38,6 +38,7 @@ const Navbar = () => {
         <Link to="/Social" className="nav-link">Socials</Link>
         <Link to="/Incrediants" className="nav-link">Ingrediants</Link>
         <Link to="#" className="nav-link" onClick={() => setOpenShoppingList(true)}>Shopping List</Link>
+        <Link to="/GenerateRecipe" className="nav-link">Generate Recipe</Link>
       </div>
 
       <div className="login">

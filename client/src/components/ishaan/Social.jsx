@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { fetchMessages, sendMessage, deleteMessage , fetchUsers} from './social.api.service.js';
-import { handleFileSelect, handleTextMessageSubmit, handleDeleteMessage } from './chat.handlers.js';
+import { useAuth } from '../Authentication/context/AuthContext';
+import { fetchMessages, sendMessage, deleteMessage, fetchUsers } from './social.api.service.js';
+import { handleDeleteMessage } from './chat.handlers.js'; // Only need this now
 import s from './Social.module.css';
 import Message from './components/Message.jsx';
 import Profile from './components/Profile.jsx';
@@ -8,20 +9,24 @@ import io from 'socket.io-client';
 import upload_icon from './icons/upload.png';
 
 function Social() {
+    const { user } = useAuth();
     const [messages, setMessages] = useState([]);
     const [textMessage, setTextMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [isTyping, setIsTyping] = useState(false);
-    const [users, setUsers] = useState([]); // Need setUsers to update the state
+    const [users, setUsers] = useState([]);
 
     const socket = useRef(null);
-    //! socket.io
+    const fileInputRef = useRef();
+    const chatRef = useRef(null);
+
+    // Socket.io setup
     useEffect(() => {
         socket.current = io();
 
         socket.current.on('chat message', (msg) => {
-            setMessages((prevMessages) => Array.isArray(prevMessages) ? [...prevMessages, msg] : [msg]);
+            setMessages(prevMessages => Array.isArray(prevMessages) ? [...prevMessages, msg] : [msg]);
         });
 
         socket.current.on('typing', (data) => {
@@ -29,18 +34,16 @@ function Social() {
         });
 
         socket.current.on('delete message', (messageId) => {
-            setMessages((prevMessages) => Array.isArray(prevMessages) ? prevMessages.filter(message => message._id !== messageId) : []);
+            setMessages(prevMessages => prevMessages.filter(message => message._id !== messageId));
         });
 
-        return () => {
-            socket.current.disconnect();
-        };
+        return () => socket.current.disconnect();
     }, []);
 
-    //! Fetch messages
+    // Fetch messages
     useEffect(() => {
         const loadMessages = async () => {
-            setLoading(true); //this will show the loading spinner
+            setLoading(true);
             try {
                 const data = await fetchMessages();
                 setMessages(data);
@@ -52,9 +55,7 @@ function Social() {
         loadMessages();
     }, []);
 
-    const chatRef = useRef(null); //storing the useEffect hook in a variable
-
-    //! fetching users 
+    // Fetch users
     useEffect(() => {
         const loadUsers = async () => {
             try {
@@ -62,45 +63,75 @@ function Social() {
                 setUsers(userList);
             } catch (error) {
                 console.error("Failed to load users:", error);
-                // You can setError here if you want to show it in UI
             }
         };
         loadUsers();
     }, []);
 
+    // Auto-scroll chat
     useEffect(() => {
         if (chatRef.current) {
             chatRef.current.scrollTop = chatRef.current.scrollHeight;
         }
     }, [messages]);
 
-    const fileInputRef = useRef();
+    const handleSendMessage = async (message, picture = '') => {
+        try {
+            const newMessage = await sendMessage(
+                message, 
+                picture, 
+                user?.username || 'user'
+            );
+            setTextMessage('');
+            socket.current.emit('chat message', newMessage);
+            socket.current.emit('typing', { typing: false });
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     const handleTextMessageChange = (e) => {
         setTextMessage(e.target.value);
         socket.current.emit('typing', { typing: e.target.value.length > 0 });
-
-        // Adjust the height of the textarea based on its content
+        
+        // Auto-resize textarea
         const textarea = e.target;
         textarea.style.height = 'auto';
         textarea.style.height = `${textarea.scrollHeight}px`;
     };
 
+    const handleTextKeyDown = (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            if (textMessage.trim() !== '') {
+                handleSendMessage(textMessage);
+            }
+        }
+    };
+
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                handleSendMessage('', reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     return (
         <div id={s.main}>
             <div className={`${s.main1}`}>
-                <header id={`${s.head}`}>  People </header>
+                <header id={`${s.head}`}>People</header>
                 <hr style={{ border: 'none', borderTop: '2px solid black', width: '103%', margin: `0 -3%` }} />
-                {/* <div id={s.profiles}>
-                    <Profile  name="Lucifer hamster" />
-                </div> */}
                 <div id={s.profiles}>
                     {users.length > 0 ? (
                         users.map((username) => (
                             <Profile key={username} name={username} />
                         ))
                     ) : (
-                        <p>No users registred yet</p>
+                        <p>No users registered yet</p>
                     )}
                 </div>
             </div>
@@ -112,15 +143,21 @@ function Social() {
                     ) : error ? (
                         <p>{error}</p>
                     ) : messages.length > 0 ? (
-                        messages.map((message, index) => ( //first para returns a text , second para returns a index of the message
+                        messages.map((message, index) => (
                             <Message
-                                key={message._id} // Use unique _id as the key
+                                key={message._id}
                                 id={message._id}
                                 message={message.message}
-                                photo={message.picture} // Photo could be Base64 or URL
-                                imgSrc={message.profilePicture}
-                                name={message.profileName}
-                                onDelete={() => handleDeleteMessage(index, messages, deleteMessage, setMessages, setError, socket.current)}
+                                photo={message.picture}
+                                name={message.user}
+                                onDelete={() => handleDeleteMessage(
+                                    index, 
+                                    messages, 
+                                    deleteMessage, 
+                                    setMessages, 
+                                    setError, 
+                                    socket.current
+                                )}
                             />
                         ))
                     ) : (
@@ -130,14 +167,24 @@ function Social() {
                 </div>
 
                 <div id={s.bottom}>
-                    <input type="file" style={{ display: 'none' }} onChange={(e) => handleFileSelect(e, sendMessage, setMessages, setError, socket.current)} ref={fileInputRef} />
-                    <img src={upload_icon} alt="Upload file" className={s.bottom_icon} onClick={() => fileInputRef.current.click()} />
+                    <input 
+                        type="file" 
+                        style={{ display: 'none' }} 
+                        onChange={handleFileUpload}
+                        ref={fileInputRef} 
+                    />
+                    <img 
+                        src={upload_icon} 
+                        alt="Upload file" 
+                        className={s.bottom_icon} 
+                        onClick={() => fileInputRef.current.click()} 
+                    />
                     <textarea
                         id={s.enter_text}
                         placeholder="Type a message..."
                         value={textMessage}
                         onChange={handleTextMessageChange}
-                        onKeyDown={(e) => handleTextMessageSubmit(e, textMessage, setTextMessage, sendMessage, setMessages, setError, socket.current)}
+                        onKeyDown={handleTextKeyDown}
                     />
                 </div>
             </div>

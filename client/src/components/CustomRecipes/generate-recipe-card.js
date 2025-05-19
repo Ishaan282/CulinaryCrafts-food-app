@@ -11,6 +11,7 @@ import MDEditor from '@uiw/react-md-editor';
 import { toast } from 'sonner';
 import { useAuth } from '../Authentication/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import g from './generate.module.css';
 
 const GenerateRecipeCard = () => {
   const { user } = useAuth();
@@ -156,13 +157,17 @@ const handleGenerate = async (e) => {
       }
     }
   };
-
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
   return (
-    <div className="space-y-6 p-4 max-w-4xl mx-auto">
+    <div className={g.mainbox}>
       {/* Recipe Generation Card */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className={g.grnerate}>
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+          <h2 className={g.text}>
             <FontAwesomeIcon icon={faUtensils} className="text-orange-500" />
             Create Custom Recipe
           </h2>
@@ -173,14 +178,14 @@ const handleGenerate = async (e) => {
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             rows={4}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 min-h-[120px]"
+            className={g.textarea}
           />
           
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+          <div className={g.dontknow}>
             <select
               value={dietaryPreference}
               onChange={(e) => setDietaryPreference(e.target.value)}
-              className="w-full sm:w-auto p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              className={g.dropbox}
             >
               <option value="vegetarian">Vegetarian</option>
               <option value="vegan">Vegan</option>
@@ -191,9 +196,7 @@ const handleGenerate = async (e) => {
             <button
               type="submit"
               disabled={loading || !user}
-              className={`w-full sm:w-auto px-4 py-2 rounded-md text-white font-medium ${
-                loading || !user ? 'bg-gray-400' : 'bg-orange-500 hover:bg-orange-600'
-              } transition-colors flex items-center justify-center gap-2`}
+              className={g.createbutton}
             >
               {loading ? (
                 <>
@@ -216,19 +219,18 @@ const handleGenerate = async (e) => {
 
       {/* Generated Recipe Preview Modal */}
       {open && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div className={g.preview}>
           <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold text-gray-800">Your Custom Recipe</h2>
                 <button 
                   onClick={() => setOpen(false)}
-                  className="text-gray-500 hover:text-gray-700"
-                >
-                  ✕
+                  className={g.cross}>
+                  
                 </button>
               </div>
-              <div className="prose max-w-none bg-gray-50 p-4 rounded-md">
+              <div className={g.lordknows}>
                 <MDEditor.Markdown 
                   source={recipeContent} 
                   className="bg-white p-4 rounded-md"
@@ -237,8 +239,7 @@ const handleGenerate = async (e) => {
               <div className="flex justify-end gap-2 mt-4">
                 <button
                   onClick={() => setOpen(false)}
-                  className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 transition-colors"
-                >
+                  className={`${g.closebox} ${g.recepiebutton}`}>
                   Close
                 </button>
               </div>
@@ -248,7 +249,7 @@ const handleGenerate = async (e) => {
       )}
 
       {/* Saved Recipes Section */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className={g.saved}>
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-800">Your Saved Recipes</h2>
         </div>
@@ -294,15 +295,13 @@ const handleGenerate = async (e) => {
                         setRecipeContent(recipe.generated_content);
                         setOpen(true);
                       }}
-                      className="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-100 transition-colors flex items-center gap-1"
-                    >
+                      className={`${g.delete} ${g.savedbutton}`}>
                       <FontAwesomeIcon icon={faEye} className="text-gray-600" />
                       View
                     </button>
                     <button
                       onClick={() => handleDelete(recipe._id)}
-                      className="px-3 py-1 border border-red-300 text-red-600 rounded-md hover:bg-red-50 transition-colors flex items-center gap-1"
-                    >
+                      className={`${g.delete} ${g.savedbutton}`}>
                       <FontAwesomeIcon icon={faTrash} />
                       Delete
                     </button>

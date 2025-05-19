@@ -9,7 +9,7 @@ const socialSchema = new mongoose.Schema({
         type: String, 
         required: false
     },
-    profileName: {
+    user: {
         type: String,
         required: true
     },

@@ -1,18 +1,9 @@
-const Social = require('../models/social.model'); // Import the model
+const Social = require('../models/social.model');
 
 //!showing all the chats
 const chat_index = async (req, res) => {
     try {
-        let chats = await Social.find()
-            .sort({ createdAt: 1 })
-            .populate('user', 'username')
-            .lean(); // Convert to plain JS objects
-
-        // Apply default username if user not found
-        chats = chats.map(chat => ({
-            ...chat,
-            user: chat.user ? chat.user : { username: "user" }
-        })); //if user doesn't exist return default value "User"
+        const chats = await Social.find().sort({ createdAt: 1 }).lean();
 
         if (!chats.length) {
             return res.status(200).json({ message: "No messages yet" });
@@ -30,15 +21,10 @@ const chat_index = async (req, res) => {
 //!creating a new chat
 const chat_create = async (req, res) => {
     try {
-        const { message, picture, userId } = req.body;
-        
-        // Find the user to get their username
-        const user = await User.findById(userId);
-        const username = user?.username || "user"; // Default to "user" if no username found
+        const { message, picture, user } = req.body; // Now expecting 'user' (username) directly
         
         const chat = new Social({
-            user: userId,       // Reference to User document
-            username: username, // Store the actual username string
+            user: user || "user", // Default to "user" if not provided
             message: message,
             picture: picture
         });
@@ -54,7 +40,7 @@ const chat_create = async (req, res) => {
     }
 };
 
-//!deleting the chat
+//!deleting the chat (unchanged)
 const chat_delete = async (req, res) => {
     try {
         const result = await Social.findByIdAndDelete(req.params.id);

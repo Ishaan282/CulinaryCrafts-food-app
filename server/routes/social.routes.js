@@ -1,4 +1,4 @@
-// server/routes/ishaan_social.js
+// server/routes/social.routes.js
 const express = require('express');
 const router = express.Router();
 const { chat_index, chat_create, chat_delete } = require('../controllers/social.controller');

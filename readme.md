@@ -66,9 +66,6 @@ The project will open in your default browser, and you can start exploring the a
 1. Open the `server` folder in your code editor.
 2. Run `npm install` to install the project dependencies.
 3. Create a `.env` file in the `server` folder and add your MongoDB/Gemini API connection string:
-    ```
-    MONGODB_URI=your_mongodb_connection_string
-    ```
 4. Run `npm start` to start the backend server.
 
 ## Usage

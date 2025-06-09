@@ -14,15 +14,17 @@ Whether you're planning a meal, learning a new dish, shopping for ingredients, o
 
 3. **Recipes**: Users can browse through a variety of dishes. Clicking on a dish reveals the recipe for cooking it. A handy to-do list for ingredients is provided on the left of the screen, which can be customized according to user preference.
 
-4. **Socials**: The socials section allows users to interact with each other. It includes a chat feature with an option to upload pictures. Messages are stored in local storage, ensuring they persist even after refreshing the site.
+4. **Generate Recipe (AI-powered)**: In this section, users can simply enter what they want to cook, and the AI (powered by Gemini) will generate a complete recipe with step-by-step instructions.
 
-5. **Ingredients**: This section lists all available ingredients for purchase. Users can easily add ingredients to their cart with a single click.
+5. **Socials**: The socials section allows users to interact with each other. It includes a chat feature with an option to upload pictures. Messages are stored in local storage, ensuring they persist even after refreshing the site.
 
-6. **Shopping List**: This section allows users to create a list, that they can check off later.
+6. **Ingredients**: This section lists all available ingredients for purchase. Users can easily add ingredients to their cart with a single click.
 
-7. **Cart**: The cart allows users to review their orders before checkout.
+7. **Shopping List**: This section allows users to create a list, that they can check off later.
 
-8. **Login/Signup**: Users can create an account through the signup option or log into their existing account.
+8. **Cart**: The cart allows users to review their orders before checkout.
+
+9. **Login/Signup**: Users can create an account through the signup option or log into their existing account.
 
 ## Technologies
 
@@ -41,6 +43,8 @@ Whether you're planning a meal, learning a new dish, shopping for ingredients, o
 7. **Express:** A web application framework for Node.js, used for building the backend API.
 
 8. **MongoDB:** A NoSQL database used to store application data.
+
+9. **Gemini AI:** Used to power the "Generate Recipe" feature, allowing users to get AI-generated recipes and step-by-step instructions based on their input.
 
 ## Team
 - [Ishaan Singla](https://github.com/Ishaan282)
@@ -61,7 +65,7 @@ The project will open in your default browser, and you can start exploring the a
 ### Backend
 1. Open the `server` folder in your code editor.
 2. Run `npm install` to install the project dependencies.
-3. Create a `.env` file in the `server` folder and add your MongoDB connection string:
+3. Create a `.env` file in the `server` folder and add your MongoDB/Gemini API connection string:
     ```
     MONGODB_URI=your_mongodb_connection_string
     ```
@@ -72,6 +76,8 @@ The project will open in your default browser, and you can start exploring the a
 Foodie's Delight is designed to be user-friendly and intuitive. Here's how you can make the most of it:
 
 **Exploring Recipes:** Navigate to the 'Recipes' section to browse through a variety of dishes. Click on any dish to view its detailed recipe. You can also customize the ingredient to-do list according to your preference.
+
+**Generating Recipes with AI:** Go to the 'Generate Recipe' section and type in what you want to cook. The AI (powered by Gemini) will instantly generate a complete recipe with step-by-step instructions tailored to your input.
 
 **Interacting with Others:** Visit the 'Socials' section to connect with other food enthusiasts. Use the chat feature to share your thoughts, experiences, or even upload pictures of your culinary creations.
 

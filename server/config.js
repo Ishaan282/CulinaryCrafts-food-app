@@ -13,7 +13,7 @@ const app = express();
 app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true
-}));
+})); //cors is used to allow cross-origin requests from the frontend
 
 
 app.use(session({

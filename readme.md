@@ -46,6 +46,8 @@ Whether you're planning a meal, learning a new dish, shopping for ingredients, o
 
 9. **Gemini AI:** Used to power the "Generate Recipe" feature, allowing users to get AI-generated recipes and step-by-step instructions based on their input.
 
+10. **Socket.IO:** Enables real-time chat functionality in the Socials section.
+
 ## Team
 - [Ishaan Singla](https://github.com/Ishaan282)
 - [Samiksha Singh](https://github.com/SamikshaSingh25)
@@ -76,7 +78,7 @@ Foodie's Delight is designed to be user-friendly and intuitive. Here's how you c
 
 **Generating Recipes with AI:** Go to the 'Generate Recipe' section and type in what you want to cook. The AI (powered by Gemini) will instantly generate a complete recipe with step-by-step instructions tailored to your input.
 
-**Interacting with Others:** Visit the 'Socials' section to connect with other food enthusiasts. Use the chat feature to share your thoughts, experiences, or even upload pictures of your culinary creations.
+**Interacting with Others:** Visit the 'Socials' section to connect with other food enthusiasts. Use the real-time chat feature (powered by Socket.IO) to share your thoughts, experiences, or even upload pictures of your culinary creations.
 
 **Shopping for Ingredients:** Go to the 'Ingredients' section to view a list of available ingredients. Simply click 'Add to Cart' to include any ingredient in your shopping list.
 

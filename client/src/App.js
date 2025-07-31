@@ -7,16 +7,6 @@ import Home from './components/Home/Home';
 import Error404 from './404';
 import ProtectedRoute from './components/Authentication/ProtectedRoute';
 
-// import Cart from './components/Ingrediants_Section/Cart';
-// import Recipes from './components/Recipe_Section/Recipes';
-// import Social from './components/ishaan/Social';
-// import Login from './components/Authentication/Login';
-// import Signup from './components/Authentication/Signup';
-// import Incrediants from './components/Ingrediants_Section/Incrediants';
-// import ShoppingList from './components/Shoppinglist/ShoppingList';
-// import GenerateRecipePage from './components/CustomRecipes/generate-recipe-page';
-// import recipeRoutes from './components/Recipe_Section/recipeRoutes';
-
 const Cart = lazy(() => import('./components/Ingrediants_Section/Cart'));
 const Recipes = lazy(() => import('./components/Recipe_Section/Recipes'));
 const Social = lazy(() => import('./components/ishaan/Social'));

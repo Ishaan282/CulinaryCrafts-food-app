@@ -1,35 +1,34 @@
-/* Complete redesign with modern styling, better accessibility, and improved UX */
-
+/* Light green theme with soft colors */
 .mainbox {
     padding: 2rem 1rem;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f8fffe 0%, #f0fdf4 50%, #ecfdf5 100%);
+    background: linear-gradient(135deg, #f7fdfb 0%, #f2fbf5 50%, #eefaf0 100%);
     font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .grnerate {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2.5rem;
-    box-shadow: 0 20px 40px rgba(6, 95, 70, 0.08), 0 8px 16px rgba(6, 95, 70, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: 0 20px 40px rgba(6, 128, 93, 0.08), 0 8px 16px rgba(6, 128, 93, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
     margin-bottom: 3rem;
-    border: 1px solid rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.15);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .grnerate:hover {
     transform: translateY(-2px);
-    box-shadow: 0 25px 50px rgba(6, 95, 70, 0.12), 0 12px 24px rgba(6, 95, 70, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: 0 25px 50px rgba(6, 128, 93, 0.12), 0 12px 24px rgba(6, 128, 93, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .text {
     text-align: center;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
-    color: #065f46;
+    color: #0a7552;
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
@@ -43,28 +42,28 @@
 .textarea {
     width: 100%;
     padding: 1.25rem;
-    background: linear-gradient(135deg, #f8fffe 0%, #f0fdf4 100%);
+    background: #f7fefb;
     border-radius: 16px;
-    border: 2px solid #d1fae5;
+    border: 2px solid #c5f0db;
     font-size: 1rem;
     font-family: inherit;
     line-height: 1.6;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     resize: vertical;
     min-height: 140px;
-    color: #065f46;
-    box-shadow: inset 0 2px 4px rgba(6, 95, 70, 0.04);
+    color: #0a7552;
+    box-shadow: inset 0 2px 4px rgba(6, 128, 93, 0.04);
 }
 
 .textarea::placeholder {
     color: #6b7280;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .textarea:focus {
     outline: none;
     border-color: #10b981;
-    box-shadow: inset 0 2px 4px rgba(6, 95, 70, 0.04), 0 0 0 4px rgba(16, 185, 129, 0.1), 0 4px 12px rgba(16, 185, 129, 0.15);
+    box-shadow: inset 0 2px 4px rgba(6, 128, 93, 0.04), 0 0 0 4px rgba(16, 185, 129, 0.1), 0 4px 12px rgba(16, 185, 129, 0.12);
     background: #ffffff;
     transform: translateY(-1px);
 }
@@ -82,28 +81,28 @@
     padding: 1rem 1.25rem;
     font-size: 1rem;
     border-radius: 16px;
-    border: 2px solid #d1fae5;
-    background: linear-gradient(135deg, #ffffff 0%, #f8fffe 100%);
-    color: #065f46;
+    border: 2px solid #c5f0db;
+    background: #f7fefb;
+    color: #0a7552;
     flex: 1;
     min-width: 200px;
     cursor: pointer;
     font-family: inherit;
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px rgba(6, 95, 70, 0.04);
+    box-shadow: 0 2px 4px rgba(6, 128, 93, 0.04);
 }
 
 .dropbox:focus,
 .dropbox:hover {
     outline: none;
     border-color: #10b981;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15), 0 0 0 4px rgba(16, 185, 129, 0.1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12), 0 0 0 4px rgba(16, 185, 129, 0.1);
     transform: translateY(-1px);
 }
 
 .createbutton {
-    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+    background: linear-gradient(135deg, #10b981 0%, #0d9669 50%, #0a7552 100%);
     padding: 1rem 2.5rem;
     font-size: 1rem;
     font-weight: 600;
@@ -111,7 +110,7 @@
     border-radius: 50px;
     border: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3), 0 4px 8px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.25), 0 4px 8px rgba(16, 185, 129, 0.15);
     flex: 1;
     min-width: 200px;
     display: flex;
@@ -141,7 +140,7 @@
 
 .createbutton:hover:not(:disabled) {
     transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(16, 185, 129, 0.4), 0 6px 12px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 12px 24px rgba(16, 185, 129, 0.3), 0 6px 12px rgba(16, 185, 129, 0.2);
 }
 
 .createbutton:active:not(:disabled) {
@@ -152,7 +151,7 @@
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
-    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.15);
 }
 
 .preview {
@@ -161,7 +160,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
@@ -184,7 +183,7 @@
 }
 
 .cross {
-    background: rgba(107, 114, 128, 0.1);
+    background: rgba(255, 255, 255, 0.9);
     border: none;
     font-size: 1.25rem;
     color: #6b7280;
@@ -197,6 +196,7 @@
     justify-content: center;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cross:hover {
@@ -234,7 +234,7 @@
 }
 
 .recepiebutton {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #10b981 0%, #0d9669 100%);
     border-radius: 50px;
     color: white;
     padding: 1rem 2rem;
@@ -242,27 +242,27 @@
     font-weight: 600;
     font-family: inherit;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
 }
 
 .recepiebutton:hover {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    background: linear-gradient(135deg, #0d9669 0%, #0a7552 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
 }
 
 .saved {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2.5rem;
-    box-shadow: 0 20px 40px rgba(6, 95, 70, 0.08), 0 8px 16px rgba(6, 95, 70, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(16, 185, 129, 0.1);
+    box-shadow: 0 20px 40px rgba(6, 128, 93, 0.08), 0 8px 16px rgba(6, 128, 93, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(16, 185, 129, 0.15);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .savedbutton {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #10b981 0%, #0d9669 100%);
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 50px;
@@ -279,9 +279,9 @@
 }
 
 .savedbutton:hover {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    background: linear-gradient(135deg, #0d9669 0%, #0a7552 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.25);
 }
 
 .delete {
@@ -290,7 +290,7 @@
 
 .delete:hover {
     background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
-    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.3) !important;
+    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.25) !important;
 }
 
 /* Enhanced responsive design */
@@ -342,45 +342,6 @@
 @media (min-width: 1024px) {
     .mainbox {
         padding: 4rem;
-    }
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-    .mainbox {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-    }
-
-    .grnerate,
-    .saved {
-        background: rgba(30, 41, 59, 0.9);
-        border-color: rgba(71, 85, 105, 0.3);
-    }
-
-    .text {
-        color: #10b981;
-    }
-
-    .textarea {
-        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-        border-color: #475569;
-        color: #e2e8f0;
-    }
-
-    .textarea:focus {
-        border-color: #10b981;
-        background: #1e293b;
-    }
-
-    .dropbox {
-        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-        border-color: #475569;
-        color: #e2e8f0;
-    }
-
-    .lordknows {
-        background: #1e293b;
-        border-color: #475569;
     }
 }
 

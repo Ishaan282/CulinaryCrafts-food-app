@@ -1,170 +1,329 @@
-#main{
+:root {
+    --primary-green: #2e7d32;
+    --light-green: #4caf50;
+    --lighter-green: #80e27e;
+    --background-green: #e8f5e9;
+    --chat-background: #f1f8e9;
+    --text-dark: #1b5e20;
+    --text-light: #ffffff;
+    --accent-yellow: #ffeb3b;
+    --delete-red: #f44336;
+    --sidebar-width: 25%;
+    --chat-area-width: 75%;
+}
+
+#main {
     width: 100vw;
-    background-color: #ffffff;
+    background-color: var(--background-green);
     height: 90vh;
     top: 10vh;
     position: fixed;
     display: flex;
     flex-direction: row;
-
 }
 
-:root {
-    --chat_area: 75vw;
-    --main_height: 89vh
-}
-
-/*! side bar */
-.main1{
-    flex-grow: 1;
-    order: 1;
-    height: var(--main_height);
+/* Sidebar */
+.main1 {
+    width: var(--sidebar-width);
+    height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0.5vh 15px;
-    background-color: #63A683;
-    gap: 2%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+    gap: 1rem;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
 }
 
-#head{
-    width: 90%;
+#head {
     text-align: center;
     margin-top: 1vh;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-#profiles{
+#profiles {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.8rem;
+    overflow-y: auto;
+    padding-right: 0.5rem;
 }
 
 /* Profile names in sidebar */
-.profile{
+.profile {
     display: flex;
-    justify-content: center; /* Center the names */
     align-items: center;
-    padding: 10px;
-    border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.2); /* Optional: Light background for name */
-    transition: ease-in-out 0.5s;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    gap: 0.8rem;
 }
 
-.profile:hover{
+.profile:hover {
     cursor: pointer;
-    scale: 1.1;
-    transition: ease-in-out 0.2s;
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateX(5px);
 }
 
-.profile_name{
+.profile_avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--lighter-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--primary-green);
+    font-size: 1.2rem;
+}
+
+.profile_name {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: white;
 }
 
-/*! chat area */
+/* Chat area */
 .main2 {
-    width: 78%;
-    height: var(--main_height); /* Constant height for the container */
+    width: var(--chat-area-width);
+    height: 100%;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    padding: 0.5vh 0;
-    background-image: linear-gradient(rgba(99, 166, 136, 0.941), rgba(67, 131, 135, 0.934)), url('./images/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    padding: 1rem;
+    background: var(--chat-background);
     position: relative;
 }
 
-.main2 .chat {
-    width: 75vw;
-    height: calc(var(--main_height) - 50px); /* Constant height with some spacing */
+.chat {
+    width: 100%;
+    height: calc(100% - 70px);
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
-    overflow-y: hidden;
-    word-wrap: break-word; 
-    white-space: pre-wrap; 
+    margin-bottom: 1rem;
+    overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
     text-align: left;
-    padding: 10px;
-    box-sizing: border-box; 
-    line-height: 1.5; 
+    padding: 1rem;
+    box-sizing: border-box;
+    line-height: 1.5;
+    background: white;
+    border-radius: 12px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-
-
-.profile2{
+/* Message styling */
+.profile2 {
     display: flex;
-    gap: 10px;
-    margin-bottom: 5px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-#text{
+.profile2:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+#text {
     display: flex;
-    align-items: left;
     flex-direction: column;
-    height: auto;
+    flex: 1;
+    margin-right: 0.5rem;
+}
+
+.profile_name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--primary-green);
+    margin-bottom: 0.3rem;
 }
 
 .photo {
     margin-top: 10px;
-    max-width: 70vh;
+    max-width: 100%;
     max-height: 30vh;
     height: auto;
     border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .profile2 .deleteIcon {
-    height: 4.5vh;
+    height: 24px;
+    width: 24px;
     object-fit: cover;
-    margin: 10px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    padding: 0.3rem;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .profile2:hover .deleteIcon {
-    cursor: pointer;
     opacity: 1;
+    background-color: rgba(244, 67, 54, 0.1);
 }
 
+.profile2 .deleteIcon:hover {
+    opacity: 1;
+    background-color: rgba(244, 67, 54, 0.2);
+}
 
-/*! bottom part  */
+/* Bottom input area */
 #bottom {
-    border-radius: 20px;
-    width: var(--chat_area);
-    min-height: 4.5vh;
-
-    background-color: #A6D59E;
+    border-radius: 25px;
+    width: 100%;
+    min-height: 50px;
+    background-color: white;
     display: flex;
-    align-items: center; /* Centers items vertically */
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
-    overflow: hidden; /* Hide scroll bar */
-    width: 60vw;
+    padding: 0 1rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e0e0;
 }
 
-
-.bottom_icon{
-    height: 4.5vh;
+.bottom_icon {
+    height: 24px;
+    width: 24px;
     object-fit: cover;
-    margin: 10px;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .bottom_icon:hover {
-    cursor: pointer;
+    background-color: var(--background-green);
 }
 
 #enter_text {
-    width: 99%;
+    width: 100%;
     background-color: transparent;
     border: none;
     outline: none;
     resize: none;
-    overflow-y: hidden; /* Disable vertical scroll */
-    word-wrap: break-word; /* Ensure long words break to the next line */
-    white-space: pre-wrap; /* Preserve whitespace and wrap text */
-    line-height: 1.5; /* Make the text look vertically spaced */
+    overflow-y: hidden;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    padding: 0.8rem;
+    font-size: 1rem;
+    max-height: 120px;
 }
 
-.right{
+/* Typing indicator */
+.typing-indicator {
     display: flex;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    font-style: italic;
+    color: var(--light-green);
 }
+
+/* Scrollbar styling */
+.chat::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.chat::-webkit-scrollbar-thumb {
+    background: var(--light-green);
+    border-radius: 10px;
+}
+
+.chat::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-green);
+}
+
+#profiles::-webkit-scrollbar {
+    width: 6px;
+}
+
+#profiles::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+#profiles::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+#profiles::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 35%;
+        --chat-area-width: 65%;
+    }
+
+    .main1 {
+        padding: 0.5rem;
+    }
+
+    .profile {
+        padding: 0.6rem;
+    }
+
+    .profile_avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .profile_name {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #main {
+        flex-direction: column;
+    }
+
+    .main1 {
+        width: 100%;
+        height: 30%;
+        padding: 0.5rem;
+    }
+
+    .main2 {
+        width: 100%;
+        height: 70%;
+        padding: 0.5rem;
+    }
+
+    #head {
+        font-size: 1.2rem;
+    }
+
+    #profiles {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0.5rem;
+    }
+
+    .profile {
+        flex-direction: column;
+        text-align: center;
+        min-width: 80px;
+    } }

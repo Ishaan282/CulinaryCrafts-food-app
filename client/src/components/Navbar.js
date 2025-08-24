@@ -34,7 +34,7 @@ const Navbar = () => {
       
       <div className="links">
         <Link to="/Home" className="nav-link">Home</Link>
-        <Link to="/Recipes" className="nav-link">Recipes <i className="fa-solid fa-angle-down"></i></Link>
+        {/* <Link to="/Recipes" className="nav-link">Recipes <i className="fa-solid fa-angle-down"></i></Link> */}
         <Link to="/Social" className="nav-link">Socials</Link>
         <Link to="/Incrediants" className="nav-link">Ingrediants</Link>
         <Link to="#" className="nav-link" onClick={() => setOpenShoppingList(true)}>Shopping List</Link>

@@ -90,50 +90,6 @@ const handleGenerate = async (e) => {
     setLoading(false);
   }
 };
-  /*const handleGenerate = async (e) => {
-    e.preventDefault();
-    
-    if (!user) {
-      toast.error('Please login to generate recipes');
-      navigate('/login');
-      return;
-    }
-
-    if (!prompt) {
-      toast.error('Please describe your recipe idea');
-      return;
-    }
-
-    setLoading(true);
-    
-    try {
-      const response = await fetch('/api/recipes/custom', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          instructions: prompt,
-          dietaryPreference,
-          username: user.username
-        })
-      });
-
-      const data = await response.json();
-      
-      if (data.success) {
-        setRecipeContent(data.data.generated_content);
-        setOpen(true);
-        fetchRecipes();
-        toast.success('Recipe generated successfully!');
-        setPrompt('');
-      } else {
-        toast.error(data.message || 'Failed to generate recipe');
-      }
-    } catch (error) {
-      toast.error('Network error. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };*/
 
   const handleDelete = async (recipeId) => {
     if (window.confirm('Are you sure you want to delete this recipe?')) {

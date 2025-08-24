@@ -14,6 +14,3 @@ const GenerateRecipePage = () => {
 
 // Wrap with ProtectedRoute if you want this page to be auth-protected
 export default GenerateRecipePage;
- 
-// Or if you want to protect it at the route level:
-// export default ProtectedRoute(GenerateRecipePage);

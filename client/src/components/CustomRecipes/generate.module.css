@@ -1,64 +1,407 @@
-.mainbox{
-    padding-top: 10vh;
-    /* background-color: blue; */
-    padding-left: 20vw;
-    padding-right: 20vw;
+/* Complete redesign with modern styling, better accessibility, and improved UX */
+
+.mainbox {
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fffe 0%, #f0fdf4 50%, #ecfdf5 100%);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-.text{
-    /* background-color: #137b18; */
-    padding-bottom: 3vh;
+
+.grnerate {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(6, 95, 70, 0.08), 0 8px 16px rgba(6, 95, 70, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.grnerate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 50px rgba(6, 95, 70, 0.12), 0 12px 24px rgba(6, 95, 70, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.text {
     text-align: center;
-    
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #065f46;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-family: "Playfair Display", serif;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
 }
-.textarea{
-    padding: 1vh;
-    width: 60vw;
-    background-color: #eaffe0;
-    border-radius: 1vh;
+
+.textarea {
+    width: 100%;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #f8fffe 0%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 2px solid #d1fae5;
+    font-size: 1rem;
+    font-family: inherit;
+    line-height: 1.6;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    resize: vertical;
+    min-height: 140px;
+    color: #065f46;
+    box-shadow: inset 0 2px 4px rgba(6, 95, 70, 0.04);
 }
-.generate{
-    background-color: red;
+
+.textarea::placeholder {
+    color: #6b7280;
+    opacity: 0.8;
 }
-.createbutton{
-    background-color: rgb(0, 0, 0);
-    padding: 0.8vh;
-    font-size: 2vh;
-    color: white;
-    /* margin-left: 85vh; */
-    border-radius: 100vh;
-    
+
+.textarea:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: inset 0 2px 4px rgba(6, 95, 70, 0.04), 0 0 0 4px rgba(16, 185, 129, 0.1), 0 4px 12px rgba(16, 185, 129, 0.15);
+    background: #ffffff;
+    transform: translateY(-1px);
 }
-button{
+
+.dontknow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.dropbox {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 16px;
+    border: 2px solid #d1fae5;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fffe 100%);
+    color: #065f46;
+    flex: 1;
+    min-width: 200px;
     cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(6, 95, 70, 0.04);
 }
-.dropbox{
-    background-color: rgb(255, 255, 255);
-    padding: 0.4vh;
-    font-size: 2.2vh;
-    margin-right: 1.5vh;
+
+.dropbox:focus,
+.dropbox:hover {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15), 0 0 0 4px rgba(16, 185, 129, 0.1);
+    transform: translateY(-1px);
 }
-.preview{
-    /* background-color: #137b18; */
-    margin-top: 3vh;
-}
-.saved{
-    /* background-color: mediumseagreen; */
-    margin-top: 4vh;
-}
-.recepiebutton{
-    background-color: black;
-    border-radius: 10vh;
+
+.createbutton {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
     color: white;
-    padding: 1vh;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3), 0 4px 8px rgba(16, 185, 129, 0.2);
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-family: inherit;
+    letter-spacing: 0.02em;
+    position: relative;
+    overflow: hidden;
 }
-.savedbutton{
-    background-color: #141414;
-    padding: 1vh;
-    border-color: transparent;
-    border-radius: 10vh;
+
+.createbutton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.createbutton:hover:not(:disabled)::before {
+    left: 100%;
+}
+
+.createbutton:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(16, 185, 129, 0.4), 0 6px 12px rgba(16, 185, 129, 0.3);
+}
+
+.createbutton:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.createbutton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.2);
+}
+
+.preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+
+    to {
+        opacity: 1;
+        backdrop-filter: blur(8px);
+    }
+}
+
+.cross {
+    background: rgba(107, 114, 128, 0.1);
+    border: none;
+    font-size: 1.25rem;
+    color: #6b7280;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.cross:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    transform: scale(1.1);
+}
+
+.lordknows {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.lordknows::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lordknows::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 4px;
+}
+
+.lordknows::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+}
+
+.lordknows::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+.recepiebutton {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50px;
     color: white;
-    margin-right: 2vw;
+    padding: 1rem 2rem;
+    border: none;
+    font-weight: 600;
+    font-family: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
-.savedbutton:hover{
-    background-color: #137b18;
+
+.recepiebutton:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.saved {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(6, 95, 70, 0.08), 0 8px 16px rgba(6, 95, 70, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.savedbutton {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.2);
+    letter-spacing: 0.02em;
+}
+
+.savedbutton:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
+}
+
+.delete {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+}
+
+.delete:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Enhanced responsive design */
+@media (max-width: 640px) {
+    .mainbox {
+        padding: 1.5rem 1rem;
+    }
+
+    .grnerate,
+    .saved {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .dontknow {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .dropbox,
+    .createbutton {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .text {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .textarea {
+        padding: 1rem;
+        min-height: 120px;
+    }
+}
+
+@media (min-width: 768px) {
+    .mainbox {
+        padding: 3rem 2rem;
+    }
+
+    .grnerate,
+    .saved {
+        padding: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mainbox {
+        padding: 4rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .mainbox {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    }
+
+    .grnerate,
+    .saved {
+        background: rgba(30, 41, 59, 0.9);
+        border-color: rgba(71, 85, 105, 0.3);
+    }
+
+    .text {
+        color: #10b981;
+    }
+
+    .textarea {
+        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        border-color: #475569;
+        color: #e2e8f0;
+    }
+
+    .textarea:focus {
+        border-color: #10b981;
+        background: #1e293b;
+    }
+
+    .dropbox {
+        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        border-color: #475569;
+        color: #e2e8f0;
+    }
+
+    .lordknows {
+        background: #1e293b;
+        border-color: #475569;
+    }
+}
+
+/* Improved focus indicators for accessibility */
+.textarea:focus,
+.dropbox:focus,
+.createbutton:focus,
+.savedbutton:focus,
+.cross:focus {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

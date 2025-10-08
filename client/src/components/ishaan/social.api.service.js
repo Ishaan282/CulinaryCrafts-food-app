@@ -29,21 +29,6 @@ export const fetchMessages = async () => {
 };
 
 
-// export const sendMessage = async (message, picture = '') => {
-//     const newMessage = {
-//         message: message.trim(),
-//         picture,
-//         profileName: "User",
-//     };
-//     try {
-//         const response = await axios.post('/Social', newMessage);
-//         return response.data;
-//     } catch (error) {
-//         console.error('Failed to send message:', error);
-//         throw new Error('Failed to send message.');
-//     }
-// };
-
 export const sendMessage = async (message, picture = '', username) => {
     const newMessage = {
         message: message.trim(),

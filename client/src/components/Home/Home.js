@@ -248,27 +248,6 @@ const Home = () => {
             </Link>
             </div>
 
-            <div className={a.youtubeCarouselSection}>
-            <h2 className={a.carouselTitle}>Featured YouTube Videos</h2>
-            <Slider {...videoSettings} ref={sliderRef}>
-                <div>
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ov4u0ARMWKQ?si=GnebIrLfYoFQ1Yy1&amp;start=2" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                </div>
-                <div>
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/GdcCVZ_D7hQ?si=vD3KP7X7YF6wXIYG&amp;start=2" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                </div>
-                <div>
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/vxOzUCYJQ8M?si=_efDbfWzp9HkGFLt&amp;start=2" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                </div>
-                <div>
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ds-3VyRIyCU?si=4wsCZzCvcX8Y3nLA&amp;start=2" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                </div>
-            </Slider>
-            <div className={a.customArrows}>
-                <button onClick={goToPrev}>&#10094;</button>
-                <button onClick={goToNext}>&#10095;</button>
-            </div>
-            </div>
 
             <div className={a.todayCookSection}>
             <h2 className={a.sectionTitle}>So, what will you cook today?</h2>

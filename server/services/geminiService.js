@@ -2,10 +2,11 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+// console.log(process.env.GEMINI_API_KEY)
 
 exports.generateRecipe = async (instructions, dietaryPreference) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });// Updated model
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });// Updated model
 
     const prompt = `
     Generate a recipe in MARKDOWN FORMAT (no JSON) with:

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { useAuth } from "../Authentication/context/AuthContext"
+import { useAuth } from "../Authentication/context/AuthContext.js"
 import { fetchMessages, sendMessage, deleteMessage, fetchUsers } from "./social.api.service.js"
 import { handleDeleteMessage } from "./chat.handlers.js" // Only need this now
 import s from "./Social.module.css"
